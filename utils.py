@@ -1,4 +1,9 @@
 import os
+from pathlib import Path
+import json
+from entities.player import Player, Stats
+
+root: Path = Path(__file__).parent
 
 def cls() -> None:
     os.system("CLS")

@@ -45,4 +45,3 @@ def charactercreation():
     print(f"You are now {name}, the {rpg_class.capitalize()}!")
     player: Player = Player(rpg_class, name)
     player.display_stats()
-charactercreation()

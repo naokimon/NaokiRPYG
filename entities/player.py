@@ -1,7 +1,12 @@
+import dataclasses
 from dataclasses import dataclass
+from pathlib import Path
 import json
 
-with open("data/classes.json") as f:
+root = Path(__file__).parent.parent
+classes_path = root / "data" / "classes.json"
+
+with open(classes_path) as f:
     BASE_STATS: dict = json.load(f)
 
 @dataclass
@@ -34,7 +39,7 @@ class Player:
         self.points: int = 0
         self.inventory: list = []
 
-    def display_stats(self):
+    def display_stats(self) -> None:
         name_line = f"  {self.name} — {self.rpg_class.capitalize()}  "
         width = max(len(name_line), 36)
         bar_filled = int((self.exp / self.exp_needed) * (width - 2))
@@ -52,3 +57,37 @@ class Player:
         print(f"║[{'█' * bar_filled}{'░' * bar_empty}]║")
         print(f"╚{'═' * width}╝")
 
+    def save_game(self) -> None:
+        save_data: dict = {
+            "name": self.name,
+            "class": self.rpg_class,
+            "stats": dataclasses.asdict(self.stats),
+            "hp": self.hp,
+            "mp": self.mp,
+            "level": self.level,
+            "exp": self.exp,
+            "points": self.points,
+            "inventory": self.inventory,
+        }
+
+        save_path: Path = root / "save_data.json"
+
+        with open(save_path, "w") as file:
+            json.dump(save_data, file, indent=2)
+
+    def load_game(self):
+        save_path: Path = root / "save_data.json"
+        with open(save_path) as file:
+            save_data: dict = json.load(file)
+
+        self.name = save_data["name"]
+        self.rpg_class = save_data["class"]
+        self.stats = Stats(**save_data["stats"])
+        self.hp = save_data["hp"]
+        self.mp = save_data["mp"]
+        self.level = save_data["level"]
+        self.exp = save_data["exp"]
+        self.points = save_data["points"]
+        self.inventory = save_data["inventory"]
+
+        print("Game has been loaded!")

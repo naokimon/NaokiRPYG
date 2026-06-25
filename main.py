@@ -2,6 +2,7 @@ from ascii import asciis
 import os
 from utils import pinput
 from game import charactercreation
+from entities.player import Player
 
 def main():
     print(asciis["title"])
@@ -12,10 +13,11 @@ def main():
 
         match choice:
             case "1":
-                game = charactercreation()
-                choosing: bool = False
+                player = charactercreation()
+                choosing = False
             case "2":
-                print("Load Game")
+                player: Player = Player("warrior", "John Doe")
+                player.load_game()
             case "3":
                 print("Config")
             case "4":
