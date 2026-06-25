@@ -2,6 +2,7 @@ import dataclasses
 from dataclasses import dataclass
 from pathlib import Path
 import json
+from utils import pinput, yn
 
 root = Path(__file__).parent.parent
 classes_path = root / "data" / "classes.json"
@@ -38,6 +39,39 @@ class Player:
         self.exp_needed: int = int(base_exp * (self.level ** 2.5))
         self.points: int = 0
         self.inventory: list = []
+
+    @classmethod
+    def charactercreation(cls):
+        print("What is your name..?")
+
+        while True:
+            name = pinput()
+
+            if yn(f"Are you sure your name is {name}? Y/N"):
+                break
+
+        rpg_class: str = ""
+        while True:
+            print("Choose your class...")
+            classes: list[str] = ["warrior", "mage", "rogue", "cleric", "archer"]
+            for index, rclass in enumerate(classes, start=1):
+                print(f"{index}. {rclass.capitalize()}")
+
+            choice: str = pinput().lower().strip()
+
+            if choice in classes:
+                rpg_class = choice
+            elif choice.isdigit() and 1 <= int(choice) <= len(classes):
+                rpg_class = classes[int(choice) - 1]
+            else:
+                print("Enter a valid number or class.")
+                continue
+
+            if yn(f"Are you sure you want to start as a {rpg_class}? Y/N"):
+                break
+
+        print(f"You are now {name}, the {rpg_class.capitalize()}!")
+        return cls(rpg_class, name)
 
     def display_stats(self) -> None:
         name_line = f"  {self.name} — {self.rpg_class.capitalize()}  "
