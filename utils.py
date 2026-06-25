@@ -1,7 +1,5 @@
 import os
 from pathlib import Path
-import json
-from entities.player import Player, Stats
 
 root: Path = Path(__file__).parent
 
@@ -11,6 +9,9 @@ def cls() -> None:
 def pinput() -> str:
     inp: str = input(">_ ")
     return inp
+
+def dia_input() -> None:
+    input("~ Press enter to continue")
 
 def yn(text: str | None = None) -> bool:
     if text:
