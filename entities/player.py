@@ -82,13 +82,17 @@ class Player:
         print(f"╔{'═' * width}╗")
         print(f"║{name_line.center(width)}║")
         print(f"╠{'═' * width}╣")
+        print(f"║{" " * width}║")
         print(f"║    HP   : {self.hp:<{width - 11}}║")
         print(f"║    MP   : {self.mp:<{width - 11}}║")
         print(f"║    LVL  : {self.level:<{width - 11}}║")
+        print(f"║{" " * width}║")
         print(f"╠{'═' * width}╣")
+        print(f"║{" " * width}║")
         print(
             f"║  EXP: {self.exp}/{self.exp_needed}{' ' * (width - 8 - len(str(self.exp)) - len(str(self.exp_needed)))}║")
         print(f"║[{'█' * bar_filled}{'░' * bar_empty}]║")
+        print(f"║{" " * width}║")
         print(f"╚{'═' * width}╝")
 
     def save_game(self) -> None:

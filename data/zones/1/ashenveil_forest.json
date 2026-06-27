@@ -1,0 +1,37 @@
+{
+  "id": "ashenveil_forest",
+  "name": "Ashenveil Forest",
+  "description": "A dark and cursed woodland. The trees seem to whisper.",
+  "rooms": [
+    {
+      "id": "forest_entrance_1",
+      "name": "Forest Entrance 1",
+      "exits": {
+        "forward": "forest_entrance_2",
+        "back": null
+      },
+      "enemies": [
+        ["goblin", 2],
+        ["wolf", 1]
+      ],
+      "items": [],
+      "npc": null
+    },
+    {
+      "id": "forest_entrance_2",
+      "name": "Forest Entrance 2",
+      "exits": {
+        "forward": "forest_entrance_3",
+        "back": "forest_entrance_1"
+      },
+      "enemies": [
+        ["goblin", 2]
+      ],
+      "items": [
+        ["health_potion", 1]
+      ],
+      "npc": null
+    }
+  ],
+  "entry_room_id": "forest_entrance_1"
+}
