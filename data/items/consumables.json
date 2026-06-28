@@ -1,0 +1,14 @@
+{
+  "health_potion_1": {
+    "name": "Health Potion Lv.1",
+    "type": "health",
+    "amount": 50,
+    "description": "Mass procured pots by the famous witch Aminah."
+  },
+  "mana_potion_1": {
+    "name": "Mana Potion Lv.1",
+    "type": "mana",
+    "amount": 10,
+    "description": "Mass procured pots by the famous witch Aminah."
+  }
+}

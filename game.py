@@ -59,10 +59,10 @@ class Game:
         while True:
             cls()
             self.display_game()
-            print(message)
             width: int = os.get_terminal_size().columns
 
             print(f"+{"-" * (width - 2)}+")
+            print(message)
 
             player_input = pinput()
             command: str = player_input.split()[0]
