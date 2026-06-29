@@ -16,7 +16,7 @@ class Consumable:
 
     def use(self, player: Player):
         player.hp = min(player.hp, player.max_hp)
-        player.mp = min(player.mp, player.max_mp)
+        player.mp = min(player.mp, player.max_mp) # check on use if the amount added to the player is 0 to refund item in player class
 
 
 class HealingPotion(Consumable):
@@ -24,18 +24,31 @@ class HealingPotion(Consumable):
         super().__init__(data, name, description)
         self.amount = data["amount"]
 
-    def use(self, player: Player):
+    def use(self, player: Player) -> bool:
+        old_hp = player.hp
         player.hp += self.amount
         super().use(player)
+        healed = player.hp - old_hp
+        if healed <= 0:
+            return False
+        else:
+            return True
+
 
 class ManaPotion(Consumable):
     def __init__(self, data: dict, name: str, description: str):
         super().__init__(data, name, description)
         self.amount = data["amount"]
 
-    def use(self, player: Player):
+    def use(self, player: Player) -> bool:
+        old_mp = player.mp
         player.mp += self.amount
         super().use(player)
+        healed = player.mp - old_mp
+        if healed <= 0:
+            return False
+        else:
+            return True
 
 def load_consum(iid: str):
     consum_path: Path = root / "data" / "items" / "consumables.json"

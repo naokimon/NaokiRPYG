@@ -139,9 +139,11 @@ class Player:
                         continue
                     item_id: str = list(self.inventory.keys())[item_number]
                     item: Consumable = load_consum(item_id)
-                    item.use(self)
-                    self.inventory[item_id] -= 1
-                    message = f"Healed {item.data["type"]} by {item.data["amount"]}"
+                    if item.use(self):
+                        self.inventory[item_id] -= 1
+                        message = f"~ Healed {item.data["type"]} by {item.data["amount"]}"
+                    else:
+                        message = f"~ Already at max {item.data["type"]}!"
                     if self.inventory[item_id] <= 0:
                         del self.inventory[item_id]
                 case "discard" | "d":
