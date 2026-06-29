@@ -15,7 +15,8 @@ class Consumable:
         self.description = description
 
     def use(self, player: Player):
-        pass
+        player.hp = min(player.hp, player.max_hp)
+        player.mp = min(player.mp, player.max_mp)
 
 
 class HealingPotion(Consumable):
@@ -25,6 +26,7 @@ class HealingPotion(Consumable):
 
     def use(self, player: Player):
         player.hp += self.amount
+        super().use(player)
 
 class ManaPotion(Consumable):
     def __init__(self, data: dict, name: str, description: str):
@@ -33,6 +35,7 @@ class ManaPotion(Consumable):
 
     def use(self, player: Player):
         player.mp += self.amount
+        super().use(player)
 
 def load_consum(iid: str):
     consum_path: Path = root / "data" / "items" / "consumables.json"

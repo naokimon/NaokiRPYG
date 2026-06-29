@@ -34,12 +34,14 @@ class Player:
         self.name: str = name
         self.rpg_class: str = rpg_class
         self.stats = Stats.from_class(rpg_class)
+        self.max_hp: int = 10 * self.stats.vitality
         self.hp: int = 10 * self.stats.vitality
+        self.max_mp: int = 5 * self.stats.intelligence
         self.mp: int = 5 * self.stats.intelligence
         self.level: int = 1
         self.exp = 0
         self.exp_needed: int = int(base_exp * (self.level ** 2.5))
-        self.points: int = 0
+        self.points: int = 5
         self.inventory: dict    [str, int] = {"health_potion_1": 1, "mana_potion_1": 1}
 
     @classmethod
@@ -75,7 +77,7 @@ class Player:
         print(f"You are now {name}, the {rpg_class.capitalize()}!")
         return cls(rpg_class, name)
 
-    def display_stats(self) -> None:
+    def display_info(self) -> None:
         name_line = f"  {self.name} — {self.rpg_class.capitalize()}  "
         width = max(len(name_line), 36)
         bar_filled = int((self.exp / self.exp_needed) * (width - 2))
@@ -85,8 +87,10 @@ class Player:
         print(f"║{name_line.center(width)}║")
         print(f"╠{'═' * width}╣")
         print(f"║{" " * width}║")
-        print(f"║    HP   : {self.hp:<{width - 11}}║")
-        print(f"║    MP   : {self.mp:<{width - 11}}║")
+        hp_str = f"{self.hp}/{self.max_hp}"
+        mp_str = f"{self.mp}/{self.max_mp}"
+        print(f"║    HP   : {hp_str:<{width - 11}}║")
+        print(f"║    MP   : {mp_str:<{width - 11}}║")
         print(f"║    LVL  : {self.level:<{width - 11}}║")
         print(f"║{" " * width}║")
         print(f"╠{'═' * width}╣")
@@ -156,11 +160,100 @@ class Player:
                             del self.inventory[item_id]
                     else:
                         print(f"~ {item.name} was not discarded!")
-
-
                 case _:
                     message = f"~ {player_input} is not a valid command"
 
+    def recalc_stat(self):
+        pct_hp: float = self.hp / self.max_hp
+        self.max_hp = 10 * self.stats.vitality
+        self.hp = int(self.max_hp * pct_hp)
+
+        pct_mp: float = self.mp / self.max_mp
+        self.max_mp = 5 * self.stats.intelligence
+        self.mp = int(self.max_mp * pct_mp)
+
+
+    def show_stats(self):
+        message = "~ Type allocate to allocate points"
+        while True:
+            cls()
+            print(f"[ {self.name}'s stats ]")
+            stat_items = self.stats.__dict__.items()
+            for k, v in stat_items:
+                print(f"{k.capitalize()}: {v}")
+            print(f"Stat points: {self.points}")
+            width: int = os.get_terminal_size().columns
+            print(f"+{"-" * (width - 2)}+")
+            print(message)
+            player_input = pinput()
+
+            match player_input:
+                case "allocate" | "alloc":
+                    if self.points <= 0:
+                        print("~ You have no points...")
+                        continue
+                    while True:
+                        print("Enter amount of points you want to allocate:")
+                        amount = pinput()
+
+                        if not amount.isnumeric():
+                            print(f"{amount} is not a number.")
+                            continue
+                        amount = int(amount)
+                        print("What stat would you like to increase?")
+                        for i, (k, v) in enumerate(stat_items, start=1):
+                            print(f"{i}. {k.capitalize()}")
+                        player_input = pinput()
+                        match player_input:
+                            case "strength" | "1":
+                                if yn(f"Are you sure you want to increase strength by {amount}? Y/N:"):
+                                    self.stats.strength += amount
+                                    self.points -= amount
+                                    message = f"Strength was increased by {amount}"
+                                    break
+                                else:
+                                    print("Points were not allocated.")
+                                    break
+                            case "dexterity" | "2":
+                                if yn(f"Are you sure you want to increase dexterity by {amount}? Y/N:"):
+                                    self.stats.dexterity += amount
+                                    self.points -= amount
+                                    message = f"Dexterity was increased by {amount}"
+                                    break
+                                else:
+                                    print("Points were not allocated.")
+                                    break
+                            case "intelligence" | "3":
+                                if yn(f"Are you sure you want to increase intelligence by {amount}? Y/N:"):
+                                    self.stats.intelligence += amount
+                                    self.points -= amount
+                                    self.recalc_stat()
+                                    message = f"Intelligence was increased by {amount}"
+                                    break
+                                else:
+                                    print("Points were not allocated.")
+                                    break
+                            case "vitality" | "4":
+                                if yn(f"Are you sure you want to increase vitality by {amount}? Y/N:"):
+                                    self.stats.vitality += amount
+                                    self.points -= amount
+                                    self.recalc_stat()
+                                    message = f"Vitality was increased by {amount}"
+                                    break
+                                else:
+                                    print("Points were not allocated.")
+                                    break
+                            case "luck" | "5":
+                                if yn(f"Are you sure you want to increase luck by {amount}? Y/N:"):
+                                    self.stats.luck += amount
+                                    self.points -= amount
+                                    message = f"Luck was increased by {amount}"
+                                    break
+                                else:
+                                    print("Points were not allocated.")
+                                    break
+                case "exit" | "e":
+                    break
 
     def save_game(self) -> None:
         save_data: dict = {
@@ -180,19 +273,22 @@ class Player:
         with open(save_path, "w") as file:
             json.dump(save_data, file, indent=2)
 
-    def load_game(self):
+    @classmethod
+    def load_game(cls):
         save_path: Path = root / "save_data.json"
         with open(save_path) as file:
             save_data: dict = json.load(file)
 
-        self.name = save_data["name"]
-        self.rpg_class = save_data["class"]
-        self.stats = Stats(**save_data["stats"])
-        self.hp = save_data["hp"]
-        self.mp = save_data["mp"]
-        self.level = save_data["level"]
-        self.exp = save_data["exp"]
-        self.points = save_data["points"]
-        self.inventory = save_data["inventory"]
+        player: Player = cls(save_data["class"], save_data["name"])
+
+        player.stats = Stats(**save_data["stats"])
+        player.hp = save_data["hp"]
+        player.mp = save_data["mp"]
+        player.level = save_data["level"]
+        player.exp = save_data["exp"]
+        player.points = save_data["points"]
+        player.inventory = save_data["inventory"]
 
         print("Game has been loaded!")
+
+        return player

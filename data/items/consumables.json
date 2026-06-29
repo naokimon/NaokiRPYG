@@ -3,12 +3,12 @@
     "name": "Health Potion Lv.1",
     "type": "health",
     "amount": 50,
-    "description": "Mass procured pots by the famous witch Aminah."
+    "description": "Mass procured pots by the famous witch Aminah. Heal health for 50."
   },
   "mana_potion_1": {
     "name": "Mana Potion Lv.1",
     "type": "mana",
     "amount": 10,
-    "description": "Mass procured pots by the famous witch Aminah."
+    "description": "Mass procured pots by the famous witch Aminah. Heal mana for 10."
   }
 }

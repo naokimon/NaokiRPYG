@@ -47,7 +47,7 @@ class Game:
         npc_king.speak(state="tutorial", PLAYER_NAME=self.player.name)
 
     def display_game(self):
-        self.player.display_stats()
+        self.player.display_info()
 
         self.current_zone.display()
 
@@ -76,6 +76,8 @@ class Game:
                     message = zone.move_back()
                 case "inventory" | "inv":
                     self.player.show_inventory()
+                case "stats" | "stat":
+                    self.player.show_stats()
                 case _:
                     message = "~ Type options to see all available commands"
 
