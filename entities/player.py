@@ -2,7 +2,9 @@ import dataclasses
 from dataclasses import dataclass
 from pathlib import Path
 import json
-from utils import pinput, yn
+from utils import pinput, yn, cls
+from items.consumables import load_consum, Consumable
+import os
 
 root = Path(__file__).parent.parent
 classes_path = root / "data" / "classes.json"
@@ -38,7 +40,7 @@ class Player:
         self.exp = 0
         self.exp_needed: int = int(base_exp * (self.level ** 2.5))
         self.points: int = 0
-        self.inventory: list = []
+        self.inventory: dict    [str, int] = {"health_potion_1": 1, "mana_potion_1": 1}
 
     @classmethod
     def charactercreation(cls):
@@ -94,6 +96,71 @@ class Player:
         print(f"║[{'█' * bar_filled}{'░' * bar_empty}]║")
         print(f"║{" " * width}║")
         print(f"╚{'═' * width}╝")
+
+    def show_inventory(self):
+        showing_inv: bool = True
+        message = "~ Type the corresponding number in to select item"
+        while showing_inv:
+            cls()
+            width: int = os.get_terminal_size().columns
+            print(f"\n[ Inventory ]")
+            if not self.inventory:
+                print("  Your inventory is empty.")
+                print(f"+{"-" * (width - 2)}+")
+                print(message)
+                pinput()
+                return
+            for i, (item_id, amount) in enumerate(self.inventory.items(), start=1):
+                item = load_consum(item_id)
+                print(f" {i}. {item.name} x{amount}")
+                print(f"  {item.description}")
+            print()
+            print(f"+{"-" * (width - 2)}+")
+            print(message)
+
+            player_input = pinput()
+            command: str = player_input.split()[0]
+            args: list[str] = player_input.split(maxsplit=1)[1].split() if len(player_input.split()) > 1 else []
+
+            match command:
+                case "exit" | "e":
+                    showing_inv = False
+                case "use" | "u":
+                    if not args or not args[0].isnumeric():
+                        message = "~ Specify an item number. e.g. 'use 1'"
+                        continue
+                    item_number: int = int(args[0]) - 1
+                    if item_number < 0 or item_number >= len(self.inventory):
+                        message = f"~ {item_number} is invalid"
+                        continue
+                    item_id: str = list(self.inventory.keys())[item_number]
+                    item: Consumable = load_consum(item_id)
+                    item.use(self)
+                    self.inventory[item_id] -= 1
+                    message = f"Healed {item.data["type"]} by {item.data["amount"]}"
+                    if self.inventory[item_id] <= 0:
+                        del self.inventory[item_id]
+                case "discard" | "d":
+                    if not args or not args[0].isnumeric():
+                        message = "~ Specify an item number. e.g. 'discard 1'"
+                        continue
+                    item_number: int = int(args[0]) -1
+                    if item_number < 0 or item_number >= len(self.inventory):
+                        message = f"~ {item_number} id invalid"
+                        continue
+                    item_id: str = list(self.inventory.keys())[item_number]
+                    item: Consumable = load_consum(item_id)
+                    if yn(f"~ Are you sure you want to discard {item.name}? Y/N:"):
+                        self.inventory[item_id] -= 1
+                        if self.inventory[item_id] <= 0:
+                            del self.inventory[item_id]
+                    else:
+                        print(f"~ {item.name} was not discarded!")
+
+
+                case _:
+                    message = f"~ {player_input} is not a valid command"
+
 
     def save_game(self) -> None:
         save_data: dict = {

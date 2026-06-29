@@ -1,6 +1,10 @@
-from entities.player import Player
+from __future__ import annotations
+from typing import TYPE_CHECKING
 from pathlib import Path
 import json
+
+if TYPE_CHECKING:
+    from entities.player import Player
 
 root: Path = Path(__file__).parent.parent
 
@@ -22,6 +26,14 @@ class HealingPotion(Consumable):
     def use(self, player: Player):
         player.hp += self.amount
 
+class ManaPotion(Consumable):
+    def __init__(self, data: dict, name: str, description: str):
+        super().__init__(data, name, description)
+        self.amount = data["amount"]
+
+    def use(self, player: Player):
+        player.mp += self.amount
+
 def load_consum(iid: str):
     consum_path: Path = root / "data" / "items" / "consumables.json"
     with open(consum_path) as f:
@@ -33,6 +45,6 @@ def load_consum(iid: str):
         case "health":
             return HealingPotion(data, data["name"], data["description"])
         case "mana":
-            return None
+            return ManaPotion(data, data["name"], data["description"])
         case _:
             raise ValueError(f"Unknown consumable type: {data['type']}")

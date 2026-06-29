@@ -1,7 +1,5 @@
 import sys
 import os
-from sys import displayhook
-
 from utils import cls, pinput
 from entities.player import Player
 from world.zones import Zone
@@ -76,6 +74,8 @@ class Game:
                     message = zone.move_forward()
                 case "back":
                     message = zone.move_back()
+                case "inventory" | "inv":
+                    self.player.show_inventory()
                 case _:
                     message = "~ Type options to see all available commands"
 

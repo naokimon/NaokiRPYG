@@ -3,6 +3,7 @@ import json
 from entities.player import Player
 import random
 from world.rooms import Room
+from items.consumables import load_consum
 
 root: Path = Path(__file__).parent.parent
 
@@ -50,8 +51,9 @@ class Zone:
             print(f"{enemies_str}")
 
         if self.current_room.items:
-            items_str = ", ".join(f"{count}x {iid}" for iid, count in self.current_room.items)
-            print(f"Items:  {items_str}")
+            for item_id, amount in self.current_room.items:
+                item = load_consum(item_id)
+                print(f"  {item.name} x{amount}")
 
         if self.current_room.npc:
             print(f"NPC:  {self.current_room.npc}")

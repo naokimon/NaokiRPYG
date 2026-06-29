@@ -1,11 +1,11 @@
 class Room:
 
-    def __init__(self, room_id: str, name: str, exits: dict, enemies: list[tuple[str, int]], items: list[tuple[str, int]],  npc: str):
+    def __init__(self, room_id: str, name: str, exits: dict, enemies: list[tuple[str, int]], items: dict[str, int],  npc: str):
         self.room_id = room_id
         self.name = name
         self.exits = exits
         self.enemies: list[tuple[str, int]] = enemies
-        self.items: list[tuple[str, int]] = items
+        self.items: dict[str, int] = items
         self.npc = npc
 
     @classmethod

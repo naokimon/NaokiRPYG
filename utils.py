@@ -7,7 +7,7 @@ def cls() -> None:
     os.system("CLS")
 
 def pinput() -> str:
-    inp: str = input(">_ ")
+    inp: str = input(">_ ").lower()
     return inp
 
 def dia_input() -> None:
