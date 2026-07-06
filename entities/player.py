@@ -5,6 +5,7 @@ import json
 from utils import pinput, yn, cls, seperator
 from items.consumables import load_consum, Consumable
 import os
+from items.weapons import Weapon
 
 root = Path(__file__).parent.parent
 classes_path = root / "data" / "classes.json"
@@ -37,7 +38,7 @@ class Player:
         self.points: int = 0
         self._init_vitals()
         self._init_inventory()
-        self.weapon = self.equipment_inv["equipment_inv"]["weapons"][0]
+        self.weapon: Weapon = Weapon.load(self, self.equipment_inv["equipment_inv"]["weapons"][0])
 
     def _init_vitals(self):
         base_exp = 100
