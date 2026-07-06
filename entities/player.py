@@ -2,7 +2,7 @@ import dataclasses
 from dataclasses import dataclass
 from pathlib import Path
 import json
-from utils import pinput, yn, cls
+from utils import pinput, yn, cls, seperator
 from items.consumables import load_consum, Consumable
 import os
 
@@ -29,20 +29,36 @@ class Stats:
 
 class Player:
     def __init__(self, rpg_class: str, name: str):
-        rpg_class = rpg_class.lower()
-        base_exp = 100
         self.name: str = name
-        self.rpg_class: str = rpg_class
+        self.rpg_class: str = rpg_class.lower()
         self.stats = Stats.from_class(rpg_class)
+        self.level: int = 1
+        self.exp = 0
+        self.points: int = 0
+        self._init_vitals()
+        self._init_inventory()
+        self.weapon = self.equipment_inv["equipment_inv"]["weapons"][0]
+
+    def _init_vitals(self):
+        base_exp = 100
         self.max_hp: int = 10 * self.stats.vitality
         self.hp: int = 10 * self.stats.vitality
         self.max_mp: int = 5 * self.stats.intelligence
         self.mp: int = 5 * self.stats.intelligence
-        self.level: int = 1
-        self.exp = 0
         self.exp_needed: int = int(base_exp * (self.level ** 2.5))
-        self.points: int = 5
-        self.inventory: dict    [str, int] = {"health_potion_1": 1, "mana_potion_1": 1}
+
+    def get_starter_weapon(self):
+        match self.rpg_class:
+            case "warrior":
+                self.equipment_inv["equipment_inv"]["weapons"].append("broadsword")
+
+    def _init_inventory(self):
+        self.key_inv: dict = {"key_inv": []}
+        self.equipment_inv: dict = {"equipment_inv": {"weapons": [], "headwear": [], "armor": [], "greaves": [], "boots": []}}
+        self.get_starter_weapon()
+        self.consum_inv: dict = {"consum_inv": {"health_potion_1": 1, "mana_potion_1": 1}}
+        self.inventory = self.consum_inv | self.key_inv | self.equipment_inv
+
 
     @classmethod
     def charactercreation(cls):
@@ -101,25 +117,25 @@ class Player:
         print(f"║{" " * width}║")
         print(f"╚{'═' * width}╝")
 
-    def show_inventory(self):
-        showing_inv: bool = True
-        message = "~ Type the corresponding number in to select item"
-        while showing_inv:
+    def show_consum(self):
+        showing_consum: bool = True
+        message = "~ Type the corresponding number to select item"
+        while showing_consum:
             cls()
-            width: int = os.get_terminal_size().columns
-            print(f"\n[ Inventory ]")
-            if not self.inventory:
+            print(f"\n[ Consumable Inventory ]")
+            consum_inv: dict = self.inventory["consum_inv"]
+            if not consum_inv:
                 print("  Your inventory is empty.")
-                print(f"+{"-" * (width - 2)}+")
+                seperator()
                 print(message)
                 pinput()
                 return
-            for i, (item_id, amount) in enumerate(self.inventory.items(), start=1):
+            for i, (item_id, amount) in enumerate(consum_inv.items(), start=1):
                 item = load_consum(item_id)
                 print(f" {i}. {item.name} x{amount}")
                 print(f"  {item.description}")
             print()
-            print(f"+{"-" * (width - 2)}+")
+            seperator()
             print(message)
 
             player_input = pinput()
@@ -128,42 +144,90 @@ class Player:
 
             match command:
                 case "exit" | "e":
-                    showing_inv = False
+                    showing_consum = False
                 case "use" | "u":
                     if not args or not args[0].isnumeric():
                         message = "~ Specify an item number. e.g. 'use 1'"
                         continue
                     item_number: int = int(args[0]) - 1
-                    if item_number < 0 or item_number >= len(self.inventory):
+                    if item_number < 0 or item_number >= len(consum_inv):
                         message = f"~ {item_number} is invalid"
                         continue
-                    item_id: str = list(self.inventory.keys())[item_number]
+                    item_id: str = list(consum_inv.keys())[item_number]
                     item: Consumable = load_consum(item_id)
                     if item.use(self):
-                        self.inventory[item_id] -= 1
+                        consum_inv[item_id] -= 1
                         message = f"~ Healed {item.data["type"]} by {item.data["amount"]}"
                     else:
                         message = f"~ Already at max {item.data["type"]}!"
-                    if self.inventory[item_id] <= 0:
-                        del self.inventory[item_id]
+                    if consum_inv[item_id] <= 0:
+                        del consum_inv[item_id]
                 case "discard" | "d":
                     if not args or not args[0].isnumeric():
                         message = "~ Specify an item number. e.g. 'discard 1'"
                         continue
                     item_number: int = int(args[0]) -1
-                    if item_number < 0 or item_number >= len(self.inventory):
+                    if item_number < 0 or item_number >= len(consum_inv):
                         message = f"~ {item_number} id invalid"
                         continue
-                    item_id: str = list(self.inventory.keys())[item_number]
+                    item_id: str = list(consum_inv.keys())[item_number]
                     item: Consumable = load_consum(item_id)
                     if yn(f"~ Are you sure you want to discard {item.name}? Y/N:"):
-                        self.inventory[item_id] -= 1
-                        if self.inventory[item_id] <= 0:
-                            del self.inventory[item_id]
+                        consum_inv[item_id] -= 1
+                        if consum_inv[item_id] <= 0:
+                            del consum_inv[item_id]
                     else:
                         print(f"~ {item.name} was not discarded!")
                 case _:
                     message = f"~ {player_input} is not a valid command"
+
+    def show_inventory(self):
+        showing_inv: bool = True
+        message = "~ Type 1, 2 or 3 to access different parts of your inventory"
+        while showing_inv:
+            cls()
+            print(f"\n[ Inventory ]")
+            for i, (k, v) in enumerate(self.inventory.items(), start=1):
+                match k:
+                    case "consum_inv":
+                        print(f"{i}. Consumable Inventory")
+                        if not v:
+                            print(" Consumable inventory is empty...")
+                        else:
+                            print("")
+                    case "key_inv":
+                        print(f"{i}. Key Item Invetory")
+                        if not v:
+                            print(" Key Item inventory is empty...")
+                        else:
+                            print("")
+                    case "equipment_inv":
+                        print(f"{i}. Equipment Inventory")
+                        if not v:
+                            print(" Equipment Inventory is empty...")
+                        else:
+                            print("")
+            seperator()
+            print(message)
+
+            player_input: str = pinput()
+            command: str = player_input.split()[0]
+            args: list[str] = player_input.split(maxsplit=1)[1].split() if len(player_input.split()) > 1 else []
+
+            match command:
+                case "e" | "exit":
+                    showing_inv = False
+                case "1" | "consumable":
+                    self.show_consum()
+                case "2" | "key":
+                    print("TBA")
+                    pass
+                case "3" | "equipment":
+                    print("TBA")
+                    pass
+                case _:
+                    message = f"~ {command} is invalid"
+
 
     def recalc_stat(self):
         pct_hp: float = self.hp / self.max_hp

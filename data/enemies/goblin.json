@@ -1,0 +1,10 @@
+{
+  "goblin_1": {
+    "id": "goblin_1",
+    "name": "Lesser Goblin",
+    "hp": 50,
+    "mp": 10,
+    "exp": 15,
+    "attacks": ["scratch", "bite", "frenzy"]
+  }
+}

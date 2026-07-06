@@ -1,6 +1,5 @@
 import sys
-import os
-from utils import cls, pinput
+from utils import cls, pinput, seperator
 from entities.player import Player
 from world.zones import Zone
 from data.ascii import asciis
@@ -57,9 +56,8 @@ class Game:
         while True:
             cls()
             self.display_game()
-            width: int = os.get_terminal_size().columns
 
-            print(f"+{"-" * (width - 2)}+")
+            seperator()
             print(message)
 
             player_input = pinput()

@@ -27,3 +27,14 @@ def yn(text: str | None = None) -> bool:
             return False
         else:
             print("Enter a valid option")
+
+def seperator(outer_sym: str | None = None, inner_sym: str | None = None):
+    width: int = os.get_terminal_size().columns
+    if outer_sym:
+        print(outer_sym + "-" * (width - (len(outer_sym * 2))) + outer_sym)
+    elif outer_sym and inner_sym:
+        print(outer_sym + inner_sym * (width - (len(outer_sym * 2))) + outer_sym)
+    elif inner_sym:
+        print("+" + inner_sym * (width - 2) + "+")
+    else:
+        print("+" + "-" * (width - 2) + "+")

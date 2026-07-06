@@ -1,0 +1,14 @@
+{
+  "broadsword": {
+    "id": "broadsword",
+    "name": "Broadsword",
+    "atk": 20,
+    "requirements": {
+      "strength": 15
+    },
+    "scaling": {
+      "stat": "strength",
+      "scale": 1.15
+    }
+  }
+}
