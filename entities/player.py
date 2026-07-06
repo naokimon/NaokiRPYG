@@ -321,6 +321,14 @@ class Player:
                 case "exit" | "e":
                     break
 
+    def display_battle(self):
+        print(f"[ {self.name} ]")
+        width: int = 20
+        pct = self.hp / self.max_hp
+        filled = int(pct * width)
+        empty = width - filled
+        print(f"HP: [{'█' * filled}{'░' * empty}] {self.hp}/{self.max_hp}")
+
     def save_game(self) -> None:
         save_data: dict = {
             "name": self.name,
