@@ -16,7 +16,7 @@ class Consumable:
 
     def use(self, player: Player):
         player.hp = min(player.hp, player.max_hp)
-        player.mp = min(player.mp, player.max_mp) # check on use if the amount added to the player is 0 to refund item in player class
+        player.mp = min(player.mp, player.max_mp)
 
 
 class HealingPotion(Consumable):
