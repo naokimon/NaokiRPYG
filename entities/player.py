@@ -330,6 +330,9 @@ class Player:
         empty = width - filled
         print(f"HP: [{'█' * filled}{'░' * empty}] {self.hp}/{self.max_hp}")
 
+    def take_damage(self, amount: int):
+        self.hp = max(0, self.hp - amount)
+
     def save_game(self) -> None:
         save_data: dict = {
             "name": self.name,

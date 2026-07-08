@@ -46,7 +46,10 @@ class Enemy:
         if data.get(atk_id):
             atk_data = data[atk_id]
         else:
-            raise ValueError(f"Unknown attack ID: {atk_id}")
+            raise ValueError(f"Unknown attack ID: {atk_id}") # finish enemy attack
+
+    def take_damage(self, amount: int):
+        self.hp = max(0, self.hp - amount)
 
 
 
