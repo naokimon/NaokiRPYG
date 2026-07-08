@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 import random
 from battle.attack import Attack
+from entities.player import Player
 
 root: Path = Path(__file__).parent.parent
 
@@ -38,7 +39,7 @@ class Enemy:
         available = [a for a in self.attacks if self.mp >= a["cost"]]
         return random.choice(available)
 
-    def attack(self):
+    def attack(self, player: Player):
         atk_id: str = self.choose_attack()
         attack_path: Path = root / "data" / "attacks.json"
         with open(attack_path) as f:
@@ -46,7 +47,10 @@ class Enemy:
         if data.get(atk_id):
             atk_data = data[atk_id]
         else:
-            raise ValueError(f"Unknown attack ID: {atk_id}") # finish enemy attack
+            raise ValueError(f"Unknown attack ID: {atk_id}")
+
+        attack: Attack = Attack(atk_data)
+        attack.execute(self, player)
 
     def take_damage(self, amount: int):
         self.hp = max(0, self.hp - amount)
