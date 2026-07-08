@@ -17,10 +17,10 @@ class Weapon:
         self.requirement: dict = wep_data["requirements"]
         self.scaling: dict = wep_data["scaling"]
 
-    def calc_damage(self) -> float:
+    def calc_damage(self) -> int:
         stat_amount: int = getattr(self.player.stats, self.scaling["stat"])
         scale: float = self.scaling["scale"]
-        return self.base_atk + (stat_amount * scale)
+        return int(self.base_atk + (stat_amount * scale))
 
     @classmethod
     def load(cls, player: Player, wep_id):
