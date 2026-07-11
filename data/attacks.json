@@ -3,24 +3,28 @@
     "id": "scratch",
     "name": "Scratch",
     "damage": 10,
-    "cost": 0
+    "cost": 0,
+    "accuracy": 0.90
   },
   "bite": {
     "id": "bite",
     "name": "Bite",
     "damage": 14,
-    "cost": 0
+    "cost": 0,
+    "accuracy": 0.75
   },
   "rock_throw": {
     "id": "rock_throw",
     "name": "Rock Throw",
     "damage": 11,
-    "cost": 0
+    "cost": 0,
+    "accuracy": 0.70
   },
   "frenzy": {
     "id": "frenzy",
     "name": "Frenzy",
     "damage": 20,
-    "cost": 10
+    "cost": 10,
+    "accuracy": 0.55
   }
 }
