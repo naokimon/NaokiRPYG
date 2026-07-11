@@ -20,6 +20,7 @@ class Zone:
         self.entry_room: str = entry_room
         self.zone_data: dict = zone_data
         self.current_room: Room = Room.load(self.entry_room, self.zone_data["rooms"])
+        self.cleared_rooms: set[str] = set() # finish adding cleared rooms
         Zone.zone_count += 1
 
         if Zone.zone_count > 5:
@@ -47,9 +48,12 @@ class Zone:
         print(f"{self.name} — {self.current_room.name}")
         print()
 
-        if self.current_room.enemies:
-            enemies_str = ", ".join(f"{count}x {Enemy.load(eid).name}" for eid, count in self.current_room.enemies)
-            print(enemies_str)
+        if not self.current_room.room_id in self.cleared_rooms:
+            if self.current_room.enemies:
+                enemies_str = ", ".join(f"{count}x {Enemy.load(eid).name}" for eid, count in self.current_room.enemies)
+                print(enemies_str)
+        else:
+            print("Room has been cleared!")
 
         if self.current_room.items:
             for item_id, amount in self.current_room.items:

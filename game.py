@@ -1,4 +1,6 @@
 import sys
+from battle.battle import Battle
+from entities.enemy import Enemy
 from utils import cls, pinput, seperator
 from entities.player import Player
 from world.zones import Zone
@@ -61,6 +63,9 @@ class Game:
             print(message)
 
             player_input = pinput()
+            if not player_input.strip():
+                continue
+
             command: str = player_input.split()[0]
             if len(player_input.split()) > 1:
                 args: list = player_input.split(maxsplit=1)[1].split()
@@ -76,6 +81,28 @@ class Game:
                     self.player.show_inventory()
                 case "stats" | "stat":
                     self.player.show_stats()
+                case "battle" | "b":
+                    if not zone.current_room.room_id in zone.cleared_rooms:
+                        enemy_list: list[Enemy] = []
+                        enemies = self.current_zone.current_room.enemies
+                        for i, enemy in enumerate(enemies):
+                            enemy_id: str = enemy[0]
+                            enemy_amount: int = enemy[1]
+                            if enemy_amount > 1:
+                                for e in range(enemy_amount):
+                                    enemy_obj: Enemy = Enemy.load(enemy_id)
+                                    enemy_list.append(enemy_obj)
+                            else:
+                                enemy_obj: Enemy = Enemy.load(enemy_id)
+                                enemy_list.append(enemy_obj)
+                        battle: Battle = Battle(self.player, enemy_list)
+                        if not battle.battle():
+                            cls()
+                            self.main_menu()
+                        else:
+                            zone.cleared_rooms.add(zone.current_room.room_id)
+                    else:
+                        message = f"~ Room has already been cleared."
                 case _:
                     message = "~ Type options to see all available commands"
 
