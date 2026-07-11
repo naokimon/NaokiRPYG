@@ -10,5 +10,17 @@
       "stat": "strength",
       "scale": 1.15
     }
+  },
+  "goblin_blade": {
+    "id": "goblin_blade",
+    "name": "Goblin Blade",
+    "atk": 10,
+    "requirements": {
+      "dexterity": 16
+    },
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.10
+    }
   }
 }
