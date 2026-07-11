@@ -4,7 +4,16 @@
     "name": "Lesser Goblin",
     "hp": 50,
     "mp": 10,
-    "exp": 15,
+    "exp_reward": 1500,
+    "drops": {
+      "consum": [
+        {"id": "health_potion_1", "chance": 0.2},
+        {"id": "mana_potion_1", "chance": 0.2}
+      ],
+      "equip": [
+        {"id": "goblin_blade", "type": "weapon","chance": 0.1}
+      ]
+    },
     "attacks": ["scratch", "bite", "frenzy"]
   }
 }
