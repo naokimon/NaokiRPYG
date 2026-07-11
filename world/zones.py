@@ -4,6 +4,7 @@ from entities.player import Player
 import random
 from world.rooms import Room
 from items.consumables import load_consum
+from entities.enemy import Enemy
 
 root: Path = Path(__file__).parent.parent
 
@@ -47,8 +48,8 @@ class Zone:
         print()
 
         if self.current_room.enemies:
-            enemies_str = ", ".join(f"{count}x {eid}" for eid, count in self.current_room.enemies)
-            print(f"{enemies_str}")
+            enemies_str = ", ".join(f"{count}x {Enemy.load(eid).name}" for eid, count in self.current_room.enemies)
+            print(enemies_str)
 
         if self.current_room.items:
             for item_id, amount in self.current_room.items:
