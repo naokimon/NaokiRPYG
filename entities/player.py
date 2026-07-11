@@ -339,9 +339,11 @@ class Player:
     def level_up(self):
         while True:
             if self.exp >= self.exp_needed:
-                remaining_exp: int = self.exp_needed - self.exp
+                remaining_exp: int = self.exp - self.exp_needed
                 self.exp = remaining_exp
                 self.level += 1
+                base_exp = 100
+                self.exp_needed = int(base_exp * (self.level ** 2.5))
                 self.points += 5
                 cls()
                 print(f"{self.name} has leveled up to {self.level}!")
