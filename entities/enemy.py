@@ -3,18 +3,29 @@ import json
 import random
 from battle.attack import Attack
 from entities.player import Player
+from items.weapons import Weapon
+from items.consumables import load_consum, Consumable
+from utils import dia_input
 
 root: Path = Path(__file__).parent.parent
 
+def load_attacks() -> dict:
+    attack_path: Path = root / "data" / "attacks.json"
+    with open(attack_path) as f:
+        return json.load(f)
+
 class Enemy:
     def __init__(self, data: dict):
-        self.eid = data["id"]
-        self.name = data["name"]
-        self.max_hp = data["hp"]
-        self.hp = data["hp"]
-        self.max_mp = data["mp"]
-        self.mp = data["mp"]
-        self.attacks = data["attacks"]
+        self.eid: str = data["id"]
+        self.name: str = data["name"]
+        self.max_hp: int = data["hp"]
+        self.hp: int = data["hp"]
+        self.max_mp: int = data["mp"]
+        self.mp: int = data["mp"]
+        self.attacks: list[str] = data["attacks"]
+        self.exp_reward: int = data["exp_reward"]
+        self.drops: dict = data["drops"]
+        self.dead: bool = False
 
     @classmethod
     def load(cls, eid: str):
@@ -35,28 +46,48 @@ class Enemy:
         empty = width - filled
         print(f"HP: [{'█' * filled}{'░' * empty}] {self.hp}/{self.max_hp}")
 
-    def choose_attack(self) -> str:
-        available = [a for a in self.attacks if self.mp >= a["cost"]]
-        return random.choice(available)
+    def choose_attack(self, data: dict) -> str:
+        available = [a for a in data.values() if self.mp >= a["cost"]]
+        attack_data = random.choice(available)
+        return attack_data["id"]
 
     def attack(self, player: Player):
-        atk_id: str = self.choose_attack()
-        attack_path: Path = root / "data" / "attacks.json"
-        with open(attack_path) as f:
-            data: dict = json.load(f)
-        if data.get(atk_id):
-            atk_data = data[atk_id]
-        else:
-            raise ValueError(f"Unknown attack ID: {atk_id}")
+        data = load_attacks()
+        atk_id: str = self.choose_attack(data)
+        atk_data = data[atk_id]
 
         attack: Attack = Attack(atk_data)
         attack.execute(self, player)
 
     def take_damage(self, amount: int):
         self.hp = max(0, self.hp - amount)
+        if self.hp is 0:
+            self.dead = True
 
-
-
-
-goblin: Enemy = Enemy.load("goblin_1")
-goblin.display_enemy()
+    def get_drops(self, player: Player) -> list:
+        x: int = 0
+        drops_rewarded: list = []
+        while x < 2: # rerolls voor drops
+            for i_type, drop_list in self.drops.items():
+                for drop in drop_list:
+                    if random.random() < drop["chance"]:
+                        match i_type:
+                            case "consum":
+                                consum_inv: dict = player.inventory["consum_inv"]
+                                consum_inv[drop["id"]] = consum_inv.get(drop["id"], 0) + 1
+                                consumable: Consumable = load_consum(drop["id"])
+                                drops_rewarded.append(consumable)
+                            case "equip":
+                                match drop["type"]:
+                                    case "weapon":
+                                        equip_inv: dict = player.inventory["equipment_inv"]
+                                        type_list: list = equip_inv[drop["type"]]
+                                        if not drop["id"] in type_list:
+                                            type_list.append(drop["id"])
+                                            weapon: Weapon = Weapon.load(drop["id"]) # add armor cases later
+                                            drops_rewarded.append(weapon)
+                            case "key":
+                                key_inv: dict = player.inventory["key_inv"]
+                                key_inv[drop["id"]] = key_inv.get(drop["id"], 0) + 1 # add key item to list later
+            x += 1
+        return drops_rewarded
