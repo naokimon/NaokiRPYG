@@ -213,8 +213,12 @@ class Player:
             print(message)
 
             player_input: str = pinput()
+            if not player_input.strip():
+                continue
+
             command: str = player_input.split()[0]
-            args: list[str] = player_input.split(maxsplit=1)[1].split() if len(player_input.split()) > 1 else []
+            if len(player_input.split()) > 1:
+                args: list = player_input.split(maxsplit=1)[1].split()
 
             match command:
                 case "e" | "exit":
