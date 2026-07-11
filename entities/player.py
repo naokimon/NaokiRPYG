@@ -2,7 +2,7 @@ import dataclasses
 from dataclasses import dataclass
 from pathlib import Path
 import json
-from utils import pinput, yn, cls, seperator
+from utils import pinput, yn, cls, seperator, dia_input
 from items.consumables import load_consum, Consumable
 import os
 from items.weapons import Weapon
@@ -38,7 +38,7 @@ class Player:
         self.points: int = 0
         self._init_vitals()
         self._init_inventory()
-        self.weapon: Weapon = Weapon.load(self, self.equipment_inv["equipment_inv"]["weapons"][0])
+        self.weapon: Weapon = Weapon.load(self.equipment_inv["equipment_inv"]["weapon"][0])
 
     def _init_vitals(self):
         base_exp = 100
@@ -47,18 +47,19 @@ class Player:
         self.max_mp: int = 5 * self.stats.intelligence
         self.mp: int = 5 * self.stats.intelligence
         self.exp_needed: int = int(base_exp * (self.level ** 2.5))
+        self.dead: bool = False
 
     def get_starter_weapon(self):
         match self.rpg_class:
             case "warrior":
-                self.equipment_inv["equipment_inv"]["weapons"].append("broadsword")
+                self.equipment_inv["equipment_inv"]["weapon"].append("broadsword")
 
     def _init_inventory(self):
         self.key_inv: dict = {"key_inv": []}
-        self.equipment_inv: dict = {"equipment_inv": {"weapons": [], "headwear": [], "armor": [], "greaves": [], "boots": []}}
+        self.equipment_inv: dict = {"equipment_inv": {"weapon": [], "headwear": [], "armor": [], "greaves": [], "boots": []}}
         self.get_starter_weapon()
         self.consum_inv: dict = {"consum_inv": {"health_potion_1": 1, "mana_potion_1": 1}}
-        self.inventory = self.consum_inv | self.key_inv | self.equipment_inv
+        self.inventory: dict = self.consum_inv | self.key_inv | self.equipment_inv
 
 
     @classmethod
@@ -332,6 +333,22 @@ class Player:
 
     def take_damage(self, amount: int):
         self.hp = max(0, self.hp - amount)
+        if self.hp is 0:
+            self.dead = True
+
+    def level_up(self):
+        while True:
+            if self.exp >= self.exp_needed:
+                remaining_exp: int = self.exp_needed - self.exp
+                self.exp = remaining_exp
+                self.level += 1
+                self.points += 5
+                cls()
+                print(f"{self.name} has leveled up to {self.level}!")
+                dia_input()
+            else:
+                break
+
 
     def save_game(self) -> None:
         save_data: dict = {
