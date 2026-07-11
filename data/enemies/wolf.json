@@ -1,0 +1,16 @@
+{
+  "wolf_1": {
+    "id": "wolf_1",
+    "name": "Lesser Wolf",
+    "hp": 60,
+    "mp": 0,
+    "exp_reward": 50,
+    "drops": {
+      "consum": [
+        {"id": "health_potion_1", "chance": 0.25},
+        {"id": "mana_potion_1", "chance": 0.25}
+      ]
+    },
+    "attacks": ["scratch", "bite"]
+  }
+}
