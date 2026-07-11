@@ -6,7 +6,7 @@ class Attack:
         self.cost = data["cost"]
 
     def execute(self, attacker, target):
-        attacker.mp -= self.cost
-        target.hp -= self.damage
+        attacker.mp -= max(0, attacker.mp - self.cost)
+        target.take_damage(self.damage)
         print(f"~ {attacker.name} used {self.name} on {target.name} for {self.damage}!")
 
