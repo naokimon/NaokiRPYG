@@ -11,8 +11,8 @@
         "back": null
       },
       "enemies": [
-        ["goblin", 2],
-        ["wolf", 1]
+        ["goblin_1", 2],
+        ["wolf_1", 1]
       ],
       "items": [],
       "npc": null
@@ -25,7 +25,7 @@
         "back": "forest_entrance_1"
       },
       "enemies": [
-        ["goblin", 2]
+        ["goblin_1", 2]
       ],
       "items": [
         ["health_potion_1", 1]
