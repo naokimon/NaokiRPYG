@@ -4,7 +4,7 @@
     "name": "Lesser Goblin",
     "hp": 50,
     "mp": 10,
-    "exp_reward": 1500,
+    "exp_reward": 50,
     "drops": {
       "consum": [
         {"id": "health_potion_1", "chance": 0.2},
