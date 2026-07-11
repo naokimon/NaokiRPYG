@@ -5,7 +5,6 @@ from battle.attack import Attack
 from entities.player import Player
 from items.weapons import Weapon
 from items.consumables import load_consum, Consumable
-from utils import dia_input
 
 root: Path = Path(__file__).parent.parent
 
@@ -47,7 +46,7 @@ class Enemy:
         print(f"HP: [{'█' * filled}{'░' * empty}] {self.hp}/{self.max_hp}")
 
     def choose_attack(self, data: dict) -> str:
-        available = [a for a in data.values() if self.mp >= a["cost"]]
+        available = [data[a] for a in self.attacks if a in data and self.mp >= data[a]["cost"]]
         attack_data = random.choice(available)
         return attack_data["id"]
 
