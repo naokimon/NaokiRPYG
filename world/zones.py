@@ -82,7 +82,3 @@ class Zone:
         else:
             self.current_room: Room = Room.load(previous_room_id, self.zone_data["rooms"])
             return f"~ You moved back to {self.current_room.name}"
-
-
-
-

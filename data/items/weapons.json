@@ -1,5 +1,5 @@
 {
-  "broadsword": {
+  "wep_broadsword": {
     "id": "broadsword",
     "name": "Broadsword",
     "atk": 20,
@@ -11,7 +11,7 @@
       "scale": 1.15
     }
   },
-  "goblin_blade": {
+  "wep_goblin_blade": {
     "id": "goblin_blade",
     "name": "Goblin Blade",
     "atk": 10,

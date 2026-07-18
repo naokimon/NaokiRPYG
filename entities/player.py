@@ -52,7 +52,7 @@ class Player:
     def get_starter_weapon(self):
         match self.rpg_class:
             case "warrior":
-                self.equipment_inv["equipment_inv"]["weapon"].append("broadsword")
+                self.equipment_inv["equipment_inv"]["weapon"].append("wep_broadsword")
 
     def _init_inventory(self):
         self.key_inv: dict = {"key_inv": []}
@@ -129,8 +129,7 @@ class Player:
             if not consum_inv:
                 print("  Your inventory is empty.")
                 seperator()
-                print(message)
-                pinput()
+                input("~ Press enter to leave.")
                 return
             for i, (item_id, amount) in enumerate(consum_inv.items(), start=1):
                 item = load_consum(item_id)
@@ -141,6 +140,8 @@ class Player:
             print(message)
 
             player_input = pinput()
+            if not player_input.strip():
+                continue
             command: str = player_input.split()[0]
             args: list[str] = player_input.split(maxsplit=1)[1].split() if len(player_input.split()) > 1 else []
 
@@ -159,7 +160,7 @@ class Player:
                     item: Consumable = load_consum(item_id)
                     if item.use(self):
                         consum_inv[item_id] -= 1
-                        message = f"~ Healed {item.data["type"]} by {item.data["amount"]}"
+                        message = f"~ Healed {item.data['type']} by {item.data['amount']}"
                     else:
                         message = f"~ Already at max {item.data["type"]}!"
                     if consum_inv[item_id] <= 0:
@@ -182,6 +183,106 @@ class Player:
                         print(f"~ {item.name} was not discarded!")
                 case _:
                     message = f"~ {player_input} is not a valid command"
+                    continue
+
+    def show_equip(self):
+        showing_equip: bool = True
+        message = "~ Type the corresponding number to select item"
+        while showing_equip:
+            cls()
+            print(f"\n[ Equipment Inventory ]")
+            equip_inv: dict = self.inventory["equipment_inv"]
+            if not equip_inv:
+                print("  Your inventory is empty.")
+                seperator()
+                input("~ Press enter to leave.")
+                return
+            equip_list: list = []
+            i = 1
+            for equip_type, equip_ids in equip_inv.items():
+                for equip_id in equip_ids:
+                    split_id: list[str] = equip_id.split("_", 1)
+                    prefix = split_id[0]
+                    match prefix:
+                        case "wep":
+                            weapon: Weapon = Weapon.load(equip_id)
+                            print(f" {i}. {weapon.name}")
+                            print(f"  Damage: {weapon.calc_damage(self)}")
+                            equip_list.append(weapon)
+                        case "hdw":
+                            ...
+                        case "arm":
+                            ...
+                        case "grv":
+                            ...
+                        case "bts":
+                            ...
+                i += 1
+            print()
+            seperator()
+            print(message)
+
+            player_input = pinput()
+            if not player_input.strip():
+                continue
+            command: str = player_input.split()[0]
+            args: list[str] = player_input.split(maxsplit=1)[1].split() if len(player_input.split()) > 1 else []
+
+            match command:
+                case "equip":
+                    item_number: str = ""
+                    if args:
+                        item_number: str = args[0]
+                    item_number: int = int(item_number) - 1
+                    if item_number < 0 or item_number >= len(equip_list):
+                        print(f"~ {item_number + 1} is invalid")
+                        continue
+                    item = equip_list[item_number]
+                    if isinstance(item, Weapon):
+                        if item.id == self.weapon.id:
+                            print(f"You already have {item.name} equipped.")
+                            dia_input()
+                        else:
+                            self.weapon = item
+                            print(f"~ {item.name} equipped!")
+                            dia_input()
+                    # add armor later when implemented
+                case "info":
+                    item_number: str = ""
+                    if args:
+                        item_number = args[0]
+                    else:
+                        print("What item would you like to see?")
+
+                        while True:
+                            player_input = pinput()
+
+                            if not player_input.isnumeric():
+                                print(f"{player_input} is not a number")
+                                continue
+                            else:
+                                item_number: str = player_input
+                                break
+                    message = "~ Type exit to leave."
+                    while True:
+                        item_number: int = int(item_number) - 1
+                        if item_number < 0 or item_number >= len(equip_list):
+                            message = f"~ {item_number + 1} is invalid"
+                            break
+                        equip_list[item_number].show_info(self)
+                        print(message)
+
+                        player_input = pinput()
+
+                        match player_input:
+                            case "exit" | "e":
+                                break
+                            case _:
+                                message = f"~ {player_input} is not a valid command."
+                case "exit" | "e":
+                    break
+                case _:
+                    message = f"~ {command} is not a valid command."
 
     def show_inventory(self):
         showing_inv: bool = True
@@ -229,7 +330,7 @@ class Player:
                     print("TBA")
                     pass
                 case "3" | "equipment":
-                    print("TBA")
+                    self.show_equip()
                     pass
                 case _:
                     message = f"~ {command} is invalid"
@@ -263,6 +364,7 @@ class Player:
                 case "allocate" | "alloc":
                     if self.points <= 0:
                         print("~ You have no points...")
+                        dia_input()
                         continue
                     while True:
                         print("Enter amount of points you want to allocate:")
@@ -326,6 +428,8 @@ class Player:
                                     break
                 case "exit" | "e":
                     break
+                case _:
+                    message = f"{player_input} is not a valid command."
 
     def display_battle(self):
         print(f"[ {self.name} ]")
