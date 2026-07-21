@@ -61,7 +61,7 @@ class Enemy:
 
     def take_damage(self, amount: int):
         self.hp = max(0, self.hp - amount)
-        if self.hp is 0:
+        if self.hp == 0:
             self.dead = True
 
     def get_drops(self, player: Player) -> list:
