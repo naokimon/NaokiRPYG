@@ -233,6 +233,15 @@ class Player:
                     item_number: str = ""
                     if args:
                         item_number: str = args[0]
+                    else:
+                        while True:
+                            print("~ What item would you like to equip? Type in the corresponding number:")
+                            player_input = pinput()
+                            if not player_input.isnumeric():
+                                pass
+                            else:
+                                item_number: int = int(player_input)
+                                break
                     item_number: int = int(item_number) - 1
                     if item_number < 0 or item_number >= len(equip_list):
                         print(f"~ {item_number + 1} is invalid")
@@ -441,7 +450,7 @@ class Player:
 
     def take_damage(self, amount: int):
         self.hp = max(0, self.hp - amount)
-        if self.hp is 0:
+        if self.hp == 0:
             self.dead = True
 
     def level_up(self):

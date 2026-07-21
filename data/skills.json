@@ -1,0 +1,14 @@
+{
+  "shoulder_bash": {
+    "name": "Shoulder Bash",
+    "id": "shoulder_bash",
+    "description": "Bash your enemies with your shoulder!",
+    "dmg": 25,
+    "cost": 15,
+    "type": "physical",
+    "scaling": {
+      "stat": "strength",
+      "scale": 1.10
+    }
+  }
+}

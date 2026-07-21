@@ -4,6 +4,7 @@
     "name": "Lesser Wolf",
     "hp": 60,
     "mp": 0,
+    "weakness": "ice",
     "exp_reward": 50,
     "drops": {
       "consum": [

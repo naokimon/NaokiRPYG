@@ -110,7 +110,3 @@ class Game:
         self.player = player
 
 
-test_player: Player = Player("warrior", "testarious")
-test_game: Game = Game()
-test_game.set_player(test_player)
-test_game.game_loop()

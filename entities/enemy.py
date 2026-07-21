@@ -21,6 +21,7 @@ class Enemy:
         self.hp: int = data["hp"]
         self.max_mp: int = data["mp"]
         self.mp: int = data["mp"]
+        self.weakness: str = data["weakness"]
         self.attacks: list[str] = data["attacks"]
         self.exp_reward: int = data["exp_reward"]
         self.drops: dict = data["drops"]
