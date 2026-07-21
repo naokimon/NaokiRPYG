@@ -5,6 +5,7 @@
     "description": "Bash your enemies with your shoulder!",
     "dmg": 25,
     "cost": 15,
+    "accuracy": 0.75,
     "type": "physical",
     "scaling": {
       "stat": "strength",
