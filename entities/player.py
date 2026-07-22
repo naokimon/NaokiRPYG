@@ -446,10 +446,16 @@ class Player:
     def display_battle(self):
         print(f"[ {self.name} ]")
         width: int = 20
-        pct = self.hp / self.max_hp
-        filled = int(pct * width)
-        empty = width - filled
-        print(f"HP: [{'█' * filled}{'░' * empty}] {self.hp}/{self.max_hp}")
+        hp_pct = self.hp / self.max_hp
+        hp_filled = int(hp_pct * width)
+        hp_empty = width - hp_filled
+        mp_pct = self.mp / self.max_mp
+        mp_filled = int(mp_pct * width)
+        mp_empty = width - mp_filled
+
+        print(f"HP: [{'█' * hp_filled}{'░' * hp_empty}] {self.hp}/{self.max_hp}")
+        print()
+        print(f"MP: [{'█' * mp_filled}{'░' * mp_empty}] {self.mp}/{self.max_mp}")
 
     def take_damage(self, amount: int):
         self.hp = max(0, self.hp - amount)
