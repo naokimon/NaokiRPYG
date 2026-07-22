@@ -6,6 +6,7 @@ from utils import pinput, yn, cls, seperator, dia_input
 from items.consumables import load_consum, Consumable
 import os
 from items.weapons import Weapon
+from battle.skills import load_skill, Skill
 
 root = Path(__file__).parent.parent
 classes_path = root / "data" / "classes.json"
@@ -39,6 +40,8 @@ class Player:
         self._init_vitals()
         self._init_inventory()
         self.weapon: Weapon = Weapon.load(self.equipment_inv["equipment_inv"]["weapon"][0])
+        self.skills: list[str] = []
+        self.buffs: dict[str, dict] = {}
 
     def _init_vitals(self):
         base_exp = 100
@@ -454,6 +457,11 @@ class Player:
             self.dead = True
 
     def level_up(self):
+        class_path: Path = root / "data" / "classes" / "class_levels.json"
+        with open(class_path) as file:
+            data = json.load(file)
+        class_data = data[self.rpg_class]
+
         while True:
             if self.exp >= self.exp_needed:
                 remaining_exp: int = self.exp - self.exp_needed
@@ -464,10 +472,23 @@ class Player:
                 self.points += 5
                 cls()
                 print(f"{self.name} has leveled up to {self.level}!")
+                for s in class_data["skill"]:
+                    if s["unlock"] == self.level:
+                        self.skills.append(s["id"])
+                        skill: Skill = load_skill(s["id"])
+                        print(f"{self.name} has learned {skill.name}!")
                 dia_input()
             else:
                 break
 
+    def get_stat(self, stat: str) -> int:
+        base = getattr(self.stats, stat)
+        bonus = sum(
+            base * buff["amount"]
+            for buff_id, buff in self.buffs.items()
+            if buff["stat"] == stat
+        )
+        return int(base + bonus)
 
     def save_game(self) -> None:
         save_data: dict = {
