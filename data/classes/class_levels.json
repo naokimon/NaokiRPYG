@@ -1,0 +1,182 @@
+{
+  "warrior": {
+    "skills": [
+      {
+        "id": "shield_bash",
+        "unlock": 3
+      },
+      {
+        "id": "war_cry",
+        "unlock": 6
+      },
+      {
+        "id": "cleave",
+        "unlock": 9
+      },
+      {
+        "id": "iron_skin",
+        "unlock": 12
+      },
+      {
+        "id": "whirlwind",
+        "unlock": 15
+      },
+      {
+        "id": "bloodlust",
+        "unlock": 18
+      },
+      {
+        "id": "berserker_rage",
+        "unlock": 21
+      },
+      {
+        "id": "titan_smash",
+        "unlock": 25
+      }
+    ]
+  },
+  "mage": {
+    "skills": [
+      {
+        "id": "ember",
+        "unlock": 3
+      },
+      {
+        "id": "fire_bolt",
+        "unlock": 6
+      },
+      {
+        "id": "flame_burst",
+        "unlock": 9
+      },
+      {
+        "id": "fire_shield",
+        "unlock": 12
+      },
+      {
+        "id": "scorched_earth",
+        "unlock": 15
+      },
+      {
+        "id": "inferno",
+        "unlock": 18
+      },
+      {
+        "id": "meteor",
+        "unlock": 21
+      },
+      {
+        "id": "phoenix_flame",
+        "unlock": 25
+      }
+    ]
+  },
+  "rogue": {
+    "skills": [
+      {
+        "id": "backstab",
+        "unlock": 3
+      },
+      {
+        "id": "smoke_bomb",
+        "unlock": 6
+      },
+      {
+        "id": "poison_blade",
+        "unlock": 9
+      },
+      {
+        "id": "shadow_step",
+        "unlock": 12
+      },
+      {
+        "id": "expose_weakness",
+        "unlock": 15
+      },
+      {
+        "id": "fan_of_knives",
+        "unlock": 18
+      },
+      {
+        "id": "death_mark",
+        "unlock": 21
+      },
+      {
+        "id": "assassinate",
+        "unlock": 25
+      }
+    ]
+  },
+  "cleric": {
+    "skills": [
+      {
+        "id": "heal",
+        "unlock": 3
+      },
+      {
+        "id": "holy_light",
+        "unlock": 6
+      },
+      {
+        "id": "smite",
+        "unlock": 9
+      },
+      {
+        "id": "divine_shield",
+        "unlock": 12
+      },
+      {
+        "id": "mass_heal",
+        "unlock": 15
+      },
+      {
+        "id": "consecrate",
+        "unlock": 18
+      },
+      {
+        "id": "divine_wrath",
+        "unlock": 21
+      },
+      {
+        "id": "miracle",
+        "unlock": 25
+      }
+    ]
+  },
+  "archer": {
+    "skills": [
+      {
+        "id": "quick_shot",
+        "unlock": 3
+      },
+      {
+        "id": "piercing_arrow",
+        "unlock": 6
+      },
+      {
+        "id": "eagle_eye",
+        "unlock": 9
+      },
+      {
+        "id": "volley",
+        "unlock": 12
+      },
+      {
+        "id": "poison_arrow",
+        "unlock": 15
+      },
+      {
+        "id": "rain_of_arrows",
+        "unlock": 18
+      },
+      {
+        "id": "snipe",
+        "unlock": 21
+      },
+      {
+        "id": "hurricane_shot",
+        "unlock": 25
+      }
+    ]
+  }
+}
