@@ -6,10 +6,10 @@ from utils import pinput, yn, cls, seperator, dia_input
 from items.consumables import load_consum, Consumable
 import os
 from items.weapons import Weapon
-from battle.skills import load_skill, Skill
+from battle.skills import load_skill, Skill, BuffSkill
 
 root = Path(__file__).parent.parent
-classes_path = root / "data" / "classes.json"
+classes_path = root / "data" / "classes" / "classes.json"
 
 with open(classes_path) as f:
     BASE_STATS: dict = json.load(f)
@@ -489,6 +489,30 @@ class Player:
             if buff["stat"] == stat
         )
         return int(base + bonus)
+
+    def apply_buff(self, skill: BuffSkill) -> bool:
+        if self.buffs.get(skill.id) is None:
+            self.buffs[skill.id] = {
+                "stat": skill.scaling["stat"],
+                "amount": skill.amount,
+                "duration": skill.duration
+            }
+            return True
+        else:
+            return False
+
+    def remove_buff(self, bid: str):
+        for buff in self.buffs:
+            if buff == bid:
+                self.buffs.pop(buff, None)
+
+    def tick_buff(self):
+        for buff_id in list(self.buffs.keys()):
+            self.buffs[buff_id]["duration"] -= 1
+            if self.buffs[buff_id]["duration"] <= 0:
+                del self.buffs[buff_id]
+                buff: Skill = load_skill(buff_id)
+                print(f"~ {buff.name} has worn off!")
 
     def save_game(self) -> None:
         save_data: dict = {
