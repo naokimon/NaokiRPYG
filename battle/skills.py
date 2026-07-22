@@ -66,7 +66,10 @@ class BuffSkill(Skill):
         self.duration: int = data["duration"]
 
     def execute(self, player: Player, target):
-        if player.apply_buff(self):
-            print(f"~ {player.name} used {self.name}")
+        if random.random() <= self.accuracy:
+            if player.apply_buff(self):
+                print(f"~ {player.name} used {self.name}")
+            else:
+                print(f"~ {player.name} already used {self.name}")
         else:
-            print(f"~ {player.name} already used {self.name}")
+            print(f"~ {player.name} used {self.name} but it failed...")
