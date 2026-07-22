@@ -15,7 +15,15 @@ def load_skill(sid: str) -> Skill:
     with open(skill_path) as f:
         data = json.load(f)
 
-    return Skill(data[sid]) # change later
+    skill_data: dict = data[sid]
+
+    match skill_data["type"]:
+        case "attack":
+            return AttackSkill(skill_data)
+        case "buff":
+            return BuffSkill(skill_data)
+        case _:
+            raise ValueError(f"Skill {sid} not found")
 
 class Skill:
     def __init__(self, data: dict):
@@ -47,14 +55,18 @@ class AttackSkill(Skill):
     def execute(self, player: Player, target):
         player.mp = max(0, player.mp - self.cost)
         if random.random() <= self.accuracy:
-            target.take_damage(self.calc_damage())
-            print(f"~ {player.name} used {self.name} on {target.name} for {self.calc_damage()}")
+            target.take_damage(self.calc_damage(player, target))
+            print(f"~ {player.name} used {self.name} on {target.name} for {self.calc_damage(player, target)}")
         else:
             print(f"~ {player.name} used {self.name} on {target.name} and missed!")
 
 class BuffSkill(Skill):
     def __init__(self, data: dict):
         super().__init__(data)
+        self.duration: int = data["duration"]
 
     def execute(self, player: Player, target):
-        pass
+        if player.apply_buff(self):
+            print(f"~ {player.name} used {self.name}")
+        else:
+            print(f"~ {player.name} already used {self.name}")
