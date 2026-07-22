@@ -2,3 +2,4 @@
 .idea/
 __pycache__/
 save_data.json
+test_game.py
