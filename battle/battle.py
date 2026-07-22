@@ -29,8 +29,8 @@ class Battle:
         if len(self.player.buffs) == 0:
             print("None")
         else:
-            for buff in self.player.buffs:
-                buff: Skill = load_skill(buff)
+            for b in self.player.buffs:
+                buff: Skill = load_skill(b)
                 print(f"{buff.name}: {buff.desc}")
 
     def player_turn(self):
@@ -67,29 +67,34 @@ class Battle:
                                 self.target = alive[0]
                         dia_input()
                         break
-                case "skill" | "s":
+                case "skills" | "s":
                     player: Player = self.player
                     if len(player.skills) == 0:
                         print("You have no skills.")
                     else:
-                        for i, skill in enumerate(player.skills, start=1):
-                            skill: Skill = load_skill(skill)
-                            print(f"{i}. {skill.name}")
+                        for i, s in enumerate(player.skills, start=1):
+                            skill: Skill = load_skill(s)
+                            print(f"{i}. {skill.name} | Cost: {skill.cost}")
                             print(f"~ {skill.desc}")
                     print()
-                    while True:
+                    chosen_skill: bool = False
+                    while not chosen_skill:
                         print("What skill would you like to use?")
                         player_input: str = pinput()
                         if player_input.isnumeric():
                             skill_number: int = int(player_input) - 1
                             skill = load_skill(player.skills[skill_number])
-                            skill.execute(player, self.target)
-                            dia_input()
-                            break
+                            if player.mp >= skill.cost:
+                                skill.execute(player, self.target)
+                                dia_input()
+                                chosen_skill: bool = True
+                            else:
+                                print("Not enough mana!")
+                                dia_input()
+                                break
                         else:
                             print(f"{player_input} is not a number.")
                             pass
-                    break
                 case "target" | "t":
                     if not args:
                         print("Who would you like to target?")
