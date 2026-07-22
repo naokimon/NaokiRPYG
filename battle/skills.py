@@ -1,31 +1,46 @@
 from __future__ import annotations
 import random
-from entities.player import Player
 import json
 from pathlib import Path
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
+    from entities.player import Player
     from entities.enemy import Enemy
 
 root: Path = Path(__file__).parent.parent
+
+def load_skill(sid: str) -> Skill:
+    skill_path: Path = root / "data" / "skills.json"
+    with open(skill_path) as f:
+        data = json.load(f)
+
+    return Skill(data[sid]) # change later
 
 class Skill:
     def __init__(self, data: dict):
         self.name: str = data["name"]
         self.id: str = data["id"]
         self.desc: str = data["description"]
-        self.dmg: int = data["dmg"]
+        self.amount: int = data["amount"]
         self.cost: int = data["cost"]
         self.accuracy: float = data["accuracy"]
+        self.element: str = data["element"]
         self.type: str = data["type"]
         self.scaling: dict = data["scaling"]
+
+    def execute(self, player: Player, target): # change execute to check for debuff buff heal or attack into subclasses
+        pass
+
+class AttackSkill(Skill):
+    def __init__(self, data: dict):
+        super().__init__(data)
 
     def calc_damage(self, player: Player, target: Enemy) -> int:
         WEAKNESS_MULTIPLIER: int = 2
         stat_amount: int = getattr(player.stats, self.scaling["stat"])
-        damage = int(self.dmg + (stat_amount * self.scaling["scale"]))
-        if target.weakness == self.type:
+        damage = int(self.amount + (stat_amount * self.scaling["scale"]))
+        if target.weakness == self.element:
             damage = damage * WEAKNESS_MULTIPLIER
         return damage
 
@@ -37,13 +52,9 @@ class Skill:
         else:
             print(f"~ {player.name} used {self.name} on {target.name} and missed!")
 
+class BuffSkill(Skill):
+    def __init__(self, data: dict):
+        super().__init__(data)
 
-def load_skill(sid: str) -> Skill:
-    skill_path: Path = root / "data" / "skills.json"
-    with open(skill_path) as f:
-        data = json.load(f)
-
-    return Skill(data[sid])
-
-skill: Skill = load_skill("shoulder_bash")
-print(skill.name)
+    def execute(self, player: Player, target):
+        pass

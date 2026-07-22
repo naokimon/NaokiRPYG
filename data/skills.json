@@ -1,15 +1,562 @@
 {
-  "shoulder_bash": {
-    "name": "Shoulder Bash",
-    "id": "shoulder_bash",
-    "description": "Bash your enemies with your shoulder!",
-    "dmg": 25,
-    "cost": 15,
-    "accuracy": 0.75,
-    "type": "physical",
+  "shield_bash": {
+    "id": "shield_bash",
+    "name": "Shield Bash",
+    "description": "Bash the enemy with your shield.",
+    "amount": 20,
+    "cost": 8,
+    "accuracy": 0.90,
+    "element": "physical",
+    "type": "attack",
     "scaling": {
       "stat": "strength",
       "scale": 1.10
+    }
+  },
+  "war_cry": {
+    "id": "war_cry",
+    "name": "War Cry",
+    "description": "A mighty cry that boosts your strength. (Strength +15%)",
+    "amount": 0.15,
+    "cost": 12,
+    "accuracy": 1.0,
+    "element": "physical",
+    "type": "buff",
+    "scaling": {
+      "stat": "strength",
+      "scale": 1.05
+    }
+  },
+  "cleave": {
+    "id": "cleave",
+    "name": "Cleave",
+    "description": "A wide swing hitting all enemies.",
+    "amount": 30,
+    "cost": 15,
+    "accuracy": 0.85,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "strength",
+      "scale": 1.12
+    }
+  },
+  "iron_skin": {
+    "id": "iron_skin",
+    "name": "Iron Skin",
+    "description": "Temporarily harden your skin. (Vitality +20%)",
+    "amount": 0.20,
+    "cost": 18,
+    "accuracy": 1.0,
+    "element": "physical",
+    "type": "buff",
+    "scaling": {
+      "stat": "vitality",
+      "scale": 1.08
+    }
+  },
+  "whirlwind": {
+    "id": "whirlwind",
+    "name": "Whirlwind",
+    "description": "Spin and strike all enemies.",
+    "amount": 40,
+    "cost": 22,
+    "accuracy": 0.80,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "strength",
+      "scale": 1.15
+    }
+  },
+  "bloodlust": {
+    "id": "bloodlust",
+    "name": "Bloodlust",
+    "description": "Enter a state of bloodlust, recovering HP on hit. (Strength +18%)",
+    "amount": 0.18,
+    "cost": 25,
+    "accuracy": 0.85,
+    "element": "physical",
+    "type": "buff",
+    "scaling": {
+      "stat": "strength",
+      "scale": 1.12
+    }
+  },
+  "berserker_rage": {
+    "id": "berserker_rage",
+    "name": "Berserker Rage",
+    "description": "Unleash a furious flurry of attacks.",
+    "amount": 55,
+    "cost": 30,
+    "accuracy": 0.75,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "strength",
+      "scale": 1.20
+    }
+  },
+  "titan_smash": {
+    "id": "titan_smash",
+    "name": "Titan Smash",
+    "description": "A devastating ground smash.",
+    "amount": 80,
+    "cost": 40,
+    "accuracy": 0.70,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "strength",
+      "scale": 1.25
+    }
+  },
+  "ember": {
+    "id": "ember",
+    "name": "Ember",
+    "description": "Hurl a small ember at the enemy.",
+    "amount": 18,
+    "cost": 8,
+    "accuracy": 0.95,
+    "element": "fire",
+    "type": "attack",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.10
+    }
+  },
+  "fire_bolt": {
+    "id": "fire_bolt",
+    "name": "Fire Bolt",
+    "description": "Launch a bolt of fire.",
+    "amount": 28,
+    "cost": 12,
+    "accuracy": 0.90,
+    "element": "fire",
+    "type": "attack",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.12
+    }
+  },
+  "flame_burst": {
+    "id": "flame_burst",
+    "name": "Flame Burst",
+    "description": "Burst of flames engulfs the enemy.",
+    "amount": 38,
+    "cost": 18,
+    "accuracy": 0.85,
+    "element": "fire",
+    "type": "attack",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.15
+    }
+  },
+  "fire_shield": {
+    "id": "fire_shield",
+    "name": "Fire Shield",
+    "description": "Surround yourself with a shield of fire. (Intelligence +15%)",
+    "amount": 0.15,
+    "cost": 20,
+    "accuracy": 1.0,
+    "element": "fire",
+    "type": "buff",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.08
+    }
+  },
+  "scorched_earth": {
+    "id": "scorched_earth",
+    "name": "Scorched Earth",
+    "description": "Scorch the ground beneath all enemies.",
+    "amount": 45,
+    "cost": 25,
+    "accuracy": 0.80,
+    "element": "fire",
+    "type": "attack",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.18
+    }
+  },
+  "inferno": {
+    "id": "inferno",
+    "name": "Inferno",
+    "description": "Summon a raging inferno.",
+    "amount": 60,
+    "cost": 32,
+    "accuracy": 0.75,
+    "element": "fire",
+    "type": "attack",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.20
+    }
+  },
+  "meteor": {
+    "id": "meteor",
+    "name": "Meteor",
+    "description": "Call down a meteor from the sky.",
+    "amount": 75,
+    "cost": 38,
+    "accuracy": 0.70,
+    "element": "fire",
+    "type": "attack",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.22
+    }
+  },
+  "phoenix_flame": {
+    "id": "phoenix_flame",
+    "name": "Phoenix Flame",
+    "description": "Unleash the flame of a phoenix.",
+    "amount": 95,
+    "cost": 45,
+    "accuracy": 0.65,
+    "element": "fire",
+    "type": "attack",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.25
+    }
+  },
+  "backstab": {
+    "id": "backstab",
+    "name": "Backstab",
+    "description": "Strike from the shadows.",
+    "amount": 35,
+    "cost": 10,
+    "accuracy": 0.90,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.15
+    }
+  },
+  "smoke_bomb": {
+    "id": "smoke_bomb",
+    "name": "Smoke Bomb",
+    "description": "Throw a smoke bomb to disorient the enemy. (Dexterity -10%)",
+    "amount": 0.10,
+    "cost": 12,
+    "accuracy": 1.0,
+    "element": "physical",
+    "type": "debuff",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.05
+    }
+  },
+  "poison_blade": {
+    "id": "poison_blade",
+    "name": "Poison Blade",
+    "description": "Coat your blade in poison. (Vitality -12%)",
+    "amount": 0.12,
+    "cost": 15,
+    "accuracy": 0.85,
+    "element": "physical",
+    "type": "debuff",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.10
+    }
+  },
+  "shadow_step": {
+    "id": "shadow_step",
+    "name": "Shadow Step",
+    "description": "Step through the shadows to strike.",
+    "amount": 40,
+    "cost": 18,
+    "accuracy": 0.90,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.15
+    }
+  },
+  "expose_weakness": {
+    "id": "expose_weakness",
+    "name": "Expose Weakness",
+    "description": "Expose a weakness in the enemy's defense. (Strength -15%)",
+    "amount": 0.15,
+    "cost": 20,
+    "accuracy": 1.0,
+    "element": "physical",
+    "type": "debuff",
+    "scaling": {
+      "stat": "luck",
+      "scale": 1.08
+    }
+  },
+  "fan_of_knives": {
+    "id": "fan_of_knives",
+    "name": "Fan of Knives",
+    "description": "Throw a fan of knives at all enemies.",
+    "amount": 45,
+    "cost": 25,
+    "accuracy": 0.80,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.18
+    }
+  },
+  "death_mark": {
+    "id": "death_mark",
+    "name": "Death Mark",
+    "description": "Mark an enemy for death. (Luck -20%)",
+    "amount": 0.20,
+    "cost": 28,
+    "accuracy": 1.0,
+    "element": "physical",
+    "type": "debuff",
+    "scaling": {
+      "stat": "luck",
+      "scale": 1.12
+    }
+  },
+  "assassinate": {
+    "id": "assassinate",
+    "name": "Assassinate",
+    "description": "A lethal strike aimed to kill.",
+    "amount": 90,
+    "cost": 40,
+    "accuracy": 0.70,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.25
+    }
+  },
+  "heal": {
+    "id": "heal",
+    "name": "Heal",
+    "description": "Restore HP to yourself.",
+    "amount": 30,
+    "cost": 10,
+    "accuracy": 1.0,
+    "element": "physical",
+    "type": "heal",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.10
+    }
+  },
+  "holy_light": {
+    "id": "holy_light",
+    "name": "Holy Light",
+    "description": "Smite the enemy with holy light.",
+    "amount": 25,
+    "cost": 14,
+    "accuracy": 0.90,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.12
+    }
+  },
+  "smite": {
+    "id": "smite",
+    "name": "Smite",
+    "description": "Strike the enemy with divine force.",
+    "amount": 35,
+    "cost": 18,
+    "accuracy": 0.85,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.15
+    }
+  },
+  "divine_shield": {
+    "id": "divine_shield",
+    "name": "Divine Shield",
+    "description": "Surround yourself with a divine shield. (Vitality +20%)",
+    "amount": 0.20,
+    "cost": 20,
+    "accuracy": 1.0,
+    "element": "physical",
+    "type": "buff",
+    "scaling": {
+      "stat": "vitality",
+      "scale": 1.08
+    }
+  },
+  "mass_heal": {
+    "id": "mass_heal",
+    "name": "Mass Heal",
+    "description": "Restore HP to all allies.",
+    "amount": 50,
+    "cost": 28,
+    "accuracy": 1.0,
+    "element": "physical",
+    "type": "heal",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.15
+    }
+  },
+  "consecrate": {
+    "id": "consecrate",
+    "name": "Consecrate",
+    "description": "Consecrate the ground, damaging all enemies.",
+    "amount": 45,
+    "cost": 30,
+    "accuracy": 0.80,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.18
+    }
+  },
+  "divine_wrath": {
+    "id": "divine_wrath",
+    "name": "Divine Wrath",
+    "description": "Unleash the wrath of the divine.",
+    "amount": 65,
+    "cost": 36,
+    "accuracy": 0.75,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.20
+    }
+  },
+  "miracle": {
+    "id": "miracle",
+    "name": "Miracle",
+    "description": "Call upon a miracle to smite all enemies.",
+    "amount": 85,
+    "cost": 45,
+    "accuracy": 0.70,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.25
+    }
+  },
+  "quick_shot": {
+    "id": "quick_shot",
+    "name": "Quick Shot",
+    "description": "Fire a quick arrow.",
+    "amount": 22,
+    "cost": 8,
+    "accuracy": 0.95,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.10
+    }
+  },
+  "piercing_arrow": {
+    "id": "piercing_arrow",
+    "name": "Piercing Arrow",
+    "description": "Fire an arrow that pierces through enemies.",
+    "amount": 32,
+    "cost": 14,
+    "accuracy": 0.85,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.12
+    }
+  },
+  "eagle_eye": {
+    "id": "eagle_eye",
+    "name": "Eagle Eye",
+    "description": "Take aim with precision. (Dexterity +15%)",
+    "amount": 0.15,
+    "cost": 18,
+    "accuracy": 0.95,
+    "element": "physical",
+    "type": "buff",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.10
+    }
+  },
+  "volley": {
+    "id": "volley",
+    "name": "Volley",
+    "description": "Fire a volley of arrows at all enemies.",
+    "amount": 35,
+    "cost": 22,
+    "accuracy": 0.80,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.15
+    }
+  },
+  "poison_arrow": {
+    "id": "poison_arrow",
+    "name": "Poison Arrow",
+    "description": "Fire a poison-tipped arrow. (Vitality -12%)",
+    "amount": 0.12,
+    "cost": 20,
+    "accuracy": 0.85,
+    "element": "physical",
+    "type": "debuff",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.10
+    }
+  },
+  "rain_of_arrows": {
+    "id": "rain_of_arrows",
+    "name": "Rain of Arrows",
+    "description": "Rain arrows down on all enemies.",
+    "amount": 50,
+    "cost": 28,
+    "accuracy": 0.75,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.18
+    }
+  },
+  "snipe": {
+    "id": "snipe",
+    "name": "Snipe",
+    "description": "A precise long range shot.",
+    "amount": 70,
+    "cost": 35,
+    "accuracy": 0.80,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.20
+    }
+  },
+  "hurricane_shot": {
+    "id": "hurricane_shot",
+    "name": "Hurricane Shot",
+    "description": "Unleash a hurricane of arrows.",
+    "amount": 90,
+    "cost": 42,
+    "accuracy": 0.70,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.25
     }
   }
 }
