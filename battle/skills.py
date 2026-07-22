@@ -66,6 +66,7 @@ class BuffSkill(Skill):
         self.duration: int = data["duration"]
 
     def execute(self, player: Player, target):
+        player.mp = max(0, player.mp - self.cost)
         if random.random() <= self.accuracy:
             if player.apply_buff(self):
                 print(f"~ {player.name} used {self.name}")
