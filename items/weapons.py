@@ -21,7 +21,7 @@ class Weapon:
         self.scaling: dict = wep_data["scaling"]
 
     def calc_damage(self, player: Player) -> int:
-        stat_amount: int = getattr(player.stats, self.scaling["stat"])
+        stat_amount: int = player.get_stat(self.scaling["stat"])
         scale: float = self.scaling["scale"]
         return int(self.base_atk + (stat_amount * scale))
 
