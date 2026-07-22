@@ -22,6 +22,7 @@
     "accuracy": 1.0,
     "element": "physical",
     "type": "buff",
+    "duration": 4,
     "scaling": {
       "stat": "strength",
       "scale": 1.05
@@ -50,6 +51,7 @@
     "accuracy": 1.0,
     "element": "physical",
     "type": "buff",
+    "duration": 3,
     "scaling": {
       "stat": "vitality",
       "scale": 1.08
@@ -78,6 +80,7 @@
     "accuracy": 0.85,
     "element": "physical",
     "type": "buff",
+    "duration": 3,
     "scaling": {
       "stat": "strength",
       "scale": 1.12
@@ -142,12 +145,15 @@
   "flame_burst": {
     "id": "flame_burst",
     "name": "Flame Burst",
-    "description": "Burst of flames engulfs the enemy.",
+    "description": "Burst of flames engulfs the enemy. (Burned - 10 damage per turn)",
     "amount": 38,
     "cost": 18,
     "accuracy": 0.85,
     "element": "fire",
     "type": "attack",
+    "status": "burn",
+    "status_amount": 10,
+    "status_duration": 3,
     "scaling": {
       "stat": "intelligence",
       "scale": 1.15
@@ -162,6 +168,7 @@
     "accuracy": 1.0,
     "element": "fire",
     "type": "buff",
+    "duration": 4,
     "scaling": {
       "stat": "intelligence",
       "scale": 1.08
@@ -170,12 +177,15 @@
   "scorched_earth": {
     "id": "scorched_earth",
     "name": "Scorched Earth",
-    "description": "Scorch the ground beneath all enemies.",
+    "description": "Scorch the ground beneath all enemies. (Burned - 12 damage per turn)",
     "amount": 45,
     "cost": 25,
     "accuracy": 0.80,
     "element": "fire",
     "type": "attack",
+    "status": "burn",
+    "status_amount": 12,
+    "status_duration": 3,
     "scaling": {
       "stat": "intelligence",
       "scale": 1.18
@@ -184,12 +194,15 @@
   "inferno": {
     "id": "inferno",
     "name": "Inferno",
-    "description": "Summon a raging inferno.",
+    "description": "Summon a raging inferno. (Burned - 15 damage per turn)",
     "amount": 60,
     "cost": 32,
     "accuracy": 0.75,
     "element": "fire",
     "type": "attack",
+    "status": "burn",
+    "status_amount": 15,
+    "status_duration": 4,
     "scaling": {
       "stat": "intelligence",
       "scale": 1.20
@@ -212,12 +225,15 @@
   "phoenix_flame": {
     "id": "phoenix_flame",
     "name": "Phoenix Flame",
-    "description": "Unleash the flame of a phoenix.",
+    "description": "Unleash the flame of a phoenix. (Burned - 20 damage per turn)",
     "amount": 95,
     "cost": 45,
     "accuracy": 0.65,
     "element": "fire",
     "type": "attack",
+    "status": "burn",
+    "status_amount": 20,
+    "status_duration": 4,
     "scaling": {
       "stat": "intelligence",
       "scale": 1.25
@@ -240,12 +256,14 @@
   "smoke_bomb": {
     "id": "smoke_bomb",
     "name": "Smoke Bomb",
-    "description": "Throw a smoke bomb to disorient the enemy. (Dexterity -10%)",
-    "amount": 0.10,
+    "description": "Throw a smoke bomb to disorient the enemy. (Poisoned - 6 damage per turn)",
+    "amount": 6,
     "cost": 12,
     "accuracy": 1.0,
     "element": "physical",
     "type": "debuff",
+    "status": "poison",
+    "duration": 3,
     "scaling": {
       "stat": "dexterity",
       "scale": 1.05
@@ -254,12 +272,14 @@
   "poison_blade": {
     "id": "poison_blade",
     "name": "Poison Blade",
-    "description": "Coat your blade in poison. (Vitality -12%)",
-    "amount": 0.12,
+    "description": "Coat your blade in poison. (Poisoned - 8 damage per turn)",
+    "amount": 8,
     "cost": 15,
     "accuracy": 0.85,
     "element": "physical",
     "type": "debuff",
+    "status": "poison",
+    "duration": 4,
     "scaling": {
       "stat": "dexterity",
       "scale": 1.10
@@ -282,12 +302,14 @@
   "expose_weakness": {
     "id": "expose_weakness",
     "name": "Expose Weakness",
-    "description": "Expose a weakness in the enemy's defense. (Strength -15%)",
-    "amount": 0.15,
+    "description": "Set the enemy ablaze exposing their weakness. (Burned - 10 damage per turn)",
+    "amount": 10,
     "cost": 20,
     "accuracy": 1.0,
-    "element": "physical",
+    "element": "fire",
     "type": "debuff",
+    "status": "burn",
+    "duration": 4,
     "scaling": {
       "stat": "luck",
       "scale": 1.08
@@ -310,12 +332,14 @@
   "death_mark": {
     "id": "death_mark",
     "name": "Death Mark",
-    "description": "Mark an enemy for death. (Luck -20%)",
-    "amount": 0.20,
+    "description": "Mark an enemy for death, draining their life. (Poisoned - 12 damage per turn)",
+    "amount": 12,
     "cost": 28,
     "accuracy": 1.0,
     "element": "physical",
     "type": "debuff",
+    "status": "poison",
+    "duration": 2,
     "scaling": {
       "stat": "luck",
       "scale": 1.12
@@ -386,6 +410,7 @@
     "accuracy": 1.0,
     "element": "physical",
     "type": "buff",
+    "duration": 3,
     "scaling": {
       "stat": "vitality",
       "scale": 1.08
@@ -484,6 +509,7 @@
     "accuracy": 0.95,
     "element": "physical",
     "type": "buff",
+    "duration": 4,
     "scaling": {
       "stat": "dexterity",
       "scale": 1.10
@@ -506,12 +532,14 @@
   "poison_arrow": {
     "id": "poison_arrow",
     "name": "Poison Arrow",
-    "description": "Fire a poison-tipped arrow. (Vitality -12%)",
-    "amount": 0.12,
+    "description": "Fire a poison-tipped arrow. (Poisoned - 6 damage per turn)",
+    "amount": 6,
     "cost": 20,
     "accuracy": 0.85,
     "element": "physical",
     "type": "debuff",
+    "status": "poison",
+    "duration": 3,
     "scaling": {
       "stat": "dexterity",
       "scale": 1.10
