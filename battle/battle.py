@@ -71,6 +71,8 @@ class Battle:
                 case "skills" | "s":
                     if len(player.skills) == 0:
                         print("You have no skills.")
+                        dia_input()
+                        continue
                     else:
                         for i, s in enumerate(player.skills, start=1):
                             skill: Skill = load_skill(s)
@@ -135,6 +137,8 @@ class Battle:
 
     def enemy_turn(self):
         for enemy in self.enemies:
+            if self.player.dead:
+                break
             if enemy.hp > 0:
                 self.display()
                 seperator()
