@@ -22,8 +22,12 @@ def load_skill(sid: str) -> Skill:
             return AttackSkill(skill_data)
         case "buff":
             return BuffSkill(skill_data)
+        case "debuff":
+            return DebuffSkill(skill_data)
         case _:
             raise ValueError(f"Skill {sid} not found")
+
+
 
 class Skill:
     def __init__(self, data: dict):
@@ -36,6 +40,16 @@ class Skill:
         self.element: str = data["element"]
         self.type: str = data["type"]
         self.scaling: dict = data["scaling"]
+        self.STATUS_MESSAGES = {
+            "poison": "now has poison",
+            "burned": "is now burning",
+            "dazed": "is now dazed"
+        }
+
+    def calc_damage(self, player: Player, target: Enemy) -> int:
+        stat_amount: int = getattr(player.stats, self.scaling["stat"])
+        damage = int(self.amount + (stat_amount * self.scaling["scale"]))
+        return damage
 
     def execute(self, player: Player, target):
         pass
@@ -50,29 +64,30 @@ class AttackSkill(Skill):
             self.t_status = data["tick_status"]
             self.t_duration = data["tick_duration"]
 
-    def calc_damage(self, player: Player, target: Enemy) -> int:
-        WEAKNESS_MULTIPLIER: int = 2
-        stat_amount: int = getattr(player.stats, self.scaling["stat"])
-        damage = int(self.amount + (stat_amount * self.scaling["scale"]))
-        if target.weakness == self.element:
-            damage = damage * WEAKNESS_MULTIPLIER
-        return damage
-
-    def execute(self, player: Player, target):
+    def execute(self, player: Player, target: Enemy):
         player.mp = max(0, player.mp - self.cost)
         damage: int = self.calc_damage(player, target)
+
+        WEAKNESS_MULTIPLIER: int = 2
+
+        if target.weakness == self.element:
+            damage = damage * WEAKNESS_MULTIPLIER
+            tick_damage = int(self.t_damage * WEAKNESS_MULTIPLIER)
+        else:
+            tick_damage = self.t_damage
+
         if random.random() <= self.accuracy:
             target.take_damage(damage)
-            status_text = ""
+            print(f"~ {player.name} used {self.name} on {target.name} for {damage}!")
             if self.debuff:
                 debuff_data = {
-                    "tick_damage": self.t_damage,
+                    "tick_damage": tick_damage,
                     "tick_status": self.t_status,
                     "tick_duration": self.t_duration
                 }
                 if target.apply_debuff(debuff_data):
-                    status_text = f" and {'poisoned' if self.t_status == 'poison' else 'burned'} them"
-            print(f"~ {player.name} used {self.name} on {target.name} for {damage}{status_text}!")
+                    status_text = self.STATUS_MESSAGES.get(self.t_status, "is affected")
+                    print(f"~ {target.name} {status_text}!")
         else:
             print(f"~ {player.name} used {self.name} on {target.name} and missed!")
 
@@ -81,7 +96,7 @@ class BuffSkill(Skill):
         super().__init__(data)
         self.duration: int = data["duration"]
 
-    def execute(self, player: Player, target):
+    def execute(self, player: Player, target: Enemy):
         player.mp = max(0, player.mp - self.cost)
         if random.random() <= self.accuracy:
             if player.apply_buff(self):
@@ -89,4 +104,36 @@ class BuffSkill(Skill):
             else:
                 print(f"~ {player.name} already used {self.name}")
         else:
-            print(f"~ {player.name} used {self.name} but it failed...")
+            print(f"~ {player.name} used {self.name} but it missed...")
+
+class DebuffSkill(Skill):
+    def __init__(self, data: dict):
+        super().__init__(data)
+        self.t_damage = data["tick_damage"]
+        self.t_status = data["tick_status"]
+        self.t_duration = data["tick_duration"]
+
+    def execute(self, player: Player, target: Enemy):
+        player.mp = max(0, player.mp - self.cost)
+
+        WEAKNESS_MULTIPLIER: int = 2
+
+        if target.weakness == self.element:
+            tick_damage = int(self.t_damage * WEAKNESS_MULTIPLIER)
+        else:
+            tick_damage = self.t_damage
+
+        if random.random() <= self.accuracy:
+            debuff_data = {
+                "tick_damage": tick_damage,
+                "tick_status": self.t_status,
+                "tick_duration": self.t_duration
+            }
+            if target.apply_debuff(debuff_data):
+                status_text = self.STATUS_MESSAGES.get(self.t_status, "is affected")
+                print(f"~ {player.name} used {self.name} on {target.name}!")
+                print(f"~ {target.name} {status_text}!")
+            else:
+                print(f"~ {player.name} used {self.name} but it failed...")
+        else:
+            print(f"~ {player.name} used {self.name} on {target.name} and missed!")
