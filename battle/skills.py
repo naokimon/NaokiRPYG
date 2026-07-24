@@ -57,8 +57,8 @@ class Skill:
 class AttackSkill(Skill):
     def __init__(self, data: dict):
         super().__init__(data)
-        debuff = all(k in data for k in ["tick_damage", "tick_status", "tick_duration"])
-        if debuff:
+        self.debuff = all(k in data for k in ["tick_damage", "tick_status", "tick_duration"])
+        if self.debuff:
             self.debuff = True
             self.t_damage = data["tick_damage"]
             self.t_status = data["tick_status"]
@@ -72,14 +72,16 @@ class AttackSkill(Skill):
 
         if target.weakness == self.element:
             damage = damage * WEAKNESS_MULTIPLIER
-            tick_damage = int(self.t_damage * WEAKNESS_MULTIPLIER)
-        else:
-            tick_damage = self.t_damage
 
         if random.random() <= self.accuracy:
             target.take_damage(damage)
             print(f"~ {player.name} used {self.name} on {target.name} for {damage}!")
             if self.debuff:
+                if target.weakness == self.element:
+                    tick_damage = int(self.t_damage * WEAKNESS_MULTIPLIER)
+                else:
+                    tick_damage = self.t_damage
+
                 debuff_data = {
                     "tick_damage": tick_damage,
                     "tick_status": self.t_status,
