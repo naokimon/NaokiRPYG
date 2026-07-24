@@ -24,6 +24,8 @@ def load_skill(sid: str) -> Skill:
             return BuffSkill(skill_data)
         case "debuff":
             return DebuffSkill(skill_data)
+        case "heal":
+            return HealSkill(skill_data)
         case _:
             raise ValueError(f"Skill {sid} not found")
 
@@ -139,3 +141,22 @@ class DebuffSkill(Skill):
                 print(f"~ {player.name} used {self.name} but it failed...")
         else:
             print(f"~ {player.name} used {self.name} on {target.name} and missed!")
+
+class HealSkill(Skill):
+    def __init__(self, data: dict):
+        super().__init__(data)
+
+    def execute(self, player: Player, target):
+        player.mp = max(0, player.mp - self.cost)
+
+        if random.random() <= self.accuracy:
+            hp_diff: int = player.max_hp - player.hp
+            if hp_diff > 0:
+                healing: int = min(hp_diff, self.amount)
+                player.hp += healing
+                attack_message = f" and healed {healing}HP!"
+            else:
+                attack_message = f" but it failed..."
+        else:
+            attack_message = f" and it missed!"
+        print(f"~ {player.name} used {self.name}{attack_message}")
