@@ -59,10 +59,13 @@ class Enemy:
     def attack(self, player: Player):
         data = load_attacks()
         atk_id: str = self.choose_attack(data)
-        atk_data = data[atk_id]
+        if "dazed" in self.debuffs:
+            print(f"~ {self.name} was too dazed to attack!")
+        else:
+            atk_data = data[atk_id]
 
-        attack: Attack = Attack(atk_data)
-        attack.execute(self, player)
+            attack: Attack = Attack(atk_data)
+            attack.execute(self, player)
 
     def take_damage(self, amount: int):
         self.hp = max(0, self.hp - amount)
