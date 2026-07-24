@@ -263,7 +263,7 @@
     "element": "physical",
     "type": "debuff",
     "tick_damage": 0.03,
-    "tick_status": "poison",
+    "tick_status": "dazed",
     "tick_duration": 3,
     "scaling": {
       "stat": "dexterity",
