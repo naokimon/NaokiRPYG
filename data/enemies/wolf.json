@@ -13,5 +13,52 @@
       ]
     },
     "attacks": ["scratch", "bite"]
+  },
+  "wolf_1": {
+    "id": "wolf_1",
+    "name": "Forest Wolf",
+    "hp": 65,
+    "mp": 8,
+    "weakness": "fire",
+    "exp_reward": 65,
+    "drops": {
+      "consum": [
+        {"id": "health_potion_1", "chance": 0.20}
+      ],
+      "equip": []
+    },
+    "attacks": ["bite", "lunge", "savage_bite"]
+  },
+  "wolf_2": {
+    "id": "wolf_2",
+    "name": "Dire Wolf",
+    "hp": 95,
+    "mp": 12,
+    "weakness": "fire",
+    "exp_reward": 100,
+    "drops": {
+      "consum": [
+        {"id": "health_potion_1", "chance": 0.25},
+        {"id": "mana_potion_1", "chance": 0.10}
+      ],
+      "equip": []
+    },
+    "attacks": ["lunge", "savage_bite", "howl", "pack_strike"]
+  },
+  "wolf_alpha_1": {
+    "id": "wolf_alpha_1",
+    "name": "Alpha Wolf",
+    "hp": 200,
+    "mp": 30,
+    "weakness": "fire",
+    "exp_reward": 250,
+    "drops": {
+      "consum": [
+        {"id": "health_potion_1", "chance": 0.50},
+        {"id": "mana_potion_1", "chance": 0.35}
+      ],
+      "equip": []
+    },
+    "attacks": ["alpha_bite", "feral_lunge", "savage_howl", "rending_claws"]
   }
 }

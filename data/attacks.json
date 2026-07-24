@@ -26,5 +26,117 @@
     "damage": 20,
     "cost": 10,
     "accuracy": 0.55
+  },
+  "heavy_slam": {
+    "id": "heavy_slam",
+    "name": "Heavy Slam",
+    "damage": 18,
+    "cost": 0,
+    "accuracy": 0.80
+  },
+  "headbutt": {
+    "id": "headbutt",
+    "name": "Headbutt",
+    "damage": 14,
+    "cost": 0,
+    "accuracy": 0.85
+  },
+  "war_bash": {
+    "id": "war_bash",
+    "name": "War Bash",
+    "damage": 25,
+    "cost": 12,
+    "accuracy": 0.70
+  },
+  "battle_cry": {
+    "id": "battle_cry",
+    "name": "Battle Cry",
+    "damage": 30,
+    "cost": 15,
+    "accuracy": 0.65
+  },
+  "hex_bolt": {
+    "id": "hex_bolt",
+    "name": "Hex Bolt",
+    "damage": 16,
+    "cost": 8,
+    "accuracy": 0.90
+  },
+  "cursed_touch": {
+    "id": "cursed_touch",
+    "name": "Cursed Touch",
+    "damage": 12,
+    "cost": 5,
+    "accuracy": 0.95
+  },
+  "dark_pulse": {
+    "id": "dark_pulse",
+    "name": "Dark Pulse",
+    "damage": 28,
+    "cost": 18,
+    "accuracy": 0.75
+  },
+  "soul_drain": {
+    "id": "soul_drain",
+    "name": "Soul Drain",
+    "damage": 35,
+    "cost": 25,
+    "accuracy": 0.60
+  },
+  "lunge": {
+    "id": "lunge",
+    "name": "Lunge",
+    "damage": 16,
+    "cost": 0,
+    "accuracy": 0.85
+  },
+  "savage_bite": {
+    "id": "savage_bite",
+    "name": "Savage Bite",
+    "damage": 22,
+    "cost": 0,
+    "accuracy": 0.80
+  },
+  "howl": {
+    "id": "howl",
+    "name": "Howl",
+    "damage": 0,
+    "cost": 8,
+    "accuracy": 1.0
+  },
+  "pack_strike": {
+    "id": "pack_strike",
+    "name": "Pack Strike",
+    "damage": 30,
+    "cost": 14,
+    "accuracy": 0.70
+  },
+  "alpha_bite": {
+    "id": "alpha_bite",
+    "name": "Alpha Bite",
+    "damage": 28,
+    "cost": 0,
+    "accuracy": 0.85
+  },
+  "feral_lunge": {
+    "id": "feral_lunge",
+    "name": "Feral Lunge",
+    "damage": 35,
+    "cost": 0,
+    "accuracy": 0.75
+  },
+  "savage_howl": {
+    "id": "savage_howl",
+    "name": "Savage Howl",
+    "damage": 20,
+    "cost": 12,
+    "accuracy": 0.90
+  },
+  "rending_claws": {
+    "id": "rending_claws",
+    "name": "Rending Claws",
+    "damage": 45,
+    "cost": 18,
+    "accuracy": 0.65
   }
 }

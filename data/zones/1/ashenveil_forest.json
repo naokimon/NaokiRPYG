@@ -2,36 +2,167 @@
   "id": "ashenveil_forest",
   "name": "Ashenveil Forest",
   "description": "A dark and cursed woodland. The trees seem to whisper.",
+  "entry_room_id": "forest_entrance_1",
   "rooms": [
     {
       "id": "forest_entrance_1",
-      "name": "Forest Entrance 1",
+      "name": "Forest Entrance",
+      "description": "A narrow path leading into the dark woods. The air grows cold.",
       "exits": {
-        "forward": "forest_entrance_2",
+        "forward": "forest_path_1",
         "back": null
       },
       "enemies": [
-        ["goblin_1", 2],
-        ["wolf_1", 1]
+        [
+          "goblin_1",
+          1
+        ]
       ],
       "items": [],
       "npc": null
     },
     {
-      "id": "forest_entrance_2",
-      "name": "Forest Entrance 2",
+      "id": "forest_path_1",
+      "name": "Forest Path",
+      "description": "Twisted roots snake across the path. Something watches from the trees.",
       "exits": {
-        "forward": "forest_entrance_3",
+        "forward": "hollow_clearing",
         "back": "forest_entrance_1"
       },
       "enemies": [
-        ["goblin_1", 2]
+        [
+          "goblin_1",
+          1
+        ],
+        [
+          "wolf_1",
+          1
+        ]
       ],
+      "items": [],
+      "npc": null
+    },
+    {
+      "id": "hollow_clearing",
+      "name": "Hollow Clearing",
+      "description": "A small clearing with the remains of an old campsite. Something was left behind.",
+      "exits": {
+        "forward": "ancient_ruins",
+        "back": "forest_path_1"
+      },
+      "enemies": [],
       "items": [
-        ["health_potion_1", 1]
+        [
+          "health_potion_1",
+          2
+        ],
+        [
+          "mana_potion_1",
+          1
+        ]
       ],
       "npc": null
+    },
+    {
+      "id": "ancient_ruins",
+      "name": "Ancient Ruins",
+      "description": "Crumbling stone walls covered in moss. An old figure sits among the rubble.",
+      "exits": {
+        "forward": "goblin_camp",
+        "back": "hollow_clearing"
+      },
+      "enemies": [],
+      "items": [],
+      "npc": "old_man"
+    },
+    {
+      "id": "goblin_camp",
+      "name": "Goblin Camp",
+      "description": "A makeshift camp littered with bones and crude weapons. Goblins swarm the area.",
+      "exits": {
+        "forward": "dark_thicket",
+        "back": "ancient_ruins"
+      },
+      "enemies": [
+        [
+          "goblin_1",
+          2
+        ],
+        [
+          "goblin_2",
+          1
+        ]
+      ],
+      "items": [],
+      "npc": null
+    },
+    {
+      "id": "dark_thicket",
+      "name": "Dark Thicket",
+      "description": "The trees grow so dense here that almost no light reaches the ground.",
+      "exits": {
+        "forward": "cursed_grove",
+        "back": "goblin_camp"
+      },
+      "enemies": [
+        [
+          "wolf_1",
+          1
+        ],
+        [
+          "wolf_2",
+          1
+        ]
+      ],
+      "items": [],
+      "npc": null
+    },
+    {
+      "id": "cursed_grove",
+      "name": "Cursed Grove",
+      "description": "Dead trees surround a strange glowing flower. The air smells of old magic.",
+      "exits": {
+        "forward": "withered_heart",
+        "back": "dark_thicket"
+      },
+      "enemies": [
+        [
+          "goblin_2",
+          1
+        ],
+        [
+          "goblin_3",
+          1
+        ]
+      ],
+      "items": [
+        [
+          "health_potion_1",
+          1
+        ],
+        [
+          "mana_potion_1",
+          1
+        ]
+      ],
+      "npc": null
+    },
+    {
+      "id": "withered_heart",
+      "name": "The Withered Heart",
+      "description": "The heart of the forest. A massive wolf with glowing red eyes blocks the path.",
+      "exits": {
+        "forward": null,
+        "back": "cursed_grove"
+      },
+      "enemies": [
+        [
+          "wolf_alpha_1",
+          1
+        ]
+      ],
+      "items": [],
+      "npc": null
     }
-  ],
-  "entry_room_id": "forest_entrance_1"
+  ]
 }

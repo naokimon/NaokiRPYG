@@ -16,5 +16,41 @@
       ]
     },
     "attacks": ["scratch", "bite", "frenzy"]
+  },
+  "goblin_2": {
+    "id": "goblin_2",
+    "name": "Goblin Thug",
+    "hp": 80,
+    "mp": 15,
+    "weakness": "fire",
+    "exp_reward": 80,
+    "drops": {
+      "consum": [
+        {"id": "health_potion_1", "chance": 0.25},
+        {"id": "mana_potion_1", "chance": 0.15}
+      ],
+      "equip": [
+        {"id": "goblin_blade", "type": "weapon", "chance": 0.15}
+      ]
+    },
+    "attacks": ["heavy_slam", "headbutt", "war_bash", "battle_cry"]
+  },
+  "goblin_3": {
+    "id": "goblin_3",
+    "name": "Goblin Shaman",
+    "hp": 60,
+    "mp": 40,
+    "weakness": "physical",
+    "exp_reward": 120,
+    "drops": {
+      "consum": [
+        {"id": "mana_potion_1", "chance": 0.35},
+        {"id": "health_potion_1", "chance": 0.15}
+      ],
+      "equip": [
+        {"id": "goblin_blade", "type": "weapon", "chance": 0.05}
+      ]
+    },
+    "attacks": ["hex_bolt", "cursed_touch", "dark_pulse", "soul_drain"]
   }
 }
