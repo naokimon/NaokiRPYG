@@ -591,5 +591,19 @@
       "stat": "dexterity",
       "scale": 1.25
     }
+  },
+  "god_strike": {
+    "id": "god_strike",
+    "name": "God Strike",
+    "description": "Strike your enemies with the power of a god.",
+    "amount": 1000000,
+    "cost": 0,
+    "accuracy": 1,
+    "element": "Godly",
+    "type": "attack",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.50
+    }
   }
 }
