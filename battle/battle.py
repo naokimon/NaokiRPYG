@@ -35,7 +35,9 @@ class Battle:
 
     def player_turn(self):
         message: str = "~ Type options for all options"
-        while True:
+        action_taken: bool = False
+        player: Player = self.player
+        while not action_taken:
             self.display()
             seperator()
             print(message)
@@ -52,7 +54,6 @@ class Battle:
 
             match command:
                 case "attack" | "atk":
-                    player: Player = self.player
                     weapon: Weapon = player.weapon
                     damage = weapon.calc_damage(player)
                     if self.target.dead:
@@ -66,9 +67,8 @@ class Battle:
                             if alive:
                                 self.target = alive[0]
                         dia_input()
-                        break
+                        action_taken = True
                 case "skills" | "s":
-                    player: Player = self.player
                     if len(player.skills) == 0:
                         print("You have no skills.")
                     else:
@@ -88,6 +88,7 @@ class Battle:
                                 skill.execute(player, self.target)
                                 dia_input()
                                 chosen_skill: bool = True
+                                action_taken = True
                             else:
                                 print("Not enough mana!")
                                 dia_input()
@@ -112,6 +113,7 @@ class Battle:
                                     self.target = self.enemies[int(command) - 1]
                                     print(f"Target is now {self.target.name}!")
                                     dia_input()
+                                    break
                     else:
                         num: str = args[0]
                         if not num.isnumeric():
@@ -124,10 +126,12 @@ class Battle:
                                 self.target = self.enemies[target_num]
                                 print(f"Target is now {self.target.name}!")
                                 dia_input()
-
-
                 case _:
                     message = f"~ {player_input} is not a valid command"
+
+        player.tick_buff()
+        for enemy in self.enemies:
+            enemy.tick_debuff()
 
     def enemy_turn(self):
         for enemy in self.enemies:
