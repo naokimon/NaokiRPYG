@@ -42,6 +42,7 @@ class Player:
         self.weapon: Weapon = Weapon.load(self.equipment_inv["equipment_inv"]["weapon"][0])
         self.skills: list[str] = []
         self.buffs: dict[str, dict] = {}
+        self.class_data = self._load_class_data()
 
     def _init_vitals(self):
         base_exp = 100
@@ -462,11 +463,13 @@ class Player:
         if self.hp == 0:
             self.dead = True
 
-    def level_up(self):
-        class_path: Path = root / "data" / "classes" / "class_levels.json"
+    def _load_class_data(self):
+        class_path = root / "data" / "classes" / "class_levels.json"
         with open(class_path) as file:
-            data = json.load(file)
-        class_data = data[self.rpg_class]
+            return json.load(file)[self.rpg_class]
+
+    def level_up(self):
+        class_data = self._load_class_data()
 
         while True:
             if self.exp >= self.exp_needed:
@@ -478,7 +481,7 @@ class Player:
                 self.points += 5
                 cls()
                 print(f"{self.name} has leveled up to {self.level}!")
-                for s in class_data["skill"]:
+                for s in class_data["skills"]:
                     if s["unlock"] == self.level:
                         self.skills.append(s["id"])
                         skill: Skill = load_skill(s["id"])
