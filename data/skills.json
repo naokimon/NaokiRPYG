@@ -31,7 +31,7 @@
   "cleave": {
     "id": "cleave",
     "name": "Cleave",
-    "description": "A wide swing hitting all enemies.",
+    "description": "A powerful sweeping slash.",
     "amount": 30,
     "cost": 15,
     "accuracy": 0.85,
@@ -60,7 +60,7 @@
   "whirlwind": {
     "id": "whirlwind",
     "name": "Whirlwind",
-    "description": "Spin and strike all enemies.",
+    "description": "Spin and deliver a devastating strike.",
     "amount": 40,
     "cost": 22,
     "accuracy": 0.80,
@@ -145,15 +145,15 @@
   "flame_burst": {
     "id": "flame_burst",
     "name": "Flame Burst",
-    "description": "Burst of flames engulfs the enemy. (Burned - 10 damage per turn)",
+    "description": "Burst of flames engulfs the enemy. (Burned - 5% max HP per turn)",
     "amount": 38,
     "cost": 18,
     "accuracy": 0.85,
     "element": "fire",
     "type": "attack",
-    "status": "burn",
-    "status_amount": 10,
-    "status_duration": 3,
+    "tick_damage": 0.05,
+    "tick_status": "burn",
+    "tick_duration": 3,
     "scaling": {
       "stat": "intelligence",
       "scale": 1.15
@@ -177,15 +177,15 @@
   "scorched_earth": {
     "id": "scorched_earth",
     "name": "Scorched Earth",
-    "description": "Scorch the ground beneath all enemies. (Burned - 12 damage per turn)",
+    "description": "Scorch the ground beneath the enemy. (Burned - 6% max HP per turn)",
     "amount": 45,
     "cost": 25,
     "accuracy": 0.80,
     "element": "fire",
     "type": "attack",
-    "status": "burn",
-    "status_amount": 12,
-    "status_duration": 3,
+    "tick_damage": 0.06,
+    "tick_status": "burn",
+    "tick_duration": 3,
     "scaling": {
       "stat": "intelligence",
       "scale": 1.18
@@ -194,15 +194,15 @@
   "inferno": {
     "id": "inferno",
     "name": "Inferno",
-    "description": "Summon a raging inferno. (Burned - 15 damage per turn)",
+    "description": "Summon a raging inferno. (Burned - 8% max HP per turn)",
     "amount": 60,
     "cost": 32,
     "accuracy": 0.75,
     "element": "fire",
     "type": "attack",
-    "status": "burn",
-    "status_amount": 15,
-    "status_duration": 4,
+    "tick_damage": 0.08,
+    "tick_status": "burn",
+    "tick_duration": 4,
     "scaling": {
       "stat": "intelligence",
       "scale": 1.20
@@ -225,15 +225,15 @@
   "phoenix_flame": {
     "id": "phoenix_flame",
     "name": "Phoenix Flame",
-    "description": "Unleash the flame of a phoenix. (Burned - 20 damage per turn)",
+    "description": "Unleash the flame of a phoenix. (Burned - 10% max HP per turn)",
     "amount": 95,
     "cost": 45,
     "accuracy": 0.65,
     "element": "fire",
     "type": "attack",
-    "status": "burn",
-    "status_amount": 20,
-    "status_duration": 4,
+    "tick_damage": 0.10,
+    "tick_status": "burn",
+    "tick_duration": 4,
     "scaling": {
       "stat": "intelligence",
       "scale": 1.25
@@ -256,14 +256,15 @@
   "smoke_bomb": {
     "id": "smoke_bomb",
     "name": "Smoke Bomb",
-    "description": "Throw a smoke bomb to disorient the enemy. (Poisoned - 6 damage per turn)",
-    "amount": 6,
+    "description": "Throw a smoke bomb to disorient the enemy. (Poisoned - 3% max HP per turn)",
+    "amount": 0,
     "cost": 12,
     "accuracy": 1.0,
     "element": "physical",
     "type": "debuff",
-    "status": "poison",
-    "duration": 3,
+    "tick_damage": 0.03,
+    "tick_status": "poison",
+    "tick_duration": 3,
     "scaling": {
       "stat": "dexterity",
       "scale": 1.05
@@ -272,14 +273,15 @@
   "poison_blade": {
     "id": "poison_blade",
     "name": "Poison Blade",
-    "description": "Coat your blade in poison. (Poisoned - 8 damage per turn)",
-    "amount": 8,
+    "description": "Strike with a poison-coated blade. (Poisoned - 4% max HP per turn)",
+    "amount": 20,
     "cost": 15,
     "accuracy": 0.85,
     "element": "physical",
-    "type": "debuff",
-    "status": "poison",
-    "duration": 4,
+    "type": "attack",
+    "tick_damage": 0.04,
+    "tick_status": "poison",
+    "tick_duration": 4,
     "scaling": {
       "stat": "dexterity",
       "scale": 1.10
@@ -302,14 +304,15 @@
   "expose_weakness": {
     "id": "expose_weakness",
     "name": "Expose Weakness",
-    "description": "Set the enemy ablaze exposing their weakness. (Burned - 10 damage per turn)",
-    "amount": 10,
+    "description": "Set the enemy ablaze exposing their weakness. (Burned - 5% max HP per turn)",
+    "amount": 15,
     "cost": 20,
     "accuracy": 1.0,
     "element": "fire",
-    "type": "debuff",
-    "status": "burn",
-    "duration": 4,
+    "type": "attack",
+    "tick_damage": 0.05,
+    "tick_status": "burn",
+    "tick_duration": 4,
     "scaling": {
       "stat": "luck",
       "scale": 1.08
@@ -318,7 +321,7 @@
   "fan_of_knives": {
     "id": "fan_of_knives",
     "name": "Fan of Knives",
-    "description": "Throw a fan of knives at all enemies.",
+    "description": "Hurl a fan of knives at the enemy.",
     "amount": 45,
     "cost": 25,
     "accuracy": 0.80,
@@ -332,14 +335,15 @@
   "death_mark": {
     "id": "death_mark",
     "name": "Death Mark",
-    "description": "Mark an enemy for death, draining their life. (Poisoned - 12 damage per turn)",
-    "amount": 12,
+    "description": "Mark an enemy for death, draining their life. (Poisoned - 6% max HP per turn)",
+    "amount": 0,
     "cost": 28,
     "accuracy": 1.0,
     "element": "physical",
     "type": "debuff",
-    "status": "poison",
-    "duration": 2,
+    "tick_damage": 0.06,
+    "tick_status": "poison",
+    "tick_duration": 2,
     "scaling": {
       "stat": "luck",
       "scale": 1.12
@@ -362,7 +366,7 @@
   "heal": {
     "id": "heal",
     "name": "Heal",
-    "description": "Restore HP to yourself.",
+    "description": "Restore your HP.",
     "amount": 30,
     "cost": 10,
     "accuracy": 1.0,
@@ -418,9 +422,9 @@
   },
   "mass_heal": {
     "id": "mass_heal",
-    "name": "Mass Heal",
-    "description": "Restore HP to all allies.",
-    "amount": 50,
+    "name": "Restoration",
+    "description": "Channel divine energy to restore a large amount of HP.",
+    "amount": 80,
     "cost": 28,
     "accuracy": 1.0,
     "element": "physical",
@@ -433,7 +437,7 @@
   "consecrate": {
     "id": "consecrate",
     "name": "Consecrate",
-    "description": "Consecrate the ground, damaging all enemies.",
+    "description": "Strike the enemy with consecrated force.",
     "amount": 45,
     "cost": 30,
     "accuracy": 0.80,
@@ -461,12 +465,12 @@
   "miracle": {
     "id": "miracle",
     "name": "Miracle",
-    "description": "Call upon a miracle to smite all enemies.",
-    "amount": 85,
+    "description": "Call upon a miracle, fully restoring your HP.",
+    "amount": 999,
     "cost": 45,
-    "accuracy": 0.70,
+    "accuracy": 1.0,
     "element": "physical",
-    "type": "attack",
+    "type": "heal",
     "scaling": {
       "stat": "intelligence",
       "scale": 1.25
@@ -489,7 +493,7 @@
   "piercing_arrow": {
     "id": "piercing_arrow",
     "name": "Piercing Arrow",
-    "description": "Fire an arrow that pierces through enemies.",
+    "description": "Fire an arrow that pierces through the enemy.",
     "amount": 32,
     "cost": 14,
     "accuracy": 0.85,
@@ -518,7 +522,7 @@
   "volley": {
     "id": "volley",
     "name": "Volley",
-    "description": "Fire a volley of arrows at all enemies.",
+    "description": "Fire a rapid burst of arrows at the enemy.",
     "amount": 35,
     "cost": 22,
     "accuracy": 0.80,
@@ -532,14 +536,15 @@
   "poison_arrow": {
     "id": "poison_arrow",
     "name": "Poison Arrow",
-    "description": "Fire a poison-tipped arrow. (Poisoned - 6 damage per turn)",
-    "amount": 6,
+    "description": "Fire a poison-tipped arrow. (Poisoned - 3% max HP per turn)",
+    "amount": 20,
     "cost": 20,
     "accuracy": 0.85,
     "element": "physical",
-    "type": "debuff",
-    "status": "poison",
-    "duration": 3,
+    "type": "attack",
+    "tick_damage": 0.03,
+    "tick_status": "poison",
+    "tick_duration": 3,
     "scaling": {
       "stat": "dexterity",
       "scale": 1.10
@@ -548,7 +553,7 @@
   "rain_of_arrows": {
     "id": "rain_of_arrows",
     "name": "Rain of Arrows",
-    "description": "Rain arrows down on all enemies.",
+    "description": "Unleash a torrent of arrows upon the enemy.",
     "amount": 50,
     "cost": 28,
     "accuracy": 0.75,
@@ -576,7 +581,7 @@
   "hurricane_shot": {
     "id": "hurricane_shot",
     "name": "Hurricane Shot",
-    "description": "Unleash a hurricane of arrows.",
+    "description": "Unleash a hurricane of arrows upon the enemy.",
     "amount": 90,
     "cost": 42,
     "accuracy": 0.70,
