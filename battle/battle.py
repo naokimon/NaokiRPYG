@@ -91,6 +91,10 @@ class Battle:
                                 dia_input()
                                 chosen_skill: bool = True
                                 action_taken = True
+                                if self.target.dead:
+                                    alive = [e for e in self.enemies if not e.dead]
+                                    if alive:
+                                        self.target = alive[0]
                             else:
                                 print("Not enough mana!")
                                 dia_input()
