@@ -26,6 +26,7 @@ class Enemy:
         self.exp_reward: int = data["exp_reward"]
         self.drops: dict = data["drops"]
         self.dead: bool = False
+        self.debuffs: dict[str, dict] = {}
 
     @classmethod
     def load(cls, eid: str):
@@ -39,7 +40,11 @@ class Enemy:
             raise ValueError(f"Unknown enemy ID: {eid}")
 
     def display_enemy(self):
-        print(f"[ {self.name} ]")
+        debuff_str: str = ""
+        if self.debuffs:
+            debuff_str = ", ".join(
+                f"{'Poisoned' if s == 'poison' else 'Burned'} ({d['duration']} turns)" for s, d in self.debuffs.items())
+        print(f"[ {self.name} {debuff_str}]")
         width: int = 20
         pct = self.hp / self.max_hp
         filled = int(pct * width)
@@ -63,6 +68,29 @@ class Enemy:
         self.hp = max(0, self.hp - amount)
         if self.hp == 0:
             self.dead = True
+
+    def apply_debuff(self, debuff_data):
+        if self.debuffs.get(debuff_data["tick_status"]) is None:
+            self.debuffs[debuff_data["tick_status"]] = {
+                "damage": debuff_data["tick_damage"],
+                "duration": debuff_data["tick_duration"]
+            }
+            return True
+        else:
+            return False
+
+    def remove_debuff(self, status: str):
+        self.debuffs.pop(status, None)
+        print(f"~ {status.capitalize()} has worn off on {self.name}!")
+
+    def tick_debuff(self):
+        for status, debuff in list(self.debuffs.items()):
+            damage = int(self.max_hp * debuff["damage"])
+            self.take_damage(damage)
+            print(f"~ {'Poisoned' if status == 'poison' else 'Burned'} for {damage} damage!")
+            self.debuffs[status]["duration"] -= 1
+            if self.debuffs[status]["duration"] == 0:
+                self.remove_debuff(status)
 
     def get_drops(self, player: Player) -> list:
         x: int = 0

@@ -37,12 +37,18 @@ class Skill:
         self.type: str = data["type"]
         self.scaling: dict = data["scaling"]
 
-    def execute(self, player: Player, target): # change execute to check for debuff buff heal or attack into subclasses
+    def execute(self, player: Player, target):
         pass
 
 class AttackSkill(Skill):
     def __init__(self, data: dict):
         super().__init__(data)
+        debuff = all(k in data for k in ["tick_damage", "tick_status", "tick_duration"])
+        if debuff:
+            self.debuff = True
+            self.t_damage = data["tick_damage"]
+            self.t_status = data["tick_status"]
+            self.t_duration = data["tick_duration"]
 
     def calc_damage(self, player: Player, target: Enemy) -> int:
         WEAKNESS_MULTIPLIER: int = 2
@@ -54,9 +60,19 @@ class AttackSkill(Skill):
 
     def execute(self, player: Player, target):
         player.mp = max(0, player.mp - self.cost)
+        damage: int = self.calc_damage(player, target)
         if random.random() <= self.accuracy:
-            target.take_damage(self.calc_damage(player, target))
-            print(f"~ {player.name} used {self.name} on {target.name} for {self.calc_damage(player, target)}")
+            target.take_damage(damage)
+            status_text = ""
+            if self.debuff:
+                debuff_data = {
+                    "tick_damage": self.t_damage,
+                    "tick_status": self.t_status,
+                    "tick_duration": self.t_duration
+                }
+                if target.apply_debuff(debuff_data):
+                    status_text = f" and {'poisoned' if self.t_status == 'poison' else 'burned'} them"
+            print(f"~ {player.name} used {self.name} on {target.name} for {damage}{status_text}!")
         else:
             print(f"~ {player.name} used {self.name} on {target.name} and missed!")
 
