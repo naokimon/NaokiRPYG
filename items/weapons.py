@@ -23,7 +23,7 @@ class Weapon:
     def calc_damage(self, player: Player) -> int:
         stat_amount: int = player.get_stat(self.scaling["stat"])
         scale: float = self.scaling["scale"]
-        return int(self.base_atk + (stat_amount * scale))
+        return int(self.base_atk * scale + stat_amount * scale)
 
     def check_requirements(self, print_falses: bool, player: Player) -> bool:
         bool_list: list[bool] = []
