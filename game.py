@@ -1,7 +1,7 @@
 import sys
 from battle.battle import Battle
 from entities.enemy import Enemy
-from utils import cls, pinput, seperator
+from utils import cls, pinput, seperator, dia_input
 from entities.player import Player
 from world.zones import Zone
 from data.ascii import asciis
@@ -83,6 +83,10 @@ class Game:
                     self.player.show_stats()
                 case "battle" | "b":
                     if not zone.current_room.room_id in zone.cleared_rooms:
+                        if len(self.current_zone.current_room.enemies) == 0:
+                            print("~ There are no enemies in this room.")
+                            dia_input()
+                            continue
                         enemy_list: list[Enemy] = []
                         enemies = self.current_zone.current_room.enemies
                         for i, enemy in enumerate(enemies):
@@ -108,5 +112,3 @@ class Game:
 
     def set_player(self, player: Player):
         self.player = player
-
-
