@@ -98,7 +98,8 @@ class Enemy:
     def get_drops(self, player: Player) -> list:
         x: int = 0
         drops_rewarded: list = []
-        while x < 2: # rerolls voor drops
+        DROPS_REROLL: int = 2
+        while x < DROPS_REROLL:
             for i_type, drop_list in self.drops.items():
                 for drop in drop_list:
                     if random.random() < drop["chance"]:
