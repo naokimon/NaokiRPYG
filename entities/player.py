@@ -40,7 +40,7 @@ class Player:
         self._init_vitals()
         self._init_inventory()
         self.weapon: Weapon = Weapon.load(self.equipment_inv["equipment_inv"]["weapon"][0])
-        self.skills: list[str] = []
+        self.skills: list[str] = [self.get_starter_skill()]
         self.buffs: dict[str, dict] = {}
         self.class_data = self._load_class_data()
 
@@ -57,6 +57,26 @@ class Player:
         match self.rpg_class:
             case "warrior":
                 self.equipment_inv["equipment_inv"]["weapon"].append("wep_broadsword")
+            case "mage":
+                self.equipment_inv["equipment_inv"]["weapon"].append("wep_arcane_staff")
+            case "rogue":
+                self.equipment_inv["equipment_inv"]["weapon"].append("wep_rusty_dagger")
+            case "cleric":
+                self.equipment_inv["equipment_inv"]["weapon"].append("wep_sacred_mace")
+            case "archer":
+                self.equipment_inv["equipment_inv"]["weapon"].append("wep_shortbow")
+
+    def get_starter_skill(self):
+        skill_path: Path = root / "data" / "classes" / "class_levels.json"
+        with open(skill_path) as file:
+            data: dict = json.load(file)
+
+        skill_data: dict = data[self.rpg_class]["skills"]
+
+        for skill in skill_data:
+            if skill["unlock"] == 1:
+                return skill["id"]
+        return None
 
     def _init_inventory(self):
         self.key_inv: dict = {"key_inv": []}
