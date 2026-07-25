@@ -1,17 +1,17 @@
 {
   "warrior": {
-        "strength": 15, "dexterity": 8, "intelligence": 4, "vitality": 14, "luck": 5
-    },
-    "mage": {
-        "strength": 4, "dexterity": 6, "intelligence": 16, "vitality": 5, "luck": 7
-    },
-    "rogue": {
-        "strength": 10, "dexterity": 16, "intelligence": 6, "vitality": 7, "luck": 13
-    },
-    "cleric": {
-        "strength": 6, "dexterity": 6, "intelligence": 13, "vitality": 10, "luck": 7
-    },
-    "archer": {
-        "strength": 8, "dexterity": 15, "intelligence": 7, "vitality": 8, "luck": 12
+    "strength": 18, "dexterity": 7, "intelligence": 3, "vitality": 16, "luck": 4
+  },
+  "mage":    {
+    "strength": 3, "dexterity": 5, "intelligence": 20, "vitality": 4, "luck": 6
+  },
+  "rogue":   {
+    "strength": 8, "dexterity": 20, "intelligence": 4, "vitality": 6, "luck": 14
+  },
+  "cleric":  {
+    "strength": 5, "dexterity": 5, "intelligence": 14, "vitality": 13, "luck": 6
+  },
+  "archer":  {
+    "strength": 7, "dexterity": 18, "intelligence": 6, "vitality": 7, "luck": 1
     }
 }
