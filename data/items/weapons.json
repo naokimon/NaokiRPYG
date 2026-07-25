@@ -1,6 +1,6 @@
 {
   "wep_broadsword": {
-    "id": "broadsword",
+    "id": "wep_broadsword",
     "name": "Broadsword",
     "atk": 20,
     "requirements": {
@@ -11,8 +11,296 @@
       "scale": 1.15
     }
   },
+  "wep_battleaxe": {
+    "id": "wep_battleaxe",
+    "name": "Battleaxe",
+    "atk": 28,
+    "requirements": {
+      "strength": 20
+    },
+    "scaling": {
+      "stat": "strength",
+      "scale": 1.20
+    }
+  },
+  "wep_warhammer": {
+    "id": "wep_warhammer",
+    "name": "Warhammer",
+    "atk": 35,
+    "requirements": {
+      "strength": 28
+    },
+    "scaling": {
+      "stat": "strength",
+      "scale": 1.25
+    }
+  },
+  "wep_zweihander": {
+    "id": "wep_zweihander",
+    "name": "Zweihänder",
+    "atk": 45,
+    "requirements": {
+      "strength": 36
+    },
+    "scaling": {
+      "stat": "strength",
+      "scale": 1.30
+    }
+  },
+  "wep_titans_cleaver": {
+    "id": "wep_titans_cleaver",
+    "name": "Titan's Cleaver",
+    "atk": 58,
+    "requirements": {
+      "strength": 45
+    },
+    "scaling": {
+      "stat": "strength",
+      "scale": 1.35
+    }
+  },
+  "wep_arcane_staff": {
+    "id": "wep_arcane_staff",
+    "name": "Arcane Staff",
+    "atk": 5,
+    "requirements": {
+      "intelligence": 16
+    },
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 0.20
+    }
+  },
+  "wep_crystal_wand": {
+    "id": "wep_crystal_wand",
+    "name": "Crystal Wand",
+    "atk": 7,
+    "requirements": {
+      "intelligence": 22
+    },
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 0.35
+    }
+  },
+  "wep_obsidian_scepter": {
+    "id": "wep_obsidian_scepter",
+    "name": "Obsidian Scepter",
+    "atk": 9,
+    "requirements": {
+      "intelligence": 30
+    },
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 0.45
+    }
+  },
+  "wep_grimoire": {
+    "id": "wep_grimoire",
+    "name": "Grimoire",
+    "atk": 11,
+    "requirements": {
+      "intelligence": 38
+    },
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 0.25
+    }
+  },
+  "wep_phoenix_staff": {
+    "id": "wep_phoenix_staff",
+    "name": "Phoenix Staff",
+    "atk": 13,
+    "requirements": {
+      "intelligence": 48
+    },
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 0.40
+    }
+  },
+  "wep_rusty_dagger": {
+    "id": "wep_rusty_dagger",
+    "name": "Rusty Dagger",
+    "atk": 10,
+    "requirements": {
+      "dexterity": 8
+    },
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.08
+    }
+  },
+  "wep_shadow_dagger": {
+    "id": "wep_shadow_dagger",
+    "name": "Shadow Dagger",
+    "atk": 18,
+    "requirements": {
+      "dexterity": 20
+    },
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.18
+    }
+  },
+  "wep_serrated_blade": {
+    "id": "wep_serrated_blade",
+    "name": "Serrated Blade",
+    "atk": 24,
+    "requirements": {
+      "dexterity": 28
+    },
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.22
+    }
+  },
+  "wep_venomfang": {
+    "id": "wep_venomfang",
+    "name": "Venomfang",
+    "atk": 30,
+    "requirements": {
+      "dexterity": 36
+    },
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.28
+    }
+  },
+  "wep_shadowstrike": {
+    "id": "wep_shadowstrike",
+    "name": "Shadowstrike",
+    "atk": 38,
+    "requirements": {
+      "dexterity": 46
+    },
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.33
+    }
+  },
+  "wep_sacred_mace": {
+    "id": "wep_sacred_mace",
+    "name": "Sacred Mace",
+    "atk": 18,
+    "requirements": {
+      "strength": 10
+    },
+    "scaling": {
+      "stat": "vitality",
+      "scale": 1.20
+    }
+  },
+  "wep_blessed_morningstar": {
+    "id": "wep_blessed_morningstar",
+    "name": "Blessed Morningstar",
+    "atk": 26,
+    "requirements": {
+      "strength": 14
+    },
+    "scaling": {
+      "stat": "vitality",
+      "scale": 1.25
+    }
+  },
+  "wep_divine_flail": {
+    "id": "wep_divine_flail",
+    "name": "Divine Flail",
+    "atk": 34,
+    "requirements": {
+      "strength": 20
+    },
+    "scaling": {
+      "stat": "vitality",
+      "scale": 1.28
+    }
+  },
+  "wep_hallowed_crosier": {
+    "id": "wep_hallowed_crosier",
+    "name": "Hallowed Crosier",
+    "atk": 44,
+    "requirements": {
+      "strength": 28
+    },
+    "scaling": {
+      "stat": "vitality",
+      "scale": 1.32
+    }
+  },
+  "wep_gods_judgment": {
+    "id": "wep_gods_judgment",
+    "name": "God's Judgment",
+    "atk": 56,
+    "requirements": {
+      "strength": 36
+    },
+    "scaling": {
+      "stat": "vitality",
+      "scale": 1.35
+    }
+  },
+  "wep_shortbow": {
+    "id": "wep_shortbow",
+    "name": "Shortbow",
+    "atk": 14,
+    "requirements": {
+      "dexterity": 15
+    },
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.15
+    }
+  },
+  "wep_longbow": {
+    "id": "wep_longbow",
+    "name": "Longbow",
+    "atk": 20,
+    "requirements": {
+      "dexterity": 22
+    },
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.20
+    }
+  },
+  "wep_crossbow": {
+    "id": "wep_crossbow",
+    "name": "Crossbow",
+    "atk": 26,
+    "requirements": {
+      "dexterity": 30
+    },
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.25
+    }
+  },
+  "wep_elven_bow": {
+    "id": "wep_elven_bow",
+    "name": "Elven Bow",
+    "atk": 34,
+    "requirements": {
+      "dexterity": 38
+    },
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.30
+    }
+  },
+  "wep_hurricane_bow": {
+    "id": "wep_hurricane_bow",
+    "name": "Hurricane Bow",
+    "atk": 44,
+    "requirements": {
+      "dexterity": 48
+    },
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.35
+    }
+  },
   "wep_goblin_blade": {
-    "id": "goblin_blade",
+    "id": "wep_goblin_blade",
     "name": "Goblin Blade",
     "atk": 10,
     "requirements": {
