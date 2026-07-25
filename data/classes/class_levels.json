@@ -2,6 +2,10 @@
   "warrior": {
     "skills": [
       {
+        "id": "power_strike",
+        "unlock": 1
+      },
+      {
         "id": "shield_bash",
         "unlock": 3
       },
@@ -37,6 +41,10 @@
   },
   "mage": {
     "skills": [
+      {
+        "id": "spark",
+        "unlock": 1
+      },
       {
         "id": "ember",
         "unlock": 3
@@ -74,6 +82,10 @@
   "rogue": {
     "skills": [
       {
+        "id": "quick_strike",
+        "unlock": 1
+      },
+      {
         "id": "backstab",
         "unlock": 3
       },
@@ -110,6 +122,10 @@
   "cleric": {
     "skills": [
       {
+        "id": "minor_heal",
+        "unlock": 1
+      },
+      {
         "id": "heal",
         "unlock": 3
       },
@@ -145,6 +161,10 @@
   },
   "archer": {
     "skills": [
+      {
+        "id": "steady_shot",
+        "unlock": 1
+      },
       {
         "id": "quick_shot",
         "unlock": 3

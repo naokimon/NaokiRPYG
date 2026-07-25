@@ -605,5 +605,75 @@
       "stat": "intelligence",
       "scale": 1.50
     }
+  },
+  "power_strike": {
+    "id": "power_strike",
+    "name": "Power Strike",
+    "description": "A basic but powerful strike.",
+    "amount": 20,
+    "cost": 4,
+    "accuracy": 0.95,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "strength",
+      "scale": 1.30
+    }
+  },
+  "spark": {
+    "id": "spark",
+    "name": "Spark",
+    "description": "A small spark of arcane fire.",
+    "amount": 18,
+    "cost": 4,
+    "accuracy": 0.95,
+    "element": "fire",
+    "type": "attack",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.30
+    }
+  },
+  "quick_strike": {
+    "id": "quick_strike",
+    "name": "Quick Strike",
+    "description": "A fast strike from the shadows.",
+    "amount": 18,
+    "cost": 4,
+    "accuracy": 0.95,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.30
+    }
+  },
+  "minor_heal": {
+    "id": "minor_heal",
+    "name": "Minor Heal",
+    "description": "Restore a small amount of HP.",
+    "amount": 25,
+    "cost": 4,
+    "accuracy": 1.0,
+    "element": "physical",
+    "type": "heal",
+    "scaling": {
+      "stat": "intelligence",
+      "scale": 1.30
+    }
+  },
+  "steady_shot": {
+    "id": "steady_shot",
+    "name": "Steady Shot",
+    "description": "A steady aimed shot at the enemy.",
+    "amount": 18,
+    "cost": 4,
+    "accuracy": 0.95,
+    "element": "physical",
+    "type": "attack",
+    "scaling": {
+      "stat": "dexterity",
+      "scale": 1.30
+    }
   }
 }
