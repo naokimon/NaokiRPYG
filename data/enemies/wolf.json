@@ -43,32 +43,5 @@
       "howl",
       "pack_strike"
     ]
-  },
-  "wolf_alpha_1": {
-    "id": "wolf_alpha_1",
-    "name": "Alpha Wolf",
-    "hp": 200,
-    "mp": 30,
-    "weakness": "fire",
-    "exp_reward": 250,
-    "drops": {
-      "consum": [
-        {
-          "id": "health_potion_1",
-          "chance": 0.50
-        },
-        {
-          "id": "mana_potion_1",
-          "chance": 0.35
-        }
-      ],
-      "equip": []
-    },
-    "attacks": [
-      "alpha_bite",
-      "feral_lunge",
-      "savage_howl",
-      "rending_claws"
-    ]
   }
 }
