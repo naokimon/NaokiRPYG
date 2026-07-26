@@ -53,62 +53,65 @@ class Game:
         self.current_zone.display()
 
     def game_loop(self):
-        self.current_zone = Zone.create_zone(self.player)
-        message: str = "~ Type options to see all available commands"
         while True:
-            cls()
-            self.display_game()
+            self.current_zone = Zone.create_zone()
+            message: str = "~ Type options to see all available commands"
+            while True:
+                cls()
+                self.display_game()
 
-            seperator()
-            print(message)
+                seperator()
+                print(message)
 
-            player_input = pinput()
-            if not player_input.strip():
-                continue
+                player_input = pinput()
+                if not player_input.strip():
+                    continue
 
-            command: str = player_input.split()[0]
-            if len(player_input.split()) > 1:
-                args: list = player_input.split(maxsplit=1)[1].split()
+                command: str = player_input.split()[0]
+                if len(player_input.split()) > 1:
+                    args: list = player_input.split(maxsplit=1)[1].split()
 
-            zone = self.current_zone
+                zone = self.current_zone
 
-            match command:
-                case "forward":
-                    message = zone.move_forward()
-                case "back":
-                    message = zone.move_back()
-                case "inventory" | "inv":
-                    self.player.show_inventory()
-                case "stats" | "stat":
-                    self.player.show_stats()
-                case "battle" | "b":
-                    if not zone.current_room.room_id in zone.cleared_rooms:
-                        if len(self.current_zone.current_room.enemies) == 0:
-                            print("~ There are no enemies in this room.")
-                            dia_input()
-                            continue
-                        enemy_list: list[Enemy] = []
-                        enemies = self.current_zone.current_room.enemies
-                        for i, enemy in enumerate(enemies):
-                            enemy_id: str = enemy[0]
-                            enemy_amount: int = enemy[1]
-                            if enemy_amount > 1:
-                                for e in range(enemy_amount):
+                match command:
+                    case "forward":
+                        message = zone.move_forward()
+                        if message is None:
+                            break
+                    case "back":
+                        message = zone.move_back()
+                    case "inventory" | "inv":
+                        self.player.show_inventory()
+                    case "stats" | "stat":
+                        self.player.show_stats()
+                    case "battle" | "b":
+                        if not zone.current_room.room_id in zone.cleared_rooms:
+                            if len(self.current_zone.current_room.enemies) == 0:
+                                print("~ There are no enemies in this room.")
+                                dia_input()
+                                continue
+                            enemy_list: list[Enemy] = []
+                            enemies = self.current_zone.current_room.enemies
+                            for i, enemy in enumerate(enemies):
+                                enemy_id: str = enemy[0]
+                                enemy_amount: int = enemy[1]
+                                if enemy_amount > 1:
+                                    for e in range(enemy_amount):
+                                        enemy_obj: Enemy = Enemy.load(enemy_id)
+                                        enemy_list.append(enemy_obj)
+                                else:
                                     enemy_obj: Enemy = Enemy.load(enemy_id)
                                     enemy_list.append(enemy_obj)
+                            battle: Battle = Battle(self.player, enemy_list)
+                            if not battle.battle():
+                                cls()
+                                self.main_menu()
                             else:
-                                enemy_obj: Enemy = Enemy.load(enemy_id)
-                                enemy_list.append(enemy_obj)
-                        battle: Battle = Battle(self.player, enemy_list)
-                        if not battle.battle():
-                            cls()
-                            self.main_menu()
+                                zone.cleared_rooms.add(zone.current_room.room_id)
                         else:
-                            zone.cleared_rooms.add(zone.current_room.room_id)
-                    else:
-                        message = f"~ Room has already been cleared."
-                case _:
-                    message = "~ Type options to see all available commands"
+                            message = f"~ Room has already been cleared."
+                    case _:
+                        message = "~ Type options to see all available commands"
 
     def set_player(self, player: Player):
         self.player = player
