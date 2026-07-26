@@ -1,0 +1,24 @@
+{
+  "glacial_golem_1": {
+    "id": "glacial_golem_1",
+    "name": "Glacial Golem",
+    "hp": 400,
+    "mp": 0,
+    "weakness": "fire",
+    "exp_reward": 380,
+    "drops": {
+      "consum": [
+        {
+          "id": "health_potion_3",
+          "chance": 0.35
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "glacier_slam",
+      "ice_wave",
+      "frozen_fist"
+    ]
+  }
+}

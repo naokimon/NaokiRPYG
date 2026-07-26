@@ -8,14 +8,23 @@
     "exp_reward": 50,
     "drops": {
       "consum": [
-        {"id": "health_potion_1", "chance": 0.2},
-        {"id": "mana_potion_1", "chance": 0.2}
+        {
+          "id": "health_potion_1",
+          "chance": 0.2
+        }
       ],
       "equip": [
-        {"id": "goblin_blade", "type": "weapon","chance": 0.1}
+        {
+          "id": "wep_goblin_blade",
+          "type": "weapon",
+          "chance": 0.1
+        }
       ]
     },
-    "attacks": ["scratch", "bite", "frenzy"]
+    "attacks": [
+      "scratch",
+      "bite"
+    ]
   },
   "goblin_2": {
     "id": "goblin_2",
@@ -26,14 +35,24 @@
     "exp_reward": 80,
     "drops": {
       "consum": [
-        {"id": "health_potion_1", "chance": 0.25},
-        {"id": "mana_potion_1", "chance": 0.15}
+        {
+          "id": "health_potion_1",
+          "chance": 0.25
+        }
       ],
       "equip": [
-        {"id": "goblin_blade", "type": "weapon", "chance": 0.15}
+        {
+          "id": "wep_goblin_blade",
+          "type": "weapon",
+          "chance": 0.15
+        }
       ]
     },
-    "attacks": ["heavy_slam", "headbutt", "war_bash", "battle_cry"]
+    "attacks": [
+      "heavy_slam",
+      "headbutt",
+      "war_bash"
+    ]
   },
   "goblin_3": {
     "id": "goblin_3",
@@ -44,13 +63,17 @@
     "exp_reward": 120,
     "drops": {
       "consum": [
-        {"id": "mana_potion_1", "chance": 0.35},
-        {"id": "health_potion_1", "chance": 0.15}
+        {
+          "id": "mana_potion_1",
+          "chance": 0.35
+        }
       ],
-      "equip": [
-        {"id": "goblin_blade", "type": "weapon", "chance": 0.05}
-      ]
+      "equip": []
     },
-    "attacks": ["hex_bolt", "cursed_touch", "dark_pulse", "soul_drain"]
+    "attacks": [
+      "hex_bolt",
+      "cursed_touch",
+      "dark_pulse"
+    ]
   }
 }

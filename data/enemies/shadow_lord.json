@@ -1,0 +1,29 @@
+{
+  "shadow_lord_1": {
+    "id": "shadow_lord_1",
+    "name": "Shadow Lord",
+    "hp": 900,
+    "mp": 150,
+    "weakness": "physical",
+    "exp_reward": 1200,
+    "drops": {
+      "consum": [
+        {
+          "id": "health_potion_4",
+          "chance": 0.70
+        },
+        {
+          "id": "mana_potion_4",
+          "chance": 0.60
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "shadow_devastation",
+      "void_eruption",
+      "dark_nova",
+      "soul_consume"
+    ]
+  }
+}

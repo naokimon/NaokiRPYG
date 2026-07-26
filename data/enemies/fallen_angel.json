@@ -1,0 +1,24 @@
+{
+  "fallen_angel_1": {
+    "id": "fallen_angel_1",
+    "name": "Fallen Angel",
+    "hp": 600,
+    "mp": 150,
+    "weakness": "physical",
+    "exp_reward": 1000,
+    "drops": {
+      "consum": [
+        {
+          "id": "mana_potion_5",
+          "chance": 0.45
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "fallen_bolt",
+      "wing_slash",
+      "divine_corruption"
+    ]
+  }
+}

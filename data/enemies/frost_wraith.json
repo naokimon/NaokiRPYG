@@ -1,0 +1,24 @@
+{
+  "frost_wraith_1": {
+    "id": "frost_wraith_1",
+    "name": "Frost Wraith",
+    "hp": 200,
+    "mp": 60,
+    "weakness": "fire",
+    "exp_reward": 280,
+    "drops": {
+      "consum": [
+        {
+          "id": "mana_potion_3",
+          "chance": 0.30
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "ice_bolt",
+      "frost_touch",
+      "blizzard_breath"
+    ]
+  }
+}

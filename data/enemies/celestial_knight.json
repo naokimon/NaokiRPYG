@@ -1,0 +1,24 @@
+{
+  "celestial_knight_1": {
+    "id": "celestial_knight_1",
+    "name": "Celestial Knight",
+    "hp": 650,
+    "mp": 80,
+    "weakness": "physical",
+    "exp_reward": 900,
+    "drops": {
+      "consum": [
+        {
+          "id": "health_potion_5",
+          "chance": 0.40
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "divine_slash",
+      "heavens_strike",
+      "celestial_bash"
+    ]
+  }
+}

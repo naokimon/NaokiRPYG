@@ -1,0 +1,29 @@
+{
+  "the_god_1": {
+    "id": "the_god_1",
+    "name": "The God",
+    "hp": 2000,
+    "mp": 500,
+    "weakness": "physical",
+    "exp_reward": 5000,
+    "drops": {
+      "consum": [
+        {
+          "id": "health_potion_5",
+          "chance": 1.0
+        },
+        {
+          "id": "mana_potion_5",
+          "chance": 1.0
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "gods_judgment",
+      "divine_annihilation",
+      "celestial_erasure",
+      "realm_shatter"
+    ]
+  }
+}

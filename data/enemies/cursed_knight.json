@@ -1,0 +1,24 @@
+{
+  "cursed_knight_1": {
+    "id": "cursed_knight_1",
+    "name": "Cursed Knight",
+    "hp": 500,
+    "mp": 30,
+    "weakness": "physical",
+    "exp_reward": 580,
+    "drops": {
+      "consum": [
+        {
+          "id": "health_potion_4",
+          "chance": 0.35
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "cursed_slash",
+      "dark_shield_bash",
+      "soul_rend"
+    ]
+  }
+}

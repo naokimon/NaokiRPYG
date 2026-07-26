@@ -1,0 +1,29 @@
+{
+  "god_herald_1": {
+    "id": "god_herald_1",
+    "name": "God's Herald",
+    "hp": 800,
+    "mp": 200,
+    "weakness": "physical",
+    "exp_reward": 1100,
+    "drops": {
+      "consum": [
+        {
+          "id": "health_potion_5",
+          "chance": 0.45
+        },
+        {
+          "id": "mana_potion_5",
+          "chance": 0.40
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "herald_strike",
+      "divine_wave",
+      "gods_wrath",
+      "celestial_nova"
+    ]
+  }
+}

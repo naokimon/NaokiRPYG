@@ -1,0 +1,24 @@
+{
+  "ash_golem_1": {
+    "id": "ash_golem_1",
+    "name": "Ash Golem",
+    "hp": 220,
+    "mp": 0,
+    "weakness": "ice",
+    "exp_reward": 220,
+    "drops": {
+      "consum": [
+        {
+          "id": "health_potion_2",
+          "chance": 0.30
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "stone_slam",
+      "ash_wave",
+      "ground_smash"
+    ]
+  }
+}

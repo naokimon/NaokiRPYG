@@ -1,0 +1,82 @@
+[
+  {
+    "id": "ashenveil_forest",
+    "name": "Ashenveil Forest",
+    "description": "A dark and cursed woodland. The trees seem to whisper.",
+    "entry_room_id": "af_entrance",
+    "rooms": [
+      {"id": "af_entrance", "name": "Forest Entrance", "description": "A narrow path leading into the dark woods. The air grows cold.", "exits": {"forward": "af_path_1", "back": null}, "enemies": [["goblin_1", 1]], "items": [], "npc": null},
+      {"id": "af_path_1", "name": "Forest Path", "description": "Twisted roots snake across the path. Something watches from the trees.", "exits": {"forward": "af_clearing", "back": "af_entrance"}, "enemies": [["goblin_1", 1], ["wolf_1", 1]], "items": [], "npc": null},
+      {"id": "af_clearing", "name": "Hollow Clearing", "description": "A small clearing with the remains of an old campsite.", "exits": {"forward": "af_ruins", "back": "af_path_1"}, "enemies": [], "items": [["health_potion_1", 2], ["mana_potion_1", 1]], "npc": null},
+      {"id": "af_ruins", "name": "Ancient Ruins", "description": "Crumbling stone walls covered in moss. An old figure sits among the rubble.", "exits": {"forward": "af_camp", "back": "af_clearing"}, "enemies": [], "items": [], "npc": "old_man"},
+      {"id": "af_camp", "name": "Goblin Camp", "description": "A makeshift camp littered with bones and crude weapons.", "exits": {"forward": "af_thicket", "back": "af_ruins"}, "enemies": [["goblin_1", 2], ["goblin_2", 1]], "items": [], "npc": null},
+      {"id": "af_thicket", "name": "Dark Thicket", "description": "The trees grow so dense here that almost no light reaches the ground.", "exits": {"forward": "af_grove", "back": "af_camp"}, "enemies": [["wolf_1", 1], ["wolf_2", 1]], "items": [], "npc": null},
+      {"id": "af_grove", "name": "Cursed Grove", "description": "Dead trees surround a strange glowing flower. The air smells of old magic.", "exits": {"forward": "af_boss", "back": "af_thicket"}, "enemies": [["goblin_2", 1], ["goblin_3", 1]], "items": [["health_potion_1", 1], ["mana_potion_1", 1]], "npc": null},
+      {"id": "af_boss", "name": "The Withered Heart", "description": "The heart of the forest. A massive wolf with glowing red eyes blocks the path.", "exits": {"forward": null, "back": "af_grove"}, "enemies": [["wolf_alpha_1", 1]], "items": [], "npc": null}
+    ]
+  },
+  {
+    "id": "mossy_ravine",
+    "name": "Mossy Ravine",
+    "description": "A deep ravine carved by an ancient river. Moss clings to every surface.",
+    "entry_room_id": "mr_entrance",
+    "rooms": [
+      {"id": "mr_entrance", "name": "Ravine Entrance", "description": "A steep drop into the ravine. The walls are slick with moss.", "exits": {"forward": "mr_path_1", "back": null}, "enemies": [["goblin_1", 1]], "items": [], "npc": null},
+      {"id": "mr_path_1", "name": "Ravine Floor", "description": "The bottom of the ravine. Water trickles between the rocks.", "exits": {"forward": "mr_clearing", "back": "mr_entrance"}, "enemies": [["wolf_1", 1], ["goblin_1", 1]], "items": [], "npc": null},
+      {"id": "mr_clearing", "name": "Rocky Alcove", "description": "A sheltered alcove in the ravine wall. Someone left supplies here.", "exits": {"forward": "mr_cave", "back": "mr_path_1"}, "enemies": [], "items": [["health_potion_1", 1], ["mana_potion_1", 2]], "npc": null},
+      {"id": "mr_cave", "name": "Ravine Cave", "description": "A small cave carved into the ravine wall. Glowing eyes peer from the dark.", "exits": {"forward": "mr_camp", "back": "mr_clearing"}, "enemies": [["goblin_2", 1], ["goblin_1", 1]], "items": [], "npc": null},
+      {"id": "mr_camp", "name": "Wolf Den", "description": "A den carved into the ravine wall. The smell of wet fur fills the air.", "exits": {"forward": "mr_depths", "back": "mr_cave"}, "enemies": [["wolf_1", 2]], "items": [], "npc": null},
+      {"id": "mr_depths", "name": "Ravine Depths", "description": "The deepest part of the ravine. Almost no light reaches here.", "exits": {"forward": "mr_grove", "back": "mr_camp"}, "enemies": [["goblin_2", 1], ["wolf_2", 1]], "items": [], "npc": null},
+      {"id": "mr_grove", "name": "Mossy Grotto", "description": "A beautiful grotto covered in luminescent moss. It feels peaceful despite the danger.", "exits": {"forward": "mr_boss", "back": "mr_depths"}, "enemies": [["goblin_3", 1], ["wolf_1", 1]], "items": [["health_potion_1", 2], ["mana_potion_1", 1]], "npc": null},
+      {"id": "mr_boss", "name": "The Ravine King", "description": "A massive clearing at the end of the ravine. A goblin of enormous size sits upon a throne of bones.", "exits": {"forward": null, "back": "mr_grove"}, "enemies": [["wolf_alpha_1", 1], ["goblin_3", 1]], "items": [], "npc": null}
+    ]
+  },
+  {
+    "id": "bogwater_marsh",
+    "name": "Bogwater Marsh",
+    "description": "A fetid swamp filled with murky water and twisted trees.",
+    "entry_room_id": "bm_entrance",
+    "rooms": [
+      {"id": "bm_entrance", "name": "Marsh Edge", "description": "The edge of the swamp. The ground grows soft and wet underfoot.", "exits": {"forward": "bm_path_1", "back": null}, "enemies": [["goblin_1", 1]], "items": [], "npc": null},
+      {"id": "bm_path_1", "name": "Bogwater Path", "description": "A narrow path through the marsh. The water is black and smells of rot.", "exits": {"forward": "bm_clearing", "back": "bm_entrance"}, "enemies": [["wolf_1", 1], ["goblin_1", 1]], "items": [], "npc": null},
+      {"id": "bm_clearing", "name": "Dry Island", "description": "A small island of dry land in the middle of the marsh. A relief from the mud.", "exits": {"forward": "bm_hut", "back": "bm_path_1"}, "enemies": [], "items": [["health_potion_1", 2], ["mana_potion_1", 1]], "npc": null},
+      {"id": "bm_hut", "name": "Witch's Hut", "description": "An old hut perched on stilts above the swamp water. A cloaked figure waves you over.", "exits": {"forward": "bm_deeper", "back": "bm_clearing"}, "enemies": [], "items": [], "npc": "swamp_witch"},
+      {"id": "bm_deeper", "name": "Deep Marsh", "description": "The heart of the swamp. Fog rolls across the water.", "exits": {"forward": "bm_ruins", "back": "bm_hut"}, "enemies": [["goblin_2", 2]], "items": [], "npc": null},
+      {"id": "bm_ruins", "name": "Sunken Ruins", "description": "Ancient ruins half submerged in the swamp water.", "exits": {"forward": "bm_grove", "back": "bm_deeper"}, "enemies": [["wolf_2", 1], ["goblin_2", 1]], "items": [], "npc": null},
+      {"id": "bm_grove", "name": "Dead Grove", "description": "A grove of dead trees standing in the swamp water. Something circles beneath the surface.", "exits": {"forward": "bm_boss", "back": "bm_ruins"}, "enemies": [["goblin_3", 1], ["wolf_1", 1]], "items": [["health_potion_1", 1], ["mana_potion_1", 2]], "npc": null},
+      {"id": "bm_boss", "name": "The Black Pool", "description": "A massive pool of black water. Something enormous surfaces from the depths.", "exits": {"forward": null, "back": "bm_grove"}, "enemies": [["wolf_alpha_1", 1], ["goblin_3", 1]], "items": [], "npc": null}
+    ]
+  },
+  {
+    "id": "crumbling_outpost",
+    "name": "Crumbling Outpost",
+    "description": "The ruins of an old military outpost. Now overrun with goblins.",
+    "entry_room_id": "co_entrance",
+    "rooms": [
+      {"id": "co_entrance", "name": "Outpost Gates", "description": "The rusted gates of the old outpost hang open. Goblin graffiti covers the walls.", "exits": {"forward": "co_courtyard", "back": null}, "enemies": [["goblin_1", 2]], "items": [], "npc": null},
+      {"id": "co_courtyard", "name": "Courtyard", "description": "The central courtyard of the outpost. Goblins have made camp among the ruins.", "exits": {"forward": "co_barracks", "back": "co_entrance"}, "enemies": [["goblin_2", 1], ["goblin_1", 1]], "items": [], "npc": null},
+      {"id": "co_barracks", "name": "Old Barracks", "description": "The old soldiers barracks. Rusty weapons and old armour litter the floor.", "exits": {"forward": "co_armory", "back": "co_courtyard"}, "enemies": [], "items": [["health_potion_1", 2], ["mana_potion_1", 1]], "npc": null},
+      {"id": "co_armory", "name": "Armory", "description": "The old armory. Most weapons are rusted beyond use but a merchant has set up shop.", "exits": {"forward": "co_tower", "back": "co_barracks"}, "enemies": [], "items": [], "npc": "merchant"},
+      {"id": "co_tower", "name": "Watch Tower", "description": "The old watch tower. Goblins peer down from the battlements.", "exits": {"forward": "co_dungeon", "back": "co_armory"}, "enemies": [["goblin_2", 2], ["goblin_3", 1]], "items": [], "npc": null},
+      {"id": "co_dungeon", "name": "Outpost Dungeon", "description": "The dark cells beneath the outpost. Something howls from the darkness.", "exits": {"forward": "co_deep", "back": "co_tower"}, "enemies": [["wolf_2", 1], ["goblin_2", 1]], "items": [], "npc": null},
+      {"id": "co_deep", "name": "Deep Cells", "description": "The deepest part of the dungeon. The air is thick with the smell of blood.", "exits": {"forward": "co_boss", "back": "co_dungeon"}, "enemies": [["goblin_3", 1], ["wolf_2", 1]], "items": [["health_potion_1", 2], ["mana_potion_1", 1]], "npc": null},
+      {"id": "co_boss", "name": "The Warlord's Chamber", "description": "A large chamber at the heart of the dungeon. A massive goblin warlord sits on a throne of skulls.", "exits": {"forward": null, "back": "co_deep"}, "enemies": [["wolf_alpha_1", 1], ["goblin_3", 1]], "items": [], "npc": null}
+    ]
+  },
+  {
+    "id": "goblin_warren",
+    "name": "The Goblin Warren",
+    "description": "A vast underground network of tunnels dug by goblins over centuries.",
+    "entry_room_id": "gw_entrance",
+    "rooms": [
+      {"id": "gw_entrance", "name": "Warren Entrance", "description": "The entrance to the goblin warren. The smell is overwhelming.", "exits": {"forward": "gw_tunnel_1", "back": null}, "enemies": [["goblin_1", 2]], "items": [], "npc": null},
+      {"id": "gw_tunnel_1", "name": "Main Tunnel", "description": "The main tunnel of the warren. Crude torches light the way.", "exits": {"forward": "gw_nest", "back": "gw_entrance"}, "enemies": [["goblin_2", 1], ["goblin_1", 1]], "items": [], "npc": null},
+      {"id": "gw_nest", "name": "Goblin Nest", "description": "A large chamber filled with goblin sleeping mats. A few items lie abandoned.", "exits": {"forward": "gw_shrine", "back": "gw_tunnel_1"}, "enemies": [], "items": [["health_potion_1", 2], ["mana_potion_1", 2]], "npc": null},
+      {"id": "gw_shrine", "name": "Shaman Shrine", "description": "A small shrine tended by goblin shamans. Strange energy fills the air.", "exits": {"forward": "gw_pit", "back": "gw_nest"}, "enemies": [["goblin_3", 2]], "items": [], "npc": null},
+      {"id": "gw_pit", "name": "The Fighting Pit", "description": "A large underground pit where goblins force captured wolves to fight.", "exits": {"forward": "gw_deep", "back": "gw_shrine"}, "enemies": [["wolf_2", 1], ["goblin_2", 2]], "items": [], "npc": null},
+      {"id": "gw_deep", "name": "Deep Warren", "description": "The deepest tunnels of the warren. Only the strongest goblins live here.", "exits": {"forward": "gw_treasury", "back": "gw_pit"}, "enemies": [["goblin_3", 1], ["wolf_2", 1]], "items": [], "npc": null},
+      {"id": "gw_treasury", "name": "Goblin Treasury", "description": "The goblin treasury. Mountains of stolen gold and items fill the room.", "exits": {"forward": "gw_boss", "back": "gw_deep"}, "enemies": [["goblin_2", 1], ["goblin_3", 1]], "items": [["health_potion_1", 3], ["mana_potion_1", 2]], "npc": null},
+      {"id": "gw_boss", "name": "The Warren King's Throne", "description": "The throne room of the Goblin Warren King. He sits atop a mountain of bones.", "exits": {"forward": null, "back": "gw_treasury"}, "enemies": [["wolf_alpha_1", 1], ["goblin_3", 2]], "items": [], "npc": null}
+    ]
+  }
+]

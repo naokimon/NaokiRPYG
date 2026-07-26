@@ -1,0 +1,24 @@
+{
+  "lava_hound_1": {
+    "id": "lava_hound_1",
+    "name": "Lava Hound",
+    "hp": 150,
+    "mp": 15,
+    "weakness": "ice",
+    "exp_reward": 180,
+    "drops": {
+      "consum": [
+        {
+          "id": "health_potion_2",
+          "chance": 0.25
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "molten_bite",
+      "lava_lunge",
+      "fire_breath"
+    ]
+  }
+}

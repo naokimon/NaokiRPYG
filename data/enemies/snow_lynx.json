@@ -1,0 +1,24 @@
+{
+  "snow_lynx_1": {
+    "id": "snow_lynx_1",
+    "name": "Snow Lynx",
+    "hp": 180,
+    "mp": 20,
+    "weakness": "fire",
+    "exp_reward": 260,
+    "drops": {
+      "consum": [
+        {
+          "id": "health_potion_3",
+          "chance": 0.25
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "ice_claw",
+      "pounce",
+      "frost_bite"
+    ]
+  }
+}

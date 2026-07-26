@@ -1,0 +1,24 @@
+{
+  "abyssal_mage_1": {
+    "id": "abyssal_mage_1",
+    "name": "Abyssal Mage",
+    "hp": 300,
+    "mp": 120,
+    "weakness": "physical",
+    "exp_reward": 550,
+    "drops": {
+      "consum": [
+        {
+          "id": "mana_potion_4",
+          "chance": 0.40
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "void_bolt",
+      "abyssal_burst",
+      "soul_drain_2"
+    ]
+  }
+}

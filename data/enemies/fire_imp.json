@@ -1,0 +1,45 @@
+{
+  "fire_imp_1": {
+    "id": "fire_imp_1",
+    "name": "Fire Imp",
+    "hp": 120,
+    "mp": 30,
+    "weakness": "ice",
+    "exp_reward": 150,
+    "drops": {
+      "consum": [
+        {
+          "id": "mana_potion_2",
+          "chance": 0.25
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "ember_spit",
+      "flame_claw"
+    ]
+  },
+  "fire_imp_2": {
+    "id": "fire_imp_2",
+    "name": "Imp Pyromancer",
+    "hp": 100,
+    "mp": 60,
+    "weakness": "ice",
+    "exp_reward": 200,
+    "drops": {
+      "consum": [
+        {
+          "id": "mana_potion_2",
+          "chance": 0.35
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "flame_bolt",
+      "fire_burst",
+      "infernal_wave"
+    ]
+  }
+}

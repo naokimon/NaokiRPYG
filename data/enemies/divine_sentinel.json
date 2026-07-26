@@ -1,0 +1,24 @@
+{
+  "divine_sentinel_1": {
+    "id": "divine_sentinel_1",
+    "name": "Divine Sentinel",
+    "hp": 700,
+    "mp": 60,
+    "weakness": "physical",
+    "exp_reward": 950,
+    "drops": {
+      "consum": [
+        {
+          "id": "health_potion_5",
+          "chance": 0.40
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "sentinel_strike",
+      "holy_bash",
+      "divine_guard"
+    ]
+  }
+}

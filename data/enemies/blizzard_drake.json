@@ -1,0 +1,29 @@
+{
+  "blizzard_drake_1": {
+    "id": "blizzard_drake_1",
+    "name": "Blizzard Drake",
+    "hp": 600,
+    "mp": 80,
+    "weakness": "fire",
+    "exp_reward": 800,
+    "drops": {
+      "consum": [
+        {
+          "id": "health_potion_3",
+          "chance": 0.65
+        },
+        {
+          "id": "mana_potion_3",
+          "chance": 0.55
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "frost_fang",
+      "blizzard_breath",
+      "ice_storm",
+      "frozen_roar"
+    ]
+  }
+}

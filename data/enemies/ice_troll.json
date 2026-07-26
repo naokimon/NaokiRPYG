@@ -1,0 +1,24 @@
+{
+  "ice_troll_1": {
+    "id": "ice_troll_1",
+    "name": "Ice Troll",
+    "hp": 320,
+    "mp": 10,
+    "weakness": "fire",
+    "exp_reward": 320,
+    "drops": {
+      "consum": [
+        {
+          "id": "health_potion_3",
+          "chance": 0.30
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "frozen_slam",
+      "ice_crush",
+      "troll_roar"
+    ]
+  }
+}

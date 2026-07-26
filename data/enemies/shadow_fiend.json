@@ -1,0 +1,24 @@
+{
+  "shadow_fiend_1": {
+    "id": "shadow_fiend_1",
+    "name": "Shadow Fiend",
+    "hp": 380,
+    "mp": 80,
+    "weakness": "physical",
+    "exp_reward": 500,
+    "drops": {
+      "consum": [
+        {
+          "id": "mana_potion_4",
+          "chance": 0.35
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "shadow_bolt",
+      "void_claw",
+      "dark_pulse_2"
+    ]
+  }
+}

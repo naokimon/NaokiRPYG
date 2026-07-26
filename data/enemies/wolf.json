@@ -1,21 +1,6 @@
 {
   "wolf_1": {
     "id": "wolf_1",
-    "name": "Lesser Wolf",
-    "hp": 60,
-    "mp": 0,
-    "weakness": "ice",
-    "exp_reward": 50,
-    "drops": {
-      "consum": [
-        {"id": "health_potion_1", "chance": 0.25},
-        {"id": "mana_potion_1", "chance": 0.25}
-      ]
-    },
-    "attacks": ["scratch", "bite"]
-  },
-  "wolf_1": {
-    "id": "wolf_1",
     "name": "Forest Wolf",
     "hp": 65,
     "mp": 8,
@@ -23,11 +8,18 @@
     "exp_reward": 65,
     "drops": {
       "consum": [
-        {"id": "health_potion_1", "chance": 0.20}
+        {
+          "id": "health_potion_1",
+          "chance": 0.20
+        }
       ],
       "equip": []
     },
-    "attacks": ["bite", "lunge", "savage_bite"]
+    "attacks": [
+      "bite",
+      "lunge",
+      "savage_bite"
+    ]
   },
   "wolf_2": {
     "id": "wolf_2",
@@ -38,12 +30,19 @@
     "exp_reward": 100,
     "drops": {
       "consum": [
-        {"id": "health_potion_1", "chance": 0.25},
-        {"id": "mana_potion_1", "chance": 0.10}
+        {
+          "id": "health_potion_1",
+          "chance": 0.25
+        }
       ],
       "equip": []
     },
-    "attacks": ["lunge", "savage_bite", "howl", "pack_strike"]
+    "attacks": [
+      "lunge",
+      "savage_bite",
+      "howl",
+      "pack_strike"
+    ]
   },
   "wolf_alpha_1": {
     "id": "wolf_alpha_1",
@@ -54,11 +53,22 @@
     "exp_reward": 250,
     "drops": {
       "consum": [
-        {"id": "health_potion_1", "chance": 0.50},
-        {"id": "mana_potion_1", "chance": 0.35}
+        {
+          "id": "health_potion_1",
+          "chance": 0.50
+        },
+        {
+          "id": "mana_potion_1",
+          "chance": 0.35
+        }
       ],
       "equip": []
     },
-    "attacks": ["alpha_bite", "feral_lunge", "savage_howl", "rending_claws"]
+    "attacks": [
+      "alpha_bite",
+      "feral_lunge",
+      "savage_howl",
+      "rending_claws"
+    ]
   }
 }
