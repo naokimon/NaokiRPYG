@@ -28,12 +28,20 @@ class Zone:
 
     @classmethod
     def create_zone(cls, player: Player):
-        zones_path: Path = root / "data" / "zones" / str(Zone.zone_count)
-        files: list[Path] = sorted(zones_path.glob("*.json"))
-        zone_path: Path = random.choice(files)
+        zones: list[str] = [
+            "verdantwilds.json",
+            "ashenreaches.json",
+            "frozenwastes.json",
+            "shadowrealm.json",
+            "godrealm.json"
+        ]
+
+        zone_path: Path = root / "data" / "zones" / zones[Zone.zone_count - 1]
 
         with open(zone_path) as f:
-            zone_data: dict = json.load(f)
+            full_zone_data: list[dict] = json.load(f)
+
+        zone_data = random.choice(full_zone_data)
 
         return cls(
             zone_data["id"],
