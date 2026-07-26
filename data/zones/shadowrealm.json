@@ -1,0 +1,842 @@
+[
+  {
+    "id": "darkened_vale",
+    "name": "The Darkened Vale",
+    "description": "A valley where sunlight never reaches. An unnatural darkness fills the air.",
+    "entry_room_id": "dv_entrance",
+    "rooms": [
+      {
+        "id": "dv_entrance",
+        "name": "Vale Entrance",
+        "description": "The entrance to the darkened vale. The light dims as you step inside.",
+        "exits": {
+          "forward": "dv_path_1",
+          "back": null
+        },
+        "enemies": [
+          [
+            "shadow_fiend_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "dv_path_1",
+        "name": "Shadow Path",
+        "description": "A path through the vale. Shadows move independently of anything casting them.",
+        "exits": {
+          "forward": "dv_clearing",
+          "back": "dv_entrance"
+        },
+        "enemies": [
+          [
+            "void_stalker_1",
+            1
+          ],
+          [
+            "shadow_fiend_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "dv_clearing",
+        "name": "Dark Clearing",
+        "description": "A clearing where no light penetrates. Somehow you can still see.",
+        "exits": {
+          "forward": "dv_camp",
+          "back": "dv_path_1"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_4",
+            2
+          ],
+          [
+            "mana_potion_4",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "dv_camp",
+        "name": "Shadow Hunter's Camp",
+        "description": "A camp belonging to a shadow hunter, one who has learned to navigate the darkness.",
+        "exits": {
+          "forward": "dv_ruins",
+          "back": "dv_clearing"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "shadow_hunter"
+      },
+      {
+        "id": "dv_ruins",
+        "name": "Void Ruins",
+        "description": "Ruins that seem to be made of solidified shadow.",
+        "exits": {
+          "forward": "dv_deep",
+          "back": "dv_camp"
+        },
+        "enemies": [
+          [
+            "cursed_knight_1",
+            1
+          ],
+          [
+            "shadow_fiend_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "dv_deep",
+        "name": "Deep Vale",
+        "description": "The deepest part of the vale. Reality feels thin here.",
+        "exits": {
+          "forward": "dv_citadel",
+          "back": "dv_ruins"
+        },
+        "enemies": [
+          [
+            "void_stalker_1",
+            1
+          ],
+          [
+            "abyssal_mage_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "dv_citadel",
+        "name": "Shadow Citadel",
+        "description": "A citadel built from darkness itself. The walls absorb all light.",
+        "exits": {
+          "forward": "dv_boss",
+          "back": "dv_deep"
+        },
+        "enemies": [
+          [
+            "cursed_knight_1",
+            1
+          ],
+          [
+            "void_stalker_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_4",
+            2
+          ],
+          [
+            "mana_potion_4",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "dv_boss",
+        "name": "The Vale Throne",
+        "description": "The throne at the heart of the vale. The Shadow Lord rises from the darkness.",
+        "exits": {
+          "forward": null,
+          "back": "dv_citadel"
+        },
+        "enemies": [
+          [
+            "shadow_lord_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "shadowmere_swamp",
+    "name": "Shadowmere Swamp",
+    "description": "A swamp consumed by shadow magic. The water is black and viscous.",
+    "entry_room_id": "ss_entrance",
+    "rooms": [
+      {
+        "id": "ss_entrance",
+        "name": "Swamp Edge",
+        "description": "The edge of the shadowmere swamp. The air smells of rot and dark magic.",
+        "exits": {
+          "forward": "ss_path_1",
+          "back": null
+        },
+        "enemies": [
+          [
+            "shadow_fiend_1",
+            1
+          ],
+          [
+            "void_stalker_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ss_path_1",
+        "name": "Black Water Path",
+        "description": "A path through the black water. Something moves beneath the surface.",
+        "exits": {
+          "forward": "ss_island",
+          "back": "ss_entrance"
+        },
+        "enemies": [
+          [
+            "abyssal_mage_1",
+            1
+          ],
+          [
+            "shadow_fiend_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ss_island",
+        "name": "Shadow Island",
+        "description": "A small island of dark earth rising from the black water.",
+        "exits": {
+          "forward": "ss_hut",
+          "back": "ss_path_1"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_4",
+            2
+          ],
+          [
+            "mana_potion_4",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "ss_hut",
+        "name": "Witch's Shadow Hut",
+        "description": "A hut built on stilts. A shadow witch beckons from inside.",
+        "exits": {
+          "forward": "ss_deep",
+          "back": "ss_island"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "shadow_witch"
+      },
+      {
+        "id": "ss_deep",
+        "name": "Deep Swamp",
+        "description": "The heart of the shadowmere swamp. Cursed knights wade through the black water.",
+        "exits": {
+          "forward": "ss_ruins",
+          "back": "ss_hut"
+        },
+        "enemies": [
+          [
+            "cursed_knight_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ss_ruins",
+        "name": "Sunken Void Ruins",
+        "description": "Ancient ruins half submerged in the black water. Shadow magic seeps from the stones.",
+        "exits": {
+          "forward": "ss_altar",
+          "back": "ss_deep"
+        },
+        "enemies": [
+          [
+            "abyssal_mage_1",
+            1
+          ],
+          [
+            "void_stalker_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ss_altar",
+        "name": "Shadow Altar",
+        "description": "A massive altar of black stone rising from the swamp. Dark energy crackles around it.",
+        "exits": {
+          "forward": "ss_boss",
+          "back": "ss_ruins"
+        },
+        "enemies": [
+          [
+            "cursed_knight_1",
+            1
+          ],
+          [
+            "shadow_fiend_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_4",
+            3
+          ],
+          [
+            "mana_potion_4",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "ss_boss",
+        "name": "The Black Pool",
+        "description": "A massive pool of shadow energy. The Shadow Lord emerges from within.",
+        "exits": {
+          "forward": null,
+          "back": "ss_altar"
+        },
+        "enemies": [
+          [
+            "shadow_lord_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "void_ruins",
+    "name": "The Void Ruins",
+    "description": "The ruins of a civilization destroyed by void magic. Reality warps here.",
+    "entry_room_id": "vr_entrance",
+    "rooms": [
+      {
+        "id": "vr_entrance",
+        "name": "Ruins Gate",
+        "description": "The gate to the void ruins. The archway flickers in and out of existence.",
+        "exits": {
+          "forward": "vr_plaza",
+          "back": null
+        },
+        "enemies": [
+          [
+            "void_stalker_1",
+            1
+          ],
+          [
+            "shadow_fiend_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "vr_plaza",
+        "name": "Void Plaza",
+        "description": "The central plaza of the ruins. Nothing casts a shadow here despite the dim light.",
+        "exits": {
+          "forward": "vr_hall",
+          "back": "vr_entrance"
+        },
+        "enemies": [
+          [
+            "abyssal_mage_1",
+            1
+          ],
+          [
+            "cursed_knight_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "vr_hall",
+        "name": "Great Void Hall",
+        "description": "The great hall of the ruins. Portraits on the walls show only darkness.",
+        "exits": {
+          "forward": "vr_library",
+          "back": "vr_plaza"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_4",
+            3
+          ],
+          [
+            "mana_potion_4",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "vr_library",
+        "name": "Void Library",
+        "description": "A library where the books write themselves with forbidden knowledge.",
+        "exits": {
+          "forward": "vr_dungeon",
+          "back": "vr_hall"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "void_scholar"
+      },
+      {
+        "id": "vr_dungeon",
+        "name": "Void Dungeon",
+        "description": "The dungeon beneath the ruins. Prisoners are held in cells made of solidified shadow.",
+        "exits": {
+          "forward": "vr_deep",
+          "back": "vr_library"
+        },
+        "enemies": [
+          [
+            "cursed_knight_1",
+            2
+          ],
+          [
+            "void_stalker_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "vr_deep",
+        "name": "Deep Void",
+        "description": "The deepest level of the ruins. The floor seems to extend into infinity.",
+        "exits": {
+          "forward": "vr_sanctum",
+          "back": "vr_dungeon"
+        },
+        "enemies": [
+          [
+            "abyssal_mage_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "vr_sanctum",
+        "name": "Inner Sanctum",
+        "description": "The inner sanctum of the void ruins. The air hums with dark energy.",
+        "exits": {
+          "forward": "vr_boss",
+          "back": "vr_deep"
+        },
+        "enemies": [
+          [
+            "shadow_fiend_1",
+            1
+          ],
+          [
+            "cursed_knight_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_4",
+            2
+          ],
+          [
+            "mana_potion_4",
+            3
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "vr_boss",
+        "name": "The Void Throne",
+        "description": "The throne room of the void ruins. The Shadow Lord sits waiting.",
+        "exits": {
+          "forward": null,
+          "back": "vr_sanctum"
+        },
+        "enemies": [
+          [
+            "shadow_lord_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "cursed_sanctum",
+    "name": "Cursed Sanctum",
+    "description": "A holy sanctum corrupted by shadow magic. The divine energy has turned dark.",
+    "entry_room_id": "cs_entrance",
+    "rooms": [
+      {
+        "id": "cs_entrance",
+        "name": "Sanctum Gates",
+        "description": "The gates of the sanctum. Holy symbols have been defaced with shadow runes.",
+        "exits": {
+          "forward": "cs_nave",
+          "back": null
+        },
+        "enemies": [
+          [
+            "cursed_knight_1",
+            1
+          ],
+          [
+            "shadow_fiend_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "cs_nave",
+        "name": "Corrupted Nave",
+        "description": "The main hall of the sanctum. Pews have been overturned and burned.",
+        "exits": {
+          "forward": "cs_chapel",
+          "back": "cs_entrance"
+        },
+        "enemies": [
+          [
+            "abyssal_mage_1",
+            1
+          ],
+          [
+            "cursed_knight_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "cs_chapel",
+        "name": "Dark Chapel",
+        "description": "The chapel has been converted into a shrine to shadow. Dark offerings litter the altar.",
+        "exits": {
+          "forward": "cs_crypt",
+          "back": "cs_nave"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_4",
+            2
+          ],
+          [
+            "mana_potion_4",
+            3
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "cs_crypt",
+        "name": "Sanctum Crypt",
+        "description": "The crypt beneath the sanctum. The dead have been raised as cursed knights.",
+        "exits": {
+          "forward": "cs_deep",
+          "back": "cs_chapel"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "fallen_priest"
+      },
+      {
+        "id": "cs_deep",
+        "name": "Deep Crypt",
+        "description": "The deepest part of the crypt. The shadow energy is almost tangible.",
+        "exits": {
+          "forward": "cs_cathedral",
+          "back": "cs_crypt"
+        },
+        "enemies": [
+          [
+            "cursed_knight_1",
+            2
+          ],
+          [
+            "void_stalker_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "cs_cathedral",
+        "name": "Black Cathedral",
+        "description": "A cathedral built within the crypt. It worships something that should not be worshipped.",
+        "exits": {
+          "forward": "cs_throne",
+          "back": "cs_deep"
+        },
+        "enemies": [
+          [
+            "abyssal_mage_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "cs_throne",
+        "name": "High Altar",
+        "description": "The high altar of the black cathedral. Dark offerings cover every surface.",
+        "exits": {
+          "forward": "cs_boss",
+          "back": "cs_cathedral"
+        },
+        "enemies": [
+          [
+            "shadow_fiend_1",
+            2
+          ],
+          [
+            "cursed_knight_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_4",
+            3
+          ],
+          [
+            "mana_potion_4",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "cs_boss",
+        "name": "The Dark Sanctum Heart",
+        "description": "The heart of the corrupted sanctum. The Shadow Lord has made this his seat of power.",
+        "exits": {
+          "forward": null,
+          "back": "cs_throne"
+        },
+        "enemies": [
+          [
+            "shadow_lord_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "abyssal_gate",
+    "name": "The Abyssal Gate",
+    "description": "A massive gate that separates the mortal world from the abyss. It is crumbling.",
+    "entry_room_id": "ag_entrance",
+    "rooms": [
+      {
+        "id": "ag_entrance",
+        "name": "Gate Approach",
+        "description": "The approach to the abyssal gate. The ground is cracked and dark energy seeps up.",
+        "exits": {
+          "forward": "ag_path_1",
+          "back": null
+        },
+        "enemies": [
+          [
+            "void_stalker_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ag_path_1",
+        "name": "Void Road",
+        "description": "A road paved with obsidian leading to the gate. Nothing lives on either side.",
+        "exits": {
+          "forward": "ag_camp",
+          "back": "ag_entrance"
+        },
+        "enemies": [
+          [
+            "shadow_fiend_1",
+            1
+          ],
+          [
+            "cursed_knight_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ag_camp",
+        "name": "Last Bastion",
+        "description": "The last outpost of those fighting to keep the gate closed. Barely standing.",
+        "exits": {
+          "forward": "ag_gate",
+          "back": "ag_path_1"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_4",
+            3
+          ],
+          [
+            "mana_potion_4",
+            3
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "ag_gate",
+        "name": "Gate Exterior",
+        "description": "The exterior of the abyssal gate. A gate guardian stands watch.",
+        "exits": {
+          "forward": "ag_inner",
+          "back": "ag_camp"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "gate_guardian"
+      },
+      {
+        "id": "ag_inner",
+        "name": "Gate Interior",
+        "description": "Inside the gate structure. Shadow energy crackles between the walls.",
+        "exits": {
+          "forward": "ag_deep",
+          "back": "ag_gate"
+        },
+        "enemies": [
+          [
+            "abyssal_mage_1",
+            2
+          ],
+          [
+            "shadow_fiend_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ag_deep",
+        "name": "Abyss Threshold",
+        "description": "The threshold between worlds. Reality breaks down completely here.",
+        "exits": {
+          "forward": "ag_chamber",
+          "back": "ag_inner"
+        },
+        "enemies": [
+          [
+            "cursed_knight_1",
+            1
+          ],
+          [
+            "void_stalker_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ag_chamber",
+        "name": "The Void Chamber",
+        "description": "A chamber that exists between dimensions. The Shadow Lord draws power here.",
+        "exits": {
+          "forward": "ag_boss",
+          "back": "ag_deep"
+        },
+        "enemies": [
+          [
+            "abyssal_mage_1",
+            1
+          ],
+          [
+            "shadow_fiend_1",
+            2
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_4",
+            3
+          ],
+          [
+            "mana_potion_4",
+            3
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "ag_boss",
+        "name": "The Abyssal Gate Core",
+        "description": "The very core of the abyssal gate. The Shadow Lord has fully manifested.",
+        "exits": {
+          "forward": null,
+          "back": "ag_chamber"
+        },
+        "enemies": [
+          [
+            "shadow_lord_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  }
+]

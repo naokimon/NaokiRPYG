@@ -1,0 +1,830 @@
+[
+  {
+    "id": "frostpeak_pass",
+    "name": "Frostpeak Pass",
+    "description": "A treacherous mountain pass buried under perpetual snow.",
+    "entry_room_id": "fp_entrance",
+    "rooms": [
+      {
+        "id": "fp_entrance",
+        "name": "Pass Entrance",
+        "description": "The entrance to the mountain pass. A biting wind cuts through your armour.",
+        "exits": {
+          "forward": "fp_path_1",
+          "back": null
+        },
+        "enemies": [
+          [
+            "snow_lynx_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "fp_path_1",
+        "name": "Icy Trail",
+        "description": "A narrow trail along the mountain face. One wrong step and it's a long fall.",
+        "exits": {
+          "forward": "fp_shelter",
+          "back": "fp_entrance"
+        },
+        "enemies": [
+          [
+            "snow_lynx_1",
+            1
+          ],
+          [
+            "frost_wraith_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "fp_shelter",
+        "name": "Mountain Shelter",
+        "description": "A small shelter carved into the mountain. Supplies left by a previous traveler.",
+        "exits": {
+          "forward": "fp_camp",
+          "back": "fp_path_1"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_3",
+            2
+          ],
+          [
+            "mana_potion_3",
+            1
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "fp_camp",
+        "name": "Ranger's Camp",
+        "description": "A mountain ranger sits by a small fire, watching the pass.",
+        "exits": {
+          "forward": "fp_upper",
+          "back": "fp_shelter"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "mountain_ranger"
+      },
+      {
+        "id": "fp_upper",
+        "name": "Upper Pass",
+        "description": "The upper section of the pass. Visibility drops to almost zero.",
+        "exits": {
+          "forward": "fp_ruins",
+          "back": "fp_camp"
+        },
+        "enemies": [
+          [
+            "ice_troll_1",
+            1
+          ],
+          [
+            "snow_lynx_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "fp_ruins",
+        "name": "Frozen Ruins",
+        "description": "Ancient ruins half buried in snow. Frost wraiths drift between the columns.",
+        "exits": {
+          "forward": "fp_peak",
+          "back": "fp_upper"
+        },
+        "enemies": [
+          [
+            "frost_wraith_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "fp_peak",
+        "name": "Near Summit",
+        "description": "Just below the summit. The cold is unbearable. A cave offers brief respite.",
+        "exits": {
+          "forward": "fp_boss",
+          "back": "fp_ruins"
+        },
+        "enemies": [
+          [
+            "ice_troll_1",
+            1
+          ],
+          [
+            "frost_wraith_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_3",
+            2
+          ],
+          [
+            "mana_potion_3",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "fp_boss",
+        "name": "The Frostpeak Summit",
+        "description": "The summit of the mountain. A blizzard drake circles above before diving to attack.",
+        "exits": {
+          "forward": null,
+          "back": "fp_peak"
+        },
+        "enemies": [
+          [
+            "blizzard_drake_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "glacial_caverns",
+    "name": "The Glacial Caverns",
+    "description": "A network of caves carved by ancient glaciers. Everything is ice.",
+    "entry_room_id": "gc_entrance",
+    "rooms": [
+      {
+        "id": "gc_entrance",
+        "name": "Cavern Mouth",
+        "description": "The entrance to the glacial caverns. The ice walls reflect your light in a thousand directions.",
+        "exits": {
+          "forward": "gc_tunnel",
+          "back": null
+        },
+        "enemies": [
+          [
+            "frost_wraith_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "gc_tunnel",
+        "name": "Ice Tunnel",
+        "description": "A tunnel carved entirely from ice. Your breath fogs in the air.",
+        "exits": {
+          "forward": "gc_chamber",
+          "back": "gc_entrance"
+        },
+        "enemies": [
+          [
+            "snow_lynx_1",
+            1
+          ],
+          [
+            "frost_wraith_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "gc_chamber",
+        "name": "Crystal Chamber",
+        "description": "A large chamber where ice crystals have grown to enormous size.",
+        "exits": {
+          "forward": "gc_shrine",
+          "back": "gc_tunnel"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_3",
+            2
+          ],
+          [
+            "mana_potion_3",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "gc_shrine",
+        "name": "Ice Shrine",
+        "description": "A shrine to an ancient ice deity. A frost priest tends the eternal flame.",
+        "exits": {
+          "forward": "gc_deep",
+          "back": "gc_chamber"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "frost_priest"
+      },
+      {
+        "id": "gc_deep",
+        "name": "Deep Caverns",
+        "description": "The deeper caverns. Ice trolls have carved homes into the walls.",
+        "exits": {
+          "forward": "gc_troll_hall",
+          "back": "gc_shrine"
+        },
+        "enemies": [
+          [
+            "ice_troll_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "gc_troll_hall",
+        "name": "Troll Hall",
+        "description": "A massive cavern used as a gathering hall by the ice trolls.",
+        "exits": {
+          "forward": "gc_lake",
+          "back": "gc_deep"
+        },
+        "enemies": [
+          [
+            "ice_troll_1",
+            1
+          ],
+          [
+            "glacial_golem_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "gc_lake",
+        "name": "Frozen Lake",
+        "description": "An underground lake completely frozen over. Something moves beneath the ice.",
+        "exits": {
+          "forward": "gc_boss",
+          "back": "gc_troll_hall"
+        },
+        "enemies": [
+          [
+            "glacial_golem_1",
+            1
+          ],
+          [
+            "frost_wraith_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_3",
+            2
+          ],
+          [
+            "mana_potion_3",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "gc_boss",
+        "name": "The Glacier's Heart",
+        "description": "The deepest point of the caverns. A blizzard drake has frozen itself into the wall and breaks free.",
+        "exits": {
+          "forward": null,
+          "back": "gc_lake"
+        },
+        "enemies": [
+          [
+            "blizzard_drake_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "snowblind_tundra",
+    "name": "Snowblind Tundra",
+    "description": "An endless frozen tundra where blizzards make navigation nearly impossible.",
+    "entry_room_id": "st_entrance",
+    "rooms": [
+      {
+        "id": "st_entrance",
+        "name": "Tundra Edge",
+        "description": "The edge of the tundra. Visibility is already poor.",
+        "exits": {
+          "forward": "st_path_1",
+          "back": null
+        },
+        "enemies": [
+          [
+            "snow_lynx_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "st_path_1",
+        "name": "Frozen Wastes",
+        "description": "An endless expanse of white. The cold is relentless.",
+        "exits": {
+          "forward": "st_camp",
+          "back": "st_entrance"
+        },
+        "enemies": [
+          [
+            "frost_wraith_1",
+            1
+          ],
+          [
+            "ice_troll_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "st_camp",
+        "name": "Frozen Camp",
+        "description": "A camp abandoned mid-meal. Food still sits frozen on plates.",
+        "exits": {
+          "forward": "st_village",
+          "back": "st_path_1"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_3",
+            3
+          ],
+          [
+            "mana_potion_3",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "st_village",
+        "name": "Frozen Village",
+        "description": "A village completely encased in ice. One building still has a light on.",
+        "exits": {
+          "forward": "st_deep",
+          "back": "st_camp"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "frozen_survivor"
+      },
+      {
+        "id": "st_deep",
+        "name": "Deep Tundra",
+        "description": "The heart of the tundra. Nothing survives here except the strongest creatures.",
+        "exits": {
+          "forward": "st_ruins",
+          "back": "st_village"
+        },
+        "enemies": [
+          [
+            "glacial_golem_1",
+            1
+          ],
+          [
+            "ice_troll_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "st_ruins",
+        "name": "Ancient Ice Ruins",
+        "description": "Ruins of a civilization destroyed by the ice age. Still intact beneath the snow.",
+        "exits": {
+          "forward": "st_altar",
+          "back": "st_deep"
+        },
+        "enemies": [
+          [
+            "frost_wraith_1",
+            2
+          ],
+          [
+            "snow_lynx_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "st_altar",
+        "name": "The Frozen Altar",
+        "description": "A massive altar of ice. Strange runes glow faintly blue.",
+        "exits": {
+          "forward": "st_boss",
+          "back": "st_ruins"
+        },
+        "enemies": [
+          [
+            "glacial_golem_1",
+            1
+          ],
+          [
+            "ice_troll_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_3",
+            2
+          ],
+          [
+            "mana_potion_3",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "st_boss",
+        "name": "The Blizzard's Eye",
+        "description": "The eye of a permanent blizzard. A blizzard drake hovers at the center.",
+        "exits": {
+          "forward": null,
+          "back": "st_altar"
+        },
+        "enemies": [
+          [
+            "blizzard_drake_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "ice_fortress",
+    "name": "The Ice Fortress",
+    "description": "A fortress built entirely from ice by ancient frost giants.",
+    "entry_room_id": "if_entrance",
+    "rooms": [
+      {
+        "id": "if_entrance",
+        "name": "Fortress Gates",
+        "description": "The gates of the ice fortress. Carved ice soldiers flank the entrance.",
+        "exits": {
+          "forward": "if_courtyard",
+          "back": null
+        },
+        "enemies": [
+          [
+            "ice_troll_1",
+            1
+          ],
+          [
+            "glacial_golem_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "if_courtyard",
+        "name": "Ice Courtyard",
+        "description": "The courtyard of the fortress. Frost wraiths drift between the ice pillars.",
+        "exits": {
+          "forward": "if_barracks",
+          "back": "if_entrance"
+        },
+        "enemies": [
+          [
+            "frost_wraith_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "if_barracks",
+        "name": "Troll Barracks",
+        "description": "The barracks where ice trolls sleep standing up, frozen solid.",
+        "exits": {
+          "forward": "if_library",
+          "back": "if_courtyard"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_3",
+            2
+          ],
+          [
+            "mana_potion_3",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "if_library",
+        "name": "Frost Library",
+        "description": "A library where knowledge is preserved in blocks of ice. A scholar chips away at one.",
+        "exits": {
+          "forward": "if_dungeon",
+          "back": "if_barracks"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "ice_scholar"
+      },
+      {
+        "id": "if_dungeon",
+        "name": "Ice Dungeon",
+        "description": "The fortress dungeon. Prisoners are preserved in blocks of ice.",
+        "exits": {
+          "forward": "if_deep",
+          "back": "if_library"
+        },
+        "enemies": [
+          [
+            "glacial_golem_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "if_deep",
+        "name": "Deep Fortress",
+        "description": "The deeper levels of the fortress. The temperature drops even further.",
+        "exits": {
+          "forward": "if_throne",
+          "back": "if_dungeon"
+        },
+        "enemies": [
+          [
+            "ice_troll_1",
+            1
+          ],
+          [
+            "frost_wraith_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "if_throne",
+        "name": "Throne Antechamber",
+        "description": "The room before the throne. Glacial golems stand sentinel.",
+        "exits": {
+          "forward": "if_boss",
+          "back": "if_deep"
+        },
+        "enemies": [
+          [
+            "glacial_golem_1",
+            1
+          ],
+          [
+            "ice_troll_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_3",
+            3
+          ],
+          [
+            "mana_potion_3",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "if_boss",
+        "name": "The Frost King's Throne",
+        "description": "The throne room of the Frost King. A blizzard drake perches atop the throne.",
+        "exits": {
+          "forward": null,
+          "back": "if_throne"
+        },
+        "enemies": [
+          [
+            "blizzard_drake_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "blizzard_summit",
+    "name": "Blizzard Summit",
+    "description": "The highest peak in the frozen wastes. A permanent blizzard rages at the top.",
+    "entry_room_id": "bs_entrance",
+    "rooms": [
+      {
+        "id": "bs_entrance",
+        "name": "Summit Base",
+        "description": "The base of the summit climb. The wind is already ferocious.",
+        "exits": {
+          "forward": "bs_path_1",
+          "back": null
+        },
+        "enemies": [
+          [
+            "frost_wraith_1",
+            1
+          ],
+          [
+            "snow_lynx_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "bs_path_1",
+        "name": "Blizzard Trail",
+        "description": "A trail barely visible through the blizzard. Every step is a battle.",
+        "exits": {
+          "forward": "bs_cave",
+          "back": "bs_entrance"
+        },
+        "enemies": [
+          [
+            "ice_troll_1",
+            1
+          ],
+          [
+            "glacial_golem_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "bs_cave",
+        "name": "Summit Cave",
+        "description": "A cave carved into the mountainside. A brief respite from the blizzard outside.",
+        "exits": {
+          "forward": "bs_camp",
+          "back": "bs_path_1"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_3",
+            3
+          ],
+          [
+            "mana_potion_3",
+            3
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "bs_camp",
+        "name": "Climber's Last Camp",
+        "description": "The last camp before the summit. A weathered climber waits here.",
+        "exits": {
+          "forward": "bs_upper",
+          "back": "bs_cave"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "veteran_climber"
+      },
+      {
+        "id": "bs_upper",
+        "name": "Upper Summit",
+        "description": "The upper reaches of the summit. Ice formations rise like jagged teeth.",
+        "exits": {
+          "forward": "bs_peak",
+          "back": "bs_camp"
+        },
+        "enemies": [
+          [
+            "blizzard_drake_1",
+            1
+          ],
+          [
+            "ice_troll_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "bs_peak",
+        "name": "The Frozen Peak",
+        "description": "The peak itself. Everything is white. A glacial golem stands motionless.",
+        "exits": {
+          "forward": "bs_altar",
+          "back": "bs_upper"
+        },
+        "enemies": [
+          [
+            "glacial_golem_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "bs_altar",
+        "name": "Summit Altar",
+        "description": "An ancient altar at the very peak. Runes glow through the ice.",
+        "exits": {
+          "forward": "bs_boss",
+          "back": "bs_peak"
+        },
+        "enemies": [
+          [
+            "frost_wraith_1",
+            2
+          ],
+          [
+            "snow_lynx_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_3",
+            3
+          ],
+          [
+            "mana_potion_3",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "bs_boss",
+        "name": "The Eternal Blizzard",
+        "description": "The eye of the eternal blizzard. The Blizzard Drake King spreads its wings.",
+        "exits": {
+          "forward": null,
+          "back": "bs_altar"
+        },
+        "enemies": [
+          [
+            "blizzard_drake_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  }
+]

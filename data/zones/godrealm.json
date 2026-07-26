@@ -1,0 +1,842 @@
+[
+  {
+    "id": "celestial_plains",
+    "name": "The Celestial Plains",
+    "description": "A vast plain floating among the stars. The ground is made of solidified light.",
+    "entry_room_id": "cp_entrance",
+    "rooms": [
+      {
+        "id": "cp_entrance",
+        "name": "Heaven's Edge",
+        "description": "The edge of the celestial plains. Light pours from every surface.",
+        "exits": {
+          "forward": "cp_path_1",
+          "back": null
+        },
+        "enemies": [
+          [
+            "celestial_knight_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "cp_path_1",
+        "name": "Star Road",
+        "description": "A road paved with starlight. Celestial knights march in formation.",
+        "exits": {
+          "forward": "cp_clearing",
+          "back": "cp_entrance"
+        },
+        "enemies": [
+          [
+            "celestial_knight_1",
+            1
+          ],
+          [
+            "divine_sentinel_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "cp_clearing",
+        "name": "Light Clearing",
+        "description": "A clearing where the light is blindingly bright. Supplies left by a fallen angel.",
+        "exits": {
+          "forward": "cp_shrine",
+          "back": "cp_path_1"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_5",
+            2
+          ],
+          [
+            "mana_potion_5",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "cp_shrine",
+        "name": "Celestial Shrine",
+        "description": "A shrine to the gods. A celestial monk tends the eternal flame.",
+        "exits": {
+          "forward": "cp_fortress",
+          "back": "cp_clearing"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "celestial_monk"
+      },
+      {
+        "id": "cp_fortress",
+        "name": "Light Fortress",
+        "description": "A fortress built from pure light. Fallen angels guard the walls.",
+        "exits": {
+          "forward": "cp_deep",
+          "back": "cp_shrine"
+        },
+        "enemies": [
+          [
+            "fallen_angel_1",
+            1
+          ],
+          [
+            "divine_sentinel_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "cp_deep",
+        "name": "Deep Plains",
+        "description": "The deeper celestial plains. Gods Heralds patrol on horseback made of lightning.",
+        "exits": {
+          "forward": "cp_gate",
+          "back": "cp_fortress"
+        },
+        "enemies": [
+          [
+            "god_herald_1",
+            1
+          ],
+          [
+            "celestial_knight_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "cp_gate",
+        "name": "Heaven's Gate",
+        "description": "The gate leading to the divine spire. Two god heralds block the path.",
+        "exits": {
+          "forward": "cp_boss",
+          "back": "cp_deep"
+        },
+        "enemies": [
+          [
+            "god_herald_1",
+            1
+          ],
+          [
+            "fallen_angel_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_5",
+            3
+          ],
+          [
+            "mana_potion_5",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "cp_boss",
+        "name": "The Plains Throne",
+        "description": "A throne of light. The God's chosen champion descends to face you.",
+        "exits": {
+          "forward": null,
+          "back": "cp_gate"
+        },
+        "enemies": [
+          [
+            "the_god_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "divine_spire",
+    "name": "The Divine Spire",
+    "description": "A tower that reaches into the heavens themselves. Each floor harder than the last.",
+    "entry_room_id": "ds_entrance",
+    "rooms": [
+      {
+        "id": "ds_entrance",
+        "name": "Spire Base",
+        "description": "The base of the divine spire. The tower extends beyond sight into the clouds.",
+        "exits": {
+          "forward": "ds_floor_1",
+          "back": null
+        },
+        "enemies": [
+          [
+            "divine_sentinel_1",
+            1
+          ],
+          [
+            "celestial_knight_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ds_floor_1",
+        "name": "First Floor",
+        "description": "The first floor of the spire. Celestial runes cover every surface.",
+        "exits": {
+          "forward": "ds_floor_2",
+          "back": "ds_entrance"
+        },
+        "enemies": [
+          [
+            "fallen_angel_1",
+            1
+          ],
+          [
+            "divine_sentinel_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ds_floor_2",
+        "name": "Second Floor",
+        "description": "The second floor. The view from the windows shows the entire mortal world.",
+        "exits": {
+          "forward": "ds_rest",
+          "back": "ds_floor_1"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_5",
+            3
+          ],
+          [
+            "mana_potion_5",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "ds_rest",
+        "name": "Spire Rest Chamber",
+        "description": "A rest chamber for divine beings. A wounded herald sits inside.",
+        "exits": {
+          "forward": "ds_floor_3",
+          "back": "ds_floor_2"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "wounded_herald"
+      },
+      {
+        "id": "ds_floor_3",
+        "name": "Third Floor",
+        "description": "The third floor. God heralds patrol endlessly.",
+        "exits": {
+          "forward": "ds_floor_4",
+          "back": "ds_rest"
+        },
+        "enemies": [
+          [
+            "god_herald_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ds_floor_4",
+        "name": "Fourth Floor",
+        "description": "The fourth floor. Fallen angels attempt to stop your ascent.",
+        "exits": {
+          "forward": "ds_top",
+          "back": "ds_floor_3"
+        },
+        "enemies": [
+          [
+            "fallen_angel_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ds_top",
+        "name": "Spire Summit",
+        "description": "The very top of the spire. The air is thin but charged with divine energy.",
+        "exits": {
+          "forward": "ds_boss",
+          "back": "ds_floor_4"
+        },
+        "enemies": [
+          [
+            "god_herald_1",
+            1
+          ],
+          [
+            "divine_sentinel_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_5",
+            3
+          ],
+          [
+            "mana_potion_5",
+            3
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "ds_boss",
+        "name": "The Spire Apex",
+        "description": "The apex of the divine spire. The God descends personally to face you.",
+        "exits": {
+          "forward": null,
+          "back": "ds_top"
+        },
+        "enemies": [
+          [
+            "the_god_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "heavens_breach",
+    "name": "Heaven's Breach",
+    "description": "A tear in the fabric of heaven caused by the war between fallen and divine angels.",
+    "entry_room_id": "hb_entrance",
+    "rooms": [
+      {
+        "id": "hb_entrance",
+        "name": "Breach Edge",
+        "description": "The edge of the breach. Light and darkness mix in chaotic swirls.",
+        "exits": {
+          "forward": "hb_path_1",
+          "back": null
+        },
+        "enemies": [
+          [
+            "fallen_angel_1",
+            1
+          ],
+          [
+            "celestial_knight_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "hb_path_1",
+        "name": "Torn Path",
+        "description": "A path through the breach. Reality tears at the edges.",
+        "exits": {
+          "forward": "hb_camp",
+          "back": "hb_entrance"
+        },
+        "enemies": [
+          [
+            "divine_sentinel_1",
+            1
+          ],
+          [
+            "fallen_angel_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "hb_camp",
+        "name": "Angel's Refuge",
+        "description": "A refuge where injured divine soldiers rest between battles.",
+        "exits": {
+          "forward": "hb_battlefield",
+          "back": "hb_path_1"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_5",
+            3
+          ],
+          [
+            "mana_potion_5",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "hb_battlefield",
+        "name": "Eternal Battlefield",
+        "description": "Where the war between fallen and divine has raged for eternity. A divine commander surveys the scene.",
+        "exits": {
+          "forward": "hb_deep",
+          "back": "hb_camp"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "divine_commander"
+      },
+      {
+        "id": "hb_deep",
+        "name": "Deep Breach",
+        "description": "The deeper part of the breach. The fallen angels are stronger here.",
+        "exits": {
+          "forward": "hb_fortress",
+          "back": "hb_battlefield"
+        },
+        "enemies": [
+          [
+            "fallen_angel_1",
+            2
+          ],
+          [
+            "god_herald_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "hb_fortress",
+        "name": "Fallen Fortress",
+        "description": "A fortress built by the fallen angels within the breach.",
+        "exits": {
+          "forward": "hb_throne",
+          "back": "hb_deep"
+        },
+        "enemies": [
+          [
+            "god_herald_1",
+            1
+          ],
+          [
+            "divine_sentinel_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "hb_throne",
+        "name": "Fallen Throne",
+        "description": "The throne of the fallen angel leader. Divine heralds siege the walls.",
+        "exits": {
+          "forward": "hb_boss",
+          "back": "hb_fortress"
+        },
+        "enemies": [
+          [
+            "fallen_angel_1",
+            1
+          ],
+          [
+            "god_herald_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_5",
+            3
+          ],
+          [
+            "mana_potion_5",
+            3
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "hb_boss",
+        "name": "The Breach Core",
+        "description": "The core of the breach. A god emerges from the tear to end this himself.",
+        "exits": {
+          "forward": null,
+          "back": "hb_throne"
+        },
+        "enemies": [
+          [
+            "the_god_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "throne_of_gods",
+    "name": "The Throne of Gods",
+    "description": "The seat of divine power. Every surface radiates with the energy of creation.",
+    "entry_room_id": "tg_entrance",
+    "rooms": [
+      {
+        "id": "tg_entrance",
+        "name": "Throne Approach",
+        "description": "The approach to the throne of gods. The ground shakes with divine power.",
+        "exits": {
+          "forward": "tg_hall",
+          "back": null
+        },
+        "enemies": [
+          [
+            "god_herald_1",
+            1
+          ],
+          [
+            "divine_sentinel_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "tg_hall",
+        "name": "Divine Hall",
+        "description": "The great hall of the throne. Divine sentinels line the walls.",
+        "exits": {
+          "forward": "tg_garden",
+          "back": "tg_entrance"
+        },
+        "enemies": [
+          [
+            "celestial_knight_1",
+            2
+          ],
+          [
+            "fallen_angel_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "tg_garden",
+        "name": "Garden of Gods",
+        "description": "A garden where divine flowers bloom. Everything here is perfect and eternal.",
+        "exits": {
+          "forward": "tg_library",
+          "back": "tg_hall"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_5",
+            3
+          ],
+          [
+            "mana_potion_5",
+            3
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "tg_library",
+        "name": "Divine Library",
+        "description": "A library containing the knowledge of creation itself. A divine scholar offers guidance.",
+        "exits": {
+          "forward": "tg_sanctum",
+          "back": "tg_garden"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "divine_scholar"
+      },
+      {
+        "id": "tg_sanctum",
+        "name": "Inner Sanctum",
+        "description": "The inner sanctum of the throne. God heralds stand in reverent silence.",
+        "exits": {
+          "forward": "tg_antechamber",
+          "back": "tg_library"
+        },
+        "enemies": [
+          [
+            "god_herald_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "tg_antechamber",
+        "name": "Throne Antechamber",
+        "description": "The antechamber before the throne itself. Fallen angels make a last desperate attack.",
+        "exits": {
+          "forward": "tg_throne",
+          "back": "tg_sanctum"
+        },
+        "enemies": [
+          [
+            "fallen_angel_1",
+            2
+          ],
+          [
+            "divine_sentinel_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "tg_throne",
+        "name": "Before The Throne",
+        "description": "You stand before the throne of gods. The light is blinding.",
+        "exits": {
+          "forward": "tg_boss",
+          "back": "tg_antechamber"
+        },
+        "enemies": [
+          [
+            "god_herald_1",
+            1
+          ],
+          [
+            "celestial_knight_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_5",
+            4
+          ],
+          [
+            "mana_potion_5",
+            3
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "tg_boss",
+        "name": "The Divine Throne",
+        "description": "The throne of creation itself. The God rises from the throne to face you.",
+        "exits": {
+          "forward": null,
+          "back": "tg_throne"
+        },
+        "enemies": [
+          [
+            "the_god_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "final_sanctum",
+    "name": "The Final Sanctum",
+    "description": "The last place in existence. Beyond here is nothing. The God waits.",
+    "entry_room_id": "fs_entrance",
+    "rooms": [
+      {
+        "id": "fs_entrance",
+        "name": "Sanctum Gates",
+        "description": "The gates of the final sanctum. Everything feels heavy with finality.",
+        "exits": {
+          "forward": "fs_path_1",
+          "back": null
+        },
+        "enemies": [
+          [
+            "divine_sentinel_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "fs_path_1",
+        "name": "Final Path",
+        "description": "The final path. Every step forward feels like the hardest thing you have ever done.",
+        "exits": {
+          "forward": "fs_gauntlet",
+          "back": "fs_entrance"
+        },
+        "enemies": [
+          [
+            "celestial_knight_1",
+            1
+          ],
+          [
+            "god_herald_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "fs_gauntlet",
+        "name": "The Gauntlet",
+        "description": "A brutal gauntlet of divine warriors. Only the worthy pass.",
+        "exits": {
+          "forward": "fs_rest",
+          "back": "fs_path_1"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_5",
+            4
+          ],
+          [
+            "mana_potion_5",
+            3
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "fs_rest",
+        "name": "Last Rest",
+        "description": "A small chamber of peace. A divine being offers you one last moment of calm.",
+        "exits": {
+          "forward": "fs_trial",
+          "back": "fs_gauntlet"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "divine_being"
+      },
+      {
+        "id": "fs_trial",
+        "name": "Trial Chamber",
+        "description": "A chamber of divine trials. God heralds attack in waves.",
+        "exits": {
+          "forward": "fs_deep",
+          "back": "fs_rest"
+        },
+        "enemies": [
+          [
+            "god_herald_1",
+            2
+          ],
+          [
+            "fallen_angel_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "fs_deep",
+        "name": "The Final Stretch",
+        "description": "Almost there. The divine energy is overwhelming.",
+        "exits": {
+          "forward": "fs_chamber",
+          "back": "fs_trial"
+        },
+        "enemies": [
+          [
+            "divine_sentinel_1",
+            1
+          ],
+          [
+            "celestial_knight_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "fs_chamber",
+        "name": "The Last Chamber",
+        "description": "The last chamber before the end. Everything you have done has led here.",
+        "exits": {
+          "forward": "fs_boss",
+          "back": "fs_deep"
+        },
+        "enemies": [
+          [
+            "god_herald_1",
+            1
+          ],
+          [
+            "fallen_angel_1",
+            2
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_5",
+            4
+          ],
+          [
+            "mana_potion_5",
+            4
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "fs_boss",
+        "name": "The End of All Things",
+        "description": "The very end of existence. The God stands before you in full divine form. This is the final battle.",
+        "exits": {
+          "forward": null,
+          "back": "fs_chamber"
+        },
+        "enemies": [
+          [
+            "the_god_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  }
+]

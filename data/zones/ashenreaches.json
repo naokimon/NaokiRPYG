@@ -1,0 +1,838 @@
+[
+  {
+    "id": "scorched_plains",
+    "name": "Scorched Plains",
+    "description": "A vast expanse of burned earth. Nothing grows here anymore.",
+    "entry_room_id": "sp_entrance",
+    "rooms": [
+      {
+        "id": "sp_entrance",
+        "name": "Plains Edge",
+        "description": "The edge of the scorched plains. The ground is black and cracked.",
+        "exits": {
+          "forward": "sp_path_1",
+          "back": null
+        },
+        "enemies": [
+          [
+            "fire_imp_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "sp_path_1",
+        "name": "Burned Road",
+        "description": "An old road now barely visible under the ash.",
+        "exits": {
+          "forward": "sp_clearing",
+          "back": "sp_entrance"
+        },
+        "enemies": [
+          [
+            "fire_imp_1",
+            1
+          ],
+          [
+            "lava_hound_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "sp_clearing",
+        "name": "Ash Clearing",
+        "description": "A wide clearing carpeted in grey ash. Old bones poke through the surface.",
+        "exits": {
+          "forward": "sp_camp",
+          "back": "sp_path_1"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_2",
+            2
+          ],
+          [
+            "mana_potion_2",
+            1
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "sp_camp",
+        "name": "Survivor's Camp",
+        "description": "A small camp of survivors eking out a living on the plains.",
+        "exits": {
+          "forward": "sp_ruins",
+          "back": "sp_clearing"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "survivor"
+      },
+      {
+        "id": "sp_ruins",
+        "name": "Scorched Ruins",
+        "description": "The ruins of a village burned to the ground.",
+        "exits": {
+          "forward": "sp_deep",
+          "back": "sp_camp"
+        },
+        "enemies": [
+          [
+            "fire_imp_2",
+            1
+          ],
+          [
+            "fire_imp_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "sp_deep",
+        "name": "Deep Plains",
+        "description": "The heart of the scorched plains. Heat rises from the ground.",
+        "exits": {
+          "forward": "sp_crater",
+          "back": "sp_ruins"
+        },
+        "enemies": [
+          [
+            "lava_hound_1",
+            1
+          ],
+          [
+            "ash_golem_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "sp_crater",
+        "name": "Impact Crater",
+        "description": "A massive crater filled with smoldering ash. Something lives in the center.",
+        "exits": {
+          "forward": "sp_boss",
+          "back": "sp_deep"
+        },
+        "enemies": [
+          [
+            "fire_imp_2",
+            1
+          ],
+          [
+            "lava_hound_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_2",
+            1
+          ],
+          [
+            "mana_potion_2",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "sp_boss",
+        "name": "The Burning Throne",
+        "description": "A throne of molten rock at the center of the crater. A fire drake circles overhead.",
+        "exits": {
+          "forward": null,
+          "back": "sp_crater"
+        },
+        "enemies": [
+          [
+            "fire_drake_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "ember_caves",
+    "name": "The Ember Caves",
+    "description": "A network of caves heated by underground lava flows. The walls glow red.",
+    "entry_room_id": "ec_entrance",
+    "rooms": [
+      {
+        "id": "ec_entrance",
+        "name": "Cave Mouth",
+        "description": "The entrance to the ember caves. Heat pours out from within.",
+        "exits": {
+          "forward": "ec_tunnel",
+          "back": null
+        },
+        "enemies": [
+          [
+            "fire_imp_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ec_tunnel",
+        "name": "Ember Tunnel",
+        "description": "A tunnel lit by glowing veins of lava in the walls.",
+        "exits": {
+          "forward": "ec_pool",
+          "back": "ec_entrance"
+        },
+        "enemies": [
+          [
+            "lava_hound_1",
+            1
+          ],
+          [
+            "fire_imp_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ec_pool",
+        "name": "Lava Pool Chamber",
+        "description": "A large chamber with a pool of lava in the center. Items sit on a rock island.",
+        "exits": {
+          "forward": "ec_shrine",
+          "back": "ec_tunnel"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_2",
+            2
+          ],
+          [
+            "mana_potion_2",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "ec_shrine",
+        "name": "Imp Shrine",
+        "description": "A shrine carved by imps into the cave wall. An imp elder stands guard.",
+        "exits": {
+          "forward": "ec_deep",
+          "back": "ec_pool"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "imp_elder"
+      },
+      {
+        "id": "ec_deep",
+        "name": "Deep Ember Caves",
+        "description": "The deeper caves. The heat is almost unbearable.",
+        "exits": {
+          "forward": "ec_forge",
+          "back": "ec_shrine"
+        },
+        "enemies": [
+          [
+            "fire_imp_2",
+            1
+          ],
+          [
+            "ash_golem_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ec_forge",
+        "name": "Ancient Forge",
+        "description": "An ancient forge still burning after thousands of years.",
+        "exits": {
+          "forward": "ec_lair",
+          "back": "ec_deep"
+        },
+        "enemies": [
+          [
+            "ash_golem_1",
+            1
+          ],
+          [
+            "lava_hound_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "ec_lair",
+        "name": "Drake Lair",
+        "description": "The lair of the fire drake. Bones and ash cover the floor.",
+        "exits": {
+          "forward": "ec_boss",
+          "back": "ec_forge"
+        },
+        "enemies": [
+          [
+            "fire_imp_2",
+            2
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_2",
+            2
+          ],
+          [
+            "mana_potion_2",
+            1
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "ec_boss",
+        "name": "The Ember Throne",
+        "description": "Deep in the caves sits a throne of hardened lava. The Drake Queen awaits.",
+        "exits": {
+          "forward": null,
+          "back": "ec_lair"
+        },
+        "enemies": [
+          [
+            "fire_drake_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "ruined_citadel",
+    "name": "Ruined Citadel",
+    "description": "The remains of a great citadel, burned to the ground by drakes centuries ago.",
+    "entry_room_id": "rc_entrance",
+    "rooms": [
+      {
+        "id": "rc_entrance",
+        "name": "Citadel Gates",
+        "description": "The melted gates of the old citadel. Scorch marks cover every surface.",
+        "exits": {
+          "forward": "rc_courtyard",
+          "back": null
+        },
+        "enemies": [
+          [
+            "fire_imp_1",
+            1
+          ],
+          [
+            "ash_golem_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "rc_courtyard",
+        "name": "Ruined Courtyard",
+        "description": "The old courtyard. Imps have made their nests among the rubble.",
+        "exits": {
+          "forward": "rc_hall",
+          "back": "rc_entrance"
+        },
+        "enemies": [
+          [
+            "fire_imp_2",
+            1
+          ],
+          [
+            "lava_hound_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "rc_hall",
+        "name": "Great Hall",
+        "description": "The great hall of the citadel. The ceiling has collapsed in several places.",
+        "exits": {
+          "forward": "rc_library",
+          "back": "rc_courtyard"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_2",
+            2
+          ],
+          [
+            "mana_potion_2",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "rc_library",
+        "name": "Ruined Library",
+        "description": "The citadel library. Most books have burned but a scholar still studies here.",
+        "exits": {
+          "forward": "rc_dungeon",
+          "back": "rc_hall"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "scholar"
+      },
+      {
+        "id": "rc_dungeon",
+        "name": "Citadel Dungeon",
+        "description": "The dungeon beneath the citadel. Ash golems patrol the corridors.",
+        "exits": {
+          "forward": "rc_deep",
+          "back": "rc_library"
+        },
+        "enemies": [
+          [
+            "ash_golem_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "rc_deep",
+        "name": "Undercroft",
+        "description": "The ancient undercroft of the citadel. Lava seeps through the walls.",
+        "exits": {
+          "forward": "rc_throne",
+          "back": "rc_dungeon"
+        },
+        "enemies": [
+          [
+            "fire_imp_2",
+            1
+          ],
+          [
+            "ash_golem_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "rc_throne",
+        "name": "Throne Room",
+        "description": "The old throne room. A massive drake has made its nest on the throne.",
+        "exits": {
+          "forward": "rc_boss",
+          "back": "rc_deep"
+        },
+        "enemies": [
+          [
+            "fire_imp_2",
+            1
+          ],
+          [
+            "lava_hound_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_2",
+            3
+          ],
+          [
+            "mana_potion_2",
+            1
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "rc_boss",
+        "name": "The Citadel Heart",
+        "description": "The very heart of the citadel. A fire drake of immense size guards a glowing artifact.",
+        "exits": {
+          "forward": null,
+          "back": "rc_throne"
+        },
+        "enemies": [
+          [
+            "fire_drake_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "volcanic_foothills",
+    "name": "Volcanic Foothills",
+    "description": "The lower slopes of an active volcano. Lava flows cut across the paths.",
+    "entry_room_id": "vf_entrance",
+    "rooms": [
+      {
+        "id": "vf_entrance",
+        "name": "Foothills Base",
+        "description": "The base of the volcanic foothills. The ground shakes occasionally.",
+        "exits": {
+          "forward": "vf_path_1",
+          "back": null
+        },
+        "enemies": [
+          [
+            "lava_hound_1",
+            1
+          ],
+          [
+            "fire_imp_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "vf_path_1",
+        "name": "Lava Trail",
+        "description": "A narrow trail winding between lava flows.",
+        "exits": {
+          "forward": "vf_cave",
+          "back": "vf_entrance"
+        },
+        "enemies": [
+          [
+            "ash_golem_1",
+            1
+          ],
+          [
+            "lava_hound_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "vf_cave",
+        "name": "Cooled Lava Cave",
+        "description": "A cave formed from cooled lava. Surprisingly safe from the heat outside.",
+        "exits": {
+          "forward": "vf_camp",
+          "back": "vf_path_1"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_2",
+            2
+          ],
+          [
+            "mana_potion_2",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "vf_camp",
+        "name": "Miner's Camp",
+        "description": "An abandoned miner's camp. A lone survivor still picks through the rubble.",
+        "exits": {
+          "forward": "vf_upper",
+          "back": "vf_cave"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "miner"
+      },
+      {
+        "id": "vf_upper",
+        "name": "Upper Foothills",
+        "description": "The upper foothills. The volcano looms overhead.",
+        "exits": {
+          "forward": "vf_crater",
+          "back": "vf_camp"
+        },
+        "enemies": [
+          [
+            "fire_imp_2",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "vf_crater",
+        "name": "Crater Rim",
+        "description": "The rim of the volcano crater. Lava spits up from below.",
+        "exits": {
+          "forward": "vf_deep",
+          "back": "vf_upper"
+        },
+        "enemies": [
+          [
+            "fire_drake_1",
+            1
+          ],
+          [
+            "ash_golem_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "vf_deep",
+        "name": "Volcanic Vents",
+        "description": "A series of volcanic vents. Poisonous gas seeps from the ground.",
+        "exits": {
+          "forward": "vf_boss",
+          "back": "vf_crater"
+        },
+        "enemies": [
+          [
+            "lava_hound_1",
+            2
+          ],
+          [
+            "fire_imp_2",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_2",
+            2
+          ],
+          [
+            "mana_potion_2",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "vf_boss",
+        "name": "The Volcano's Heart",
+        "description": "A chamber inside the volcano itself. An ancient fire drake sleeps on a bed of gold.",
+        "exits": {
+          "forward": null,
+          "back": "vf_deep"
+        },
+        "enemies": [
+          [
+            "fire_drake_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  },
+  {
+    "id": "lava_flats",
+    "name": "The Lava Flats",
+    "description": "A vast flat expanse of hardened lava. Pockets of molten rock bubble beneath.",
+    "entry_room_id": "lf_entrance",
+    "rooms": [
+      {
+        "id": "lf_entrance",
+        "name": "Flats Edge",
+        "description": "The edge of the lava flats. The ground is jet black and glass-smooth.",
+        "exits": {
+          "forward": "lf_path_1",
+          "back": null
+        },
+        "enemies": [
+          [
+            "ash_golem_1",
+            1
+          ],
+          [
+            "fire_imp_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "lf_path_1",
+        "name": "Glass Road",
+        "description": "A road of black volcanic glass cutting across the flats.",
+        "exits": {
+          "forward": "lf_oasis",
+          "back": "lf_entrance"
+        },
+        "enemies": [
+          [
+            "lava_hound_1",
+            2
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "lf_oasis",
+        "name": "Stone Oasis",
+        "description": "A raised platform of cooled lava providing shelter from the heat.",
+        "exits": {
+          "forward": "lf_tower",
+          "back": "lf_path_1"
+        },
+        "enemies": [],
+        "items": [
+          [
+            "health_potion_2",
+            3
+          ],
+          [
+            "mana_potion_2",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "lf_tower",
+        "name": "Obsidian Tower",
+        "description": "A tower made entirely of obsidian. A fire mage has taken residence.",
+        "exits": {
+          "forward": "lf_deep",
+          "back": "lf_oasis"
+        },
+        "enemies": [],
+        "items": [],
+        "npc": "fire_mage"
+      },
+      {
+        "id": "lf_deep",
+        "name": "Deep Flats",
+        "description": "The center of the lava flats. The ground glows faintly from heat below.",
+        "exits": {
+          "forward": "lf_lair",
+          "back": "lf_tower"
+        },
+        "enemies": [
+          [
+            "fire_drake_1",
+            1
+          ],
+          [
+            "fire_imp_2",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "lf_lair",
+        "name": "Drake Nesting Ground",
+        "description": "A massive area where fire drakes nest. Eggs litter the ground.",
+        "exits": {
+          "forward": "lf_throne",
+          "back": "lf_deep"
+        },
+        "enemies": [
+          [
+            "ash_golem_1",
+            1
+          ],
+          [
+            "lava_hound_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      },
+      {
+        "id": "lf_throne",
+        "name": "The Molten Throne",
+        "description": "A throne of pure magma. The Drake King paces before it.",
+        "exits": {
+          "forward": "lf_boss",
+          "back": "lf_lair"
+        },
+        "enemies": [
+          [
+            "fire_imp_2",
+            2
+          ],
+          [
+            "ash_golem_1",
+            1
+          ]
+        ],
+        "items": [
+          [
+            "health_potion_2",
+            2
+          ],
+          [
+            "mana_potion_2",
+            2
+          ]
+        ],
+        "npc": null
+      },
+      {
+        "id": "lf_boss",
+        "name": "The Magma Core",
+        "description": "The very core of the lava flats. The ground is barely solid. The Drake King attacks.",
+        "exits": {
+          "forward": null,
+          "back": "lf_throne"
+        },
+        "enemies": [
+          [
+            "fire_drake_1",
+            1
+          ]
+        ],
+        "items": [],
+        "npc": null
+      }
+    ]
+  }
+]
