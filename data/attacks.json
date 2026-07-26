@@ -138,5 +138,439 @@
     "damage": 45,
     "cost": 18,
     "accuracy": 0.65
+  },
+  "ember_spit": {
+    "id": "ember_spit",
+    "name": "Ember Spit",
+    "damage": 22,
+    "cost": 8,
+    "accuracy": 0.90
+  },
+  "flame_claw": {
+    "id": "flame_claw",
+    "name": "Flame Claw",
+    "damage": 28,
+    "cost": 0,
+    "accuracy": 0.85
+  },
+  "flame_bolt": {
+    "id": "flame_bolt",
+    "name": "Flame Bolt",
+    "damage": 30,
+    "cost": 15,
+    "accuracy": 0.90
+  },
+  "fire_burst": {
+    "id": "fire_burst",
+    "name": "Fire Burst",
+    "damage": 38,
+    "cost": 20,
+    "accuracy": 0.80
+  },
+  "infernal_wave": {
+    "id": "infernal_wave",
+    "name": "Infernal Wave",
+    "damage": 48,
+    "cost": 28,
+    "accuracy": 0.70
+  },
+  "molten_bite": {
+    "id": "molten_bite",
+    "name": "Molten Bite",
+    "damage": 32,
+    "cost": 0,
+    "accuracy": 0.85
+  },
+  "lava_lunge": {
+    "id": "lava_lunge",
+    "name": "Lava Lunge",
+    "damage": 38,
+    "cost": 0,
+    "accuracy": 0.80
+  },
+  "fire_breath": {
+    "id": "fire_breath",
+    "name": "Fire Breath",
+    "damage": 45,
+    "cost": 20,
+    "accuracy": 0.75
+  },
+  "stone_slam": {
+    "id": "stone_slam",
+    "name": "Stone Slam",
+    "damage": 35,
+    "cost": 0,
+    "accuracy": 0.85
+  },
+  "ash_wave": {
+    "id": "ash_wave",
+    "name": "Ash Wave",
+    "damage": 28,
+    "cost": 0,
+    "accuracy": 0.90
+  },
+  "ground_smash": {
+    "id": "ground_smash",
+    "name": "Ground Smash",
+    "damage": 50,
+    "cost": 0,
+    "accuracy": 0.70
+  },
+  "dragon_bite": {
+    "id": "dragon_bite",
+    "name": "Dragon Bite",
+    "damage": 55,
+    "cost": 0,
+    "accuracy": 0.85
+  },
+  "tail_sweep": {
+    "id": "tail_sweep",
+    "name": "Tail Sweep",
+    "damage": 45,
+    "cost": 0,
+    "accuracy": 0.80
+  },
+  "inferno_roar": {
+    "id": "inferno_roar",
+    "name": "Inferno Roar",
+    "damage": 65,
+    "cost": 30,
+    "accuracy": 0.70
+  },
+  "ice_bolt": {
+    "id": "ice_bolt",
+    "name": "Ice Bolt",
+    "damage": 40,
+    "cost": 15,
+    "accuracy": 0.90
+  },
+  "frost_touch": {
+    "id": "frost_touch",
+    "name": "Frost Touch",
+    "damage": 32,
+    "cost": 0,
+    "accuracy": 0.95
+  },
+  "blizzard_breath": {
+    "id": "blizzard_breath",
+    "name": "Blizzard Breath",
+    "damage": 58,
+    "cost": 25,
+    "accuracy": 0.75
+  },
+  "frozen_slam": {
+    "id": "frozen_slam",
+    "name": "Frozen Slam",
+    "damage": 50,
+    "cost": 0,
+    "accuracy": 0.85
+  },
+  "ice_crush": {
+    "id": "ice_crush",
+    "name": "Ice Crush",
+    "damage": 60,
+    "cost": 0,
+    "accuracy": 0.80
+  },
+  "troll_roar": {
+    "id": "troll_roar",
+    "name": "Troll Roar",
+    "damage": 35,
+    "cost": 0,
+    "accuracy": 0.90
+  },
+  "ice_claw": {
+    "id": "ice_claw",
+    "name": "Ice Claw",
+    "damage": 38,
+    "cost": 0,
+    "accuracy": 0.90
+  },
+  "pounce": {
+    "id": "pounce",
+    "name": "Pounce",
+    "damage": 45,
+    "cost": 0,
+    "accuracy": 0.85
+  },
+  "frost_bite": {
+    "id": "frost_bite",
+    "name": "Frost Bite",
+    "damage": 52,
+    "cost": 15,
+    "accuracy": 0.80
+  },
+  "glacier_slam": {
+    "id": "glacier_slam",
+    "name": "Glacier Slam",
+    "damage": 65,
+    "cost": 0,
+    "accuracy": 0.80
+  },
+  "ice_wave": {
+    "id": "ice_wave",
+    "name": "Ice Wave",
+    "damage": 48,
+    "cost": 0,
+    "accuracy": 0.85
+  },
+  "frozen_fist": {
+    "id": "frozen_fist",
+    "name": "Frozen Fist",
+    "damage": 72,
+    "cost": 0,
+    "accuracy": 0.75
+  },
+  "frost_fang": {
+    "id": "frost_fang",
+    "name": "Frost Fang",
+    "damage": 68,
+    "cost": 0,
+    "accuracy": 0.85
+  },
+  "ice_storm": {
+    "id": "ice_storm",
+    "name": "Ice Storm",
+    "damage": 80,
+    "cost": 35,
+    "accuracy": 0.70
+  },
+  "frozen_roar": {
+    "id": "frozen_roar",
+    "name": "Frozen Roar",
+    "damage": 90,
+    "cost": 40,
+    "accuracy": 0.65
+  },
+  "shadow_bolt": {
+    "id": "shadow_bolt",
+    "name": "Shadow Bolt",
+    "damage": 65,
+    "cost": 20,
+    "accuracy": 0.90
+  },
+  "void_claw": {
+    "id": "void_claw",
+    "name": "Void Claw",
+    "damage": 58,
+    "cost": 0,
+    "accuracy": 0.90
+  },
+  "dark_pulse_2": {
+    "id": "dark_pulse_2",
+    "name": "Dark Pulse",
+    "damage": 75,
+    "cost": 28,
+    "accuracy": 0.80
+  },
+  "void_strike": {
+    "id": "void_strike",
+    "name": "Void Strike",
+    "damage": 70,
+    "cost": 0,
+    "accuracy": 0.88
+  },
+  "shadow_step_2": {
+    "id": "shadow_step_2",
+    "name": "Shadow Step",
+    "damage": 80,
+    "cost": 15,
+    "accuracy": 0.90
+  },
+  "darkness_bite": {
+    "id": "darkness_bite",
+    "name": "Darkness Bite",
+    "damage": 72,
+    "cost": 0,
+    "accuracy": 0.85
+  },
+  "cursed_slash": {
+    "id": "cursed_slash",
+    "name": "Cursed Slash",
+    "damage": 78,
+    "cost": 0,
+    "accuracy": 0.85
+  },
+  "dark_shield_bash": {
+    "id": "dark_shield_bash",
+    "name": "Dark Shield Bash",
+    "damage": 65,
+    "cost": 0,
+    "accuracy": 0.90
+  },
+  "soul_rend": {
+    "id": "soul_rend",
+    "name": "Soul Rend",
+    "damage": 95,
+    "cost": 25,
+    "accuracy": 0.75
+  },
+  "void_bolt": {
+    "id": "void_bolt",
+    "name": "Void Bolt",
+    "damage": 70,
+    "cost": 25,
+    "accuracy": 0.90
+  },
+  "abyssal_burst": {
+    "id": "abyssal_burst",
+    "name": "Abyssal Burst",
+    "damage": 88,
+    "cost": 35,
+    "accuracy": 0.80
+  },
+  "soul_drain_2": {
+    "id": "soul_drain_2",
+    "name": "Soul Drain",
+    "damage": 78,
+    "cost": 30,
+    "accuracy": 0.85
+  },
+  "shadow_devastation": {
+    "id": "shadow_devastation",
+    "name": "Shadow Devastation",
+    "damage": 110,
+    "cost": 40,
+    "accuracy": 0.80
+  },
+  "void_eruption": {
+    "id": "void_eruption",
+    "name": "Void Eruption",
+    "damage": 125,
+    "cost": 50,
+    "accuracy": 0.72
+  },
+  "dark_nova": {
+    "id": "dark_nova",
+    "name": "Dark Nova",
+    "damage": 140,
+    "cost": 60,
+    "accuracy": 0.65
+  },
+  "soul_consume": {
+    "id": "soul_consume",
+    "name": "Soul Consume",
+    "damage": 160,
+    "cost": 70,
+    "accuracy": 0.60
+  },
+  "divine_slash": {
+    "id": "divine_slash",
+    "name": "Divine Slash",
+    "damage": 110,
+    "cost": 0,
+    "accuracy": 0.90
+  },
+  "heavens_strike": {
+    "id": "heavens_strike",
+    "name": "Heaven's Strike",
+    "damage": 125,
+    "cost": 20,
+    "accuracy": 0.85
+  },
+  "celestial_bash": {
+    "id": "celestial_bash",
+    "name": "Celestial Bash",
+    "damage": 100,
+    "cost": 0,
+    "accuracy": 0.90
+  },
+  "sentinel_strike": {
+    "id": "sentinel_strike",
+    "name": "Sentinel Strike",
+    "damage": 115,
+    "cost": 0,
+    "accuracy": 0.88
+  },
+  "holy_bash": {
+    "id": "holy_bash",
+    "name": "Holy Bash",
+    "damage": 105,
+    "cost": 0,
+    "accuracy": 0.90
+  },
+  "divine_guard": {
+    "id": "divine_guard",
+    "name": "Divine Guard",
+    "damage": 130,
+    "cost": 25,
+    "accuracy": 0.82
+  },
+  "fallen_bolt": {
+    "id": "fallen_bolt",
+    "name": "Fallen Bolt",
+    "damage": 120,
+    "cost": 30,
+    "accuracy": 0.88
+  },
+  "wing_slash": {
+    "id": "wing_slash",
+    "name": "Wing Slash",
+    "damage": 108,
+    "cost": 0,
+    "accuracy": 0.90
+  },
+  "divine_corruption": {
+    "id": "divine_corruption",
+    "name": "Divine Corruption",
+    "damage": 140,
+    "cost": 40,
+    "accuracy": 0.78
+  },
+  "herald_strike": {
+    "id": "herald_strike",
+    "name": "Herald Strike",
+    "damage": 130,
+    "cost": 0,
+    "accuracy": 0.88
+  },
+  "divine_wave": {
+    "id": "divine_wave",
+    "name": "Divine Wave",
+    "damage": 145,
+    "cost": 35,
+    "accuracy": 0.82
+  },
+  "gods_wrath": {
+    "id": "gods_wrath",
+    "name": "God's Wrath",
+    "damage": 160,
+    "cost": 50,
+    "accuracy": 0.75
+  },
+  "celestial_nova": {
+    "id": "celestial_nova",
+    "name": "Celestial Nova",
+    "damage": 180,
+    "cost": 60,
+    "accuracy": 0.68
+  },
+  "gods_judgment": {
+    "id": "gods_judgment",
+    "name": "God's Judgment",
+    "damage": 200,
+    "cost": 0,
+    "accuracy": 0.88
+  },
+  "divine_annihilation": {
+    "id": "divine_annihilation",
+    "name": "Divine Annihilation",
+    "damage": 240,
+    "cost": 80,
+    "accuracy": 0.75
+  },
+  "celestial_erasure": {
+    "id": "celestial_erasure",
+    "name": "Celestial Erasure",
+    "damage": 280,
+    "cost": 100,
+    "accuracy": 0.65
+  },
+  "realm_shatter": {
+    "id": "realm_shatter",
+    "name": "Realm Shatter",
+    "damage": 350,
+    "cost": 120,
+    "accuracy": 0.55
   }
 }
