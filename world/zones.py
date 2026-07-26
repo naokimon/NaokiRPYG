@@ -5,6 +5,7 @@ import random
 from world.rooms import Room
 from items.consumables import load_consum
 from entities.enemy import Enemy
+from utils import yn, dia_input
 
 root: Path = Path(__file__).parent.parent
 
@@ -27,7 +28,7 @@ class Zone:
             Zone.zone_count = 1
 
     @classmethod
-    def create_zone(cls, player: Player):
+    def create_zone(cls):
         zones: list[str] = [
             "verdantwilds.json",
             "ashenreaches.json",
@@ -78,7 +79,12 @@ class Zone:
     def move_forward(self):
         next_room_id: str = self.current_room.exits["forward"]
         if next_room_id is None:
-            return f"~ Are you ready to leave..?"
+            if yn("~ Are you ready to leave?"):
+                print(f"~ You moved on to the next zone...")
+                dia_input()
+                return None
+            else:
+                return f"~ You decided to remain in {self.name}."
         else:
             self.current_room: Room = Room.load(next_room_id, self.zone_data["rooms"])
             return f"~ You moved forward towards {self.current_room.name}"
