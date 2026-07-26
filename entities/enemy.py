@@ -30,7 +30,7 @@ class Enemy:
 
     @classmethod
     def load(cls, eid: str):
-        enemy_file = eid.split("_", 1)[0] + ".json"
+        enemy_file = eid.rsplit("_", 1)[0] + ".json"
         enemies_path: Path = root / "data" / "enemies" / enemy_file
         with open(enemies_path) as f:
             enemy_json: dict = json.load(f)
