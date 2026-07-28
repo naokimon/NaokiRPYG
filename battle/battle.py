@@ -61,7 +61,8 @@ class Battle:
                         continue
                     else:
                         self.target.take_damage(damage)
-                        print(f"~ {player.name} dealt {damage} damage to {self.target.name}!")
+                        display_dmg = damage - (damage * self.target.defense)
+                        print(f"~ {player.name} dealt {display_dmg} damage to {self.target.name}!")
                         if self.target.dead:
                             alive = [e for e in self.enemies if not e.dead]
                             if alive:
