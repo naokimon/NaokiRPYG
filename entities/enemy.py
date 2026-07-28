@@ -13,13 +13,14 @@ def load_attacks() -> dict:
     with open(attack_path) as f:
         return json.load(f)
 
-def load(id: str):
+def load_enemy(id: str):
     is_boss: bool = False
     if "boss" in id:
         is_boss = True
 
     if is_boss:
-        boss_file = id.rsplit("_", 1)[0] + ".json"
+        boss_file = id.rsplit("_", 1)[0]
+        boss_file = boss_file.split("_", 1)[1] + ".json"
         boss_path: Path = root / "data" / "boss" / boss_file
         with open(boss_path) as f:
             boss_json: dict = json.load(f)
@@ -53,6 +54,7 @@ class Enemy:
         self.drops: dict = data["drops"]
         self.dead: bool = False
         self.debuffs: dict[str, dict] = {}
+        self.defense: float = 0
 
     def display_enemy(self):
         debuff_str: str = ""
@@ -142,20 +144,48 @@ class Enemy:
 class WolfBoss(Enemy):
     def __init__(self, data: dict):
         super().__init__(data)
-        self.attack_data: list[dict] = self.load_atk_data()
+        self.defense: float = data["defense"]
+        self.attack_list: list[str] = ["alpha_bite", "savage_howl", "rending_claws"]
+        self.charge_attack: str = "feral_lunge"
         self.charging: bool = False
+        self.phase_2: bool = False
 
-    def load_atk_data(self) -> list[dict]:
-        atk_data: list[dict] = []
+    def choose_attack(self, data: dict):
+        if self.hp / self.max_hp > 0.75:
+            atk_id: str = random.choice(self.attack_list)
+            return atk_id
+        else:
+            if not self.phase_2:
+                self.phase_2 = True
+                self.attack_list.append(self.charge_attack)
+                return self.charge_attack
+            else:
+                atk_id: str = random.choice(self.attack_list)
+                return atk_id
 
-        attack_path: Path = root / "data" / "attacks.json"
-        with open(attack_path) as f:
-            attack_data = json.load(f)
+    def attack(self, player: Player):
+        data = load_attacks()
+        if not self.charging:
+            atk_id: str = self.choose_attack(data)
+            if atk_id == self.charge_attack:
+                self.charging = True
+                print(f"~ {self.name} poises for a strong lunge!")
+            else:
+                if "dazed" in self.debuffs:
+                    print(f"~ {self.name} fought through the daze!")
 
-        for atk_id in self.attacks:
-            atk_data.append(attack_data[atk_id])
+                atk_data = data[atk_id]
 
-        return atk_data
+                attack: Attack = Attack(atk_data)
+                attack.execute(self, player)
+        else:
+            atk_data = data[self.charge_attack]
 
-    def choose_attack(self, data: dict) -> str:
-        pass
+            attack: Attack = Attack(atk_data)
+            attack.execute(self, player)
+
+    def take_damage(self, amount: int):
+        amount = int(amount - (amount * self.defense))
+        self.hp = max(0, self.hp - amount)
+        if self.hp == 0:
+            self.dead = True
