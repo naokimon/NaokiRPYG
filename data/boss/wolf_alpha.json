@@ -2,7 +2,7 @@
   "boss_wolf_alpha_1": {
     "id": "wolf_alpha_1",
     "name": "Alpha Wolf",
-    "hp": 200,
+    "hp": 225,
     "mp": 30,
     "weakness": "fire",
     "exp_reward": 250,
@@ -24,6 +24,7 @@
       "feral_lunge",
       "savage_howl",
       "rending_claws"
-    ]
+    ],
+    "defense": 0.3
   }
 }
