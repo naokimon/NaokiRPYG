@@ -1,6 +1,6 @@
 import sys
 from battle.battle import Battle
-from entities.enemy import Enemy
+from entities.enemy import Enemy, load_enemy
 from utils import cls, pinput, seperator, dia_input
 from entities.player import Player
 from world.zones import Zone
@@ -74,17 +74,17 @@ class Game:
                 zone = self.current_zone
 
                 match command:
-                    case "forward":
+                    case "forward" | "f":
                         message = zone.move_forward()
                         if message is None:
                             break
-                    case "back":
+                    case "back" | "b":
                         message = zone.move_back()
                     case "inventory" | "inv":
                         self.player.show_inventory()
                     case "stats" | "stat":
                         self.player.show_stats()
-                    case "battle" | "b":
+                    case "battle":
                         if not zone.current_room.room_id in zone.cleared_rooms:
                             if len(self.current_zone.current_room.enemies) == 0:
                                 print("~ There are no enemies in this room.")
@@ -97,10 +97,10 @@ class Game:
                                 enemy_amount: int = enemy[1]
                                 if enemy_amount > 1:
                                     for e in range(enemy_amount):
-                                        enemy_obj: Enemy = Enemy.load(enemy_id)
+                                        enemy_obj = load_enemy(enemy_id)
                                         enemy_list.append(enemy_obj)
                                 else:
-                                    enemy_obj: Enemy = Enemy.load(enemy_id)
+                                    enemy_obj = load_enemy(enemy_id)
                                     enemy_list.append(enemy_obj)
                             battle: Battle = Battle(self.player, enemy_list)
                             if not battle.battle():
