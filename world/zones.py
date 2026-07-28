@@ -4,7 +4,7 @@ from entities.player import Player
 import random
 from world.rooms import Room
 from items.consumables import load_consum
-from entities.enemy import Enemy
+from entities.enemy import Enemy, load_enemy
 from utils import yn, dia_input
 
 root: Path = Path(__file__).parent.parent
@@ -59,7 +59,7 @@ class Zone:
 
         if not self.current_room.room_id in self.cleared_rooms:
             if self.current_room.enemies:
-                enemies_str = ", ".join(f"{count}x {Enemy.load(eid).name}" for eid, count in self.current_room.enemies)
+                enemies_str = ", ".join(f"{count}x {load_enemy(eid).name}" for eid, count in self.current_room.enemies)
                 print(enemies_str)
         else:
             print("Room has been cleared!")
