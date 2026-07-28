@@ -13,6 +13,32 @@ def load_attacks() -> dict:
     with open(attack_path) as f:
         return json.load(f)
 
+def load(id: str):
+    is_boss: bool = False
+    if "boss" in id:
+        is_boss = True
+
+    if is_boss:
+        boss_file = id.rsplit("_", 1)[0] + ".json"
+        boss_path: Path = root / "data" / "boss" / boss_file
+        with open(boss_path) as f:
+            boss_json: dict = json.load(f)
+        if boss_json.get(id):
+            match id:
+                case "boss_wolf_alpha_1":
+                    return WolfBoss(boss_json[id])
+        else:
+            raise ValueError(f"Unknown boss ID: {id}")
+    else:
+        enemy_file = id.rsplit("_", 1)[0] + ".json"
+        enemies_path: Path = root / "data" / "enemies" / enemy_file
+        with open(enemies_path) as f:
+            enemy_json: dict = json.load(f)
+        if enemy_json.get(id):
+            return Enemy(enemy_json[id])
+        else:
+            raise ValueError(f"Unknown enemy ID: {id}")
+
 class Enemy:
     def __init__(self, data: dict):
         self.eid: str = data["id"]
@@ -27,17 +53,6 @@ class Enemy:
         self.drops: dict = data["drops"]
         self.dead: bool = False
         self.debuffs: dict[str, dict] = {}
-
-    @classmethod
-    def load(cls, eid: str):
-        enemy_file = eid.rsplit("_", 1)[0] + ".json"
-        enemies_path: Path = root / "data" / "enemies" / enemy_file
-        with open(enemies_path) as f:
-            enemy_json: dict = json.load(f)
-        if enemy_json.get(eid):
-            return cls(enemy_json[eid])
-        else:
-            raise ValueError(f"Unknown enemy ID: {eid}")
 
     def display_enemy(self):
         debuff_str: str = ""
@@ -123,3 +138,24 @@ class Enemy:
                                 key_inv[drop["id"]] = key_inv.get(drop["id"], 0) + 1 # add key item to list later
             x += 1
         return drops_rewarded
+
+class WolfBoss(Enemy):
+    def __init__(self, data: dict):
+        super().__init__(data)
+        self.attack_data: list[dict] = self.load_atk_data()
+        self.charging: bool = False
+
+    def load_atk_data(self) -> list[dict]:
+        atk_data: list[dict] = []
+
+        attack_path: Path = root / "data" / "attacks.json"
+        with open(attack_path) as f:
+            attack_data = json.load(f)
+
+        for atk_id in self.attacks:
+            atk_data.append(attack_data[atk_id])
+
+        return atk_data
+
+    def choose_attack(self, data: dict) -> str:
+        pass
