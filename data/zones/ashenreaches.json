@@ -158,7 +158,7 @@
         },
         "enemies": [
           [
-            "fire_drake_1",
+            "boss_fire_drake_1",
             1
           ]
         ],
@@ -322,7 +322,7 @@
         },
         "enemies": [
           [
-            "fire_drake_1",
+            "boss_fire_drake_1",
             1
           ]
         ],
@@ -490,7 +490,7 @@
         },
         "enemies": [
           [
-            "fire_drake_1",
+            "boss_fire_drake_1",
             1
           ]
         ],
@@ -607,7 +607,7 @@
         },
         "enemies": [
           [
-            "fire_drake_1",
+            "boss_fire_drake_1",
             1
           ],
           [
@@ -658,7 +658,7 @@
         },
         "enemies": [
           [
-            "fire_drake_1",
+            "boss_fire_drake_1",
             1
           ]
         ],
@@ -754,7 +754,7 @@
         },
         "enemies": [
           [
-            "fire_drake_1",
+            "boss_fire_drake_1",
             1
           ],
           [
@@ -826,7 +826,7 @@
         },
         "enemies": [
           [
-            "fire_drake_1",
+            "boss_fire_drake_1",
             1
           ]
         ],

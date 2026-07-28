@@ -154,7 +154,7 @@
         },
         "enemies": [
           [
-            "blizzard_drake_1",
+            "boss_blizzard_drake_1",
             1
           ]
         ],
@@ -318,7 +318,7 @@
         },
         "enemies": [
           [
-            "blizzard_drake_1",
+            "boss_blizzard_drake_1",
             1
           ]
         ],
@@ -486,7 +486,7 @@
         },
         "enemies": [
           [
-            "blizzard_drake_1",
+            "boss_blizzard_drake_1",
             1
           ]
         ],
@@ -650,7 +650,7 @@
         },
         "enemies": [
           [
-            "blizzard_drake_1",
+            "boss_blizzard_drake_1",
             1
           ]
         ],
@@ -750,7 +750,7 @@
         },
         "enemies": [
           [
-            "blizzard_drake_1",
+            "boss_blizzard_drake_1",
             1
           ],
           [
@@ -818,7 +818,7 @@
         },
         "enemies": [
           [
-            "blizzard_drake_1",
+            "boss_blizzard_drake_1",
             1
           ]
         ],
