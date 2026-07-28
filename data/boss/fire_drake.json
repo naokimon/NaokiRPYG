@@ -1,0 +1,29 @@
+{
+  "boss_fire_drake_1": {
+    "id": "fire_drake_1",
+    "name": "Fire Drake",
+    "hp": 350,
+    "mp": 50,
+    "weakness": "ice",
+    "exp_reward": 500,
+    "drops": {
+      "consum": [
+        {
+          "id": "health_potion_2",
+          "chance": 0.60
+        },
+        {
+          "id": "mana_potion_2",
+          "chance": 0.50
+        }
+      ],
+      "equip": []
+    },
+    "attacks": [
+      "dragon_bite",
+      "fire_breath",
+      "tail_sweep",
+      "inferno_roar"
+    ]
+  }
+}
