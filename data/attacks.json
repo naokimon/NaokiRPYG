@@ -123,7 +123,7 @@
     "name": "Feral Lunge",
     "damage": 35,
     "cost": 0,
-    "accuracy": 0.75
+    "accuracy": 1
   },
   "savage_howl": {
     "id": "savage_howl",
