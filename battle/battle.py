@@ -60,9 +60,8 @@ class Battle:
                         message = f"~ {self.target.name} is already dead!"
                         continue
                     else:
-                        self.target.take_damage(damage)
-                        display_dmg = damage - (damage * self.target.defense)
-                        print(f"~ {player.name} dealt {display_dmg} damage to {self.target.name}!")
+                        damage = self.target.take_damage(damage)
+                        print(f"~ {player.name} dealt {damage} damage to {self.target.name}!")
                         if self.target.dead:
                             alive = [e for e in self.enemies if not e.dead]
                             if alive:
@@ -133,10 +132,17 @@ class Battle:
                                 self.target = self.enemies[target_num]
                                 print(f"Target is now {self.target.name}!")
                                 dia_input()
+                case "guard" | "g":
+                    if not player.guard == True:
+                        player.guard_player()
+                        print(f"~ {player.name} is now guarding!")
+                    else:
+                        print(f"~ {player.name} is already guarding!")
+                    action_taken = True
+                    dia_input()
                 case _:
                     message = f"~ {player_input} is not a valid command"
-
-        player.tick_buff()
+        player.tick()
         for enemy in self.enemies:
             enemy.tick_debuff()
 
