@@ -84,10 +84,12 @@ class Enemy:
             attack: Attack = Attack(atk_data)
             attack.execute(self, player)
 
-    def take_damage(self, amount: int):
-        self.hp = max(0, self.hp - amount)
+    def take_damage(self, amount: int) -> int:
+        damage: int = int(amount - (amount * self.defense))
+        self.hp = max(0, self.hp - damage)
         if self.hp == 0:
             self.dead = True
+        return damage
 
     def apply_debuff(self, debuff_data):
         if self.debuffs.get(debuff_data["tick_status"]) is None:
@@ -184,8 +186,10 @@ class WolfBoss(Enemy):
             attack: Attack = Attack(atk_data)
             attack.execute(self, player)
 
-    def take_damage(self, amount: int):
-        amount = int(amount - (amount * self.defense))
-        self.hp = max(0, self.hp - amount)
-        if self.hp == 0:
-            self.dead = True
+class FireDrake(Enemy):
+    def __init__(self, data: dict):
+        super().__init__(data)
+        self.defense: float = data["defense"]
+        self.attack_list: list[str] = ["dragon_bite", "fire_breath", "tail_sweep"]
+        self.charge_attack: str = "inferno_roar"
+        self.charging: bool = False
