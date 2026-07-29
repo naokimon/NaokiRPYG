@@ -40,9 +40,10 @@ class Player:
         self._init_vitals()
         self._init_inventory()
         self.weapon: Weapon = Weapon.load(self.equipment_inv["equipment_inv"]["weapon"][0])
-        self.skills: list[str] = [self.get_starter_skill()]
+        self.skills: list[str | None] = [self.get_starter_skill()]
         self.buffs: dict[str, dict] = {}
         self.class_data = self._load_class_data()
+        self.guard: bool = False
 
     def _init_vitals(self):
         base_exp = 100
@@ -66,7 +67,7 @@ class Player:
             case "archer":
                 self.equipment_inv["equipment_inv"]["weapon"].append("wep_shortbow")
 
-    def get_starter_skill(self):
+    def get_starter_skill(self) -> str | None:
         skill_path: Path = root / "data" / "classes" / "class_levels.json"
         with open(skill_path) as file:
             data: dict = json.load(file)
@@ -478,10 +479,17 @@ class Player:
         print()
         print(f"MP: [{'█' * mp_filled}{'░' * mp_empty}] {self.mp}/{self.max_mp}")
 
-    def take_damage(self, amount: int):
-        self.hp = max(0, self.hp - amount)
+    def take_damage(self, amount: int) -> int:
+        guard_reduction: float = 0.2
+        if not self.guard:
+            damage: int = amount
+        else:
+            damage: int = int(amount * guard_reduction)
+        self.hp = max(0, self.hp - damage)
         if self.hp == 0:
             self.dead = True
+        return damage
+
 
     def _load_class_data(self):
         class_path = root / "data" / "classes" / "class_levels.json"
@@ -542,6 +550,14 @@ class Player:
                 del self.buffs[buff_id]
                 buff: Skill = load_skill(buff_id)
                 print(f"~ {buff.name} has worn off!")
+
+    def guard_player(self):
+        self.guard = True
+
+    def tick(self):
+        self.tick_buff()
+        if self.guard:
+            self.guard = False
 
     def save_game(self) -> None:
         save_data: dict = {
