@@ -11,7 +11,7 @@ class Attack:
     def execute(self, attacker, target):
         attacker.mp = max(0, attacker.mp - self.cost)
         if random.random() <= self.accuracy:
-            target.take_damage(self.damage)
-            print(f"~ {attacker.name} used {self.name} on {target.name} for {self.damage}!")
+            damage: int = target.take_damage(self.damage)
+            print(f"~ {attacker.name} used {self.name} on {target.name} for {damage}!")
         else:
             print(f"~ {attacker.name} used {self.name} on {target.name} and missed!")
