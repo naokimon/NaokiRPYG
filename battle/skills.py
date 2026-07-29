@@ -76,8 +76,8 @@ class AttackSkill(Skill):
             damage = damage * WEAKNESS_MULTIPLIER
 
         if random.random() <= self.accuracy:
-            target.take_damage(damage)
-            print(f"~ {player.name} used {self.name} on {target.name} for {damage}!")
+            real_damage = target.take_damage(damage)
+            print(f"~ {player.name} used {self.name} on {target.name} for {real_damage}!")
             if self.debuff:
                 if target.weakness == self.element:
                     tick_damage = int(self.t_damage * WEAKNESS_MULTIPLIER)
