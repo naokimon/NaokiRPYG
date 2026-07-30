@@ -28,6 +28,8 @@ def load_enemy(id: str):
             match id:
                 case "boss_wolf_alpha_1":
                     return WolfBoss(boss_json[id])
+                case "boss_fire_drake_1":
+                    return FireDrake(boss_json[id])
         else:
             raise ValueError(f"Unknown boss ID: {id}")
     else:
@@ -193,3 +195,45 @@ class FireDrake(Enemy):
         self.attack_list: list[str] = ["dragon_bite", "fire_breath", "tail_sweep"]
         self.charge_attack: str = "inferno_roar"
         self.charging: bool = False
+        self.charg_duration: int = 0
+        self.phase_2: bool = False
+
+    def choose_attack(self, data: dict) -> str:
+        if self.hp / self.max_hp > 0.5:
+            atk_id: str = random.choice(self.attack_list)
+            return atk_id
+        else:
+            if not self.phase_2:
+                self.phase_2 = True
+                self.attack_list.append(self.charge_attack)
+                return self.charge_attack
+            else:
+                atk_id: str = random.choice(self.attack_list)
+                return atk_id
+
+    def attack(self, player: Player):
+        data = load_attacks()
+        duration: int = 3
+        if not self.charging:
+            atk_id: str = self.choose_attack(data)
+            if atk_id == self.charge_attack:
+                self.charging = True
+                self.charg_duration = duration
+                print(f"~ {self.name} is building up heat in his lungs!")
+            else:
+                if "dazed" in self.debuffs:
+                    print(f"~ {self.name} fought through the daze!")
+
+                atk_data = data[atk_id]
+
+                attack: Attack = Attack(atk_data)
+                attack.execute(self, player)
+        else:
+            if self.charg_duration == 0:
+                atk_data = data[self.charge_attack]
+
+                attack: Attack = Attack(atk_data)
+                attack.execute(self, player)
+            else:
+                self.charg_duration -= 1
+                print(f"~ {self.name} is building up heat in his lungs!")
