@@ -169,14 +169,14 @@ class WolfBoss(Enemy):
 
     def attack(self, player: Player):
         data = load_attacks()
+        if "dazed" in self.debuffs:
+            print(f"~ {self.name} fought through the daze!")
         if not self.charging:
             atk_id: str = self.choose_attack(data)
             if atk_id == self.charge_attack:
                 self.charging = True
                 print(f"~ {self.name} poises for a strong lunge!")
             else:
-                if "dazed" in self.debuffs:
-                    print(f"~ {self.name} fought through the daze!")
 
                 atk_data = data[atk_id]
 
@@ -213,7 +213,9 @@ class FireDrake(Enemy):
 
     def attack(self, player: Player):
         data = load_attacks()
-        duration: int = 3
+        duration: int = 2
+        if "dazed" in self.debuffs:
+            print(f"~ {self.name} fought through the daze!")
         if not self.charging:
             atk_id: str = self.choose_attack(data)
             if atk_id == self.charge_attack:
@@ -221,8 +223,6 @@ class FireDrake(Enemy):
                 self.charg_duration = duration
                 print(f"~ {self.name} is building up heat in his lungs!")
             else:
-                if "dazed" in self.debuffs:
-                    print(f"~ {self.name} fought through the daze!")
 
                 atk_data = data[atk_id]
 
@@ -230,6 +230,7 @@ class FireDrake(Enemy):
                 attack.execute(self, player)
         else:
             if self.charg_duration == 0:
+                self.charging = False
                 atk_data = data[self.charge_attack]
 
                 attack: Attack = Attack(atk_data)
