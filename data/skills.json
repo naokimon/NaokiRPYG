@@ -675,5 +675,15 @@
       "stat": "dexterity",
       "scale": 1.30
     }
+  },
+  "pass": {
+    "id": "pass",
+    "name": "Pass",
+    "description": "Pass turn (TEST)",
+    "amount": 0,
+    "cost": 0,
+    "accuracy": 1,
+    "element": "physical",
+    "type": "attack"
   }
 }
