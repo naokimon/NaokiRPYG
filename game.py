@@ -42,8 +42,7 @@ class Game:
                     print("Choose a valid option.")
 
     def tutorial(self):
-        npc_king: NPC = NPC(king["name"], king["sprite"], king["dialogue"])
-
+        npc_king: NPC = NPC.load("king")
         npc_king.speak(state="tutorial", PLAYER_NAME=self.player.name)
 
     def display_game(self):
