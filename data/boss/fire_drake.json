@@ -24,6 +24,7 @@
       "fire_breath",
       "tail_sweep",
       "inferno_roar"
-    ]
+    ],
+    "defense": 0.45
   }
 }
