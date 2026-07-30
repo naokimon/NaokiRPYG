@@ -35,7 +35,7 @@ class Zone:
             "godrealm.json"
         ]
 
-        zone_path: Path = root / "data" / "zones" / zones[Zone.zone_count - 1]
+        zone_path: Path = root / "gamedata" / "zones" / zones[Zone.zone_count - 1]
 
         with open(zone_path) as f:
             full_zone_data: list[dict] = json.load(f)

@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
 from entities.enemy import Enemy
-from data.ascii import asciis
+from gamedata.ascii import asciis
 from utils import seperator, pinput, cls, dia_input
 from items.weapons import Weapon
 from battle.skills import load_skill, Skill

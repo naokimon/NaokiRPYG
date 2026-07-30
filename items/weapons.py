@@ -55,7 +55,7 @@ class Weapon:
 
     @classmethod
     def load(cls, wep_id):
-        weapons_path: Path = root / "data" / "items" / "weapons.json"
+        weapons_path: Path = root / "gamedata" / "items" / "weapons.json"
         with open(weapons_path) as f:
             weapons_data: dict = json.load(f)
 

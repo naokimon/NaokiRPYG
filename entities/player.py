@@ -8,7 +8,7 @@ import os
 from items.weapons import Weapon
 from battle.skills import load_skill, Skill, BuffSkill
 
-classes_path = root / "data" / "classes" / "classes.json"
+classes_path = root / "gamedata" / "classes" / "classes.json"
 
 with open(classes_path) as f:
     BASE_STATS: dict = json.load(f)
@@ -67,7 +67,7 @@ class Player:
                 self.equipment_inv["equipment_inv"]["weapon"].append("wep_shortbow")
 
     def get_starter_skill(self) -> str | None:
-        skill_path: Path = root / "data" / "classes" / "class_levels.json"
+        skill_path: Path = root / "gamedata" / "classes" / "class_levels.json"
         with open(skill_path) as file:
             data: dict = json.load(file)
 
@@ -494,7 +494,7 @@ class Player:
 
 
     def _load_class_data(self):
-        class_path = root / "data" / "classes" / "class_levels.json"
+        class_path = root / "gamedata" / "classes" / "class_levels.json"
         with open(class_path) as file:
             return json.load(file)[self.rpg_class]
 

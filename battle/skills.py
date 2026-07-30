@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from entities.enemy import Enemy
 
 def load_skill(sid: str) -> Skill:
-    skill_path: Path = root / "data" / "skills.json"
+    skill_path: Path = root / "gamedata" / "skills.json"
     with open(skill_path) as f:
         data = json.load(f)
 

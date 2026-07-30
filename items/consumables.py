@@ -50,7 +50,7 @@ class ManaPotion(Consumable):
             return True
 
 def load_consum(iid: str):
-    consum_path: Path = root / "data" / "items" / "consumables.json"
+    consum_path: Path = root / "gamedata" / "items" / "consumables.json"
     with open(consum_path) as f:
         consum_data = json.load(f)
 

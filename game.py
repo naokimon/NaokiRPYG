@@ -4,9 +4,8 @@ from entities.enemy import Enemy, load_enemy
 from utils import cls, pinput, seperator, dia_input
 from entities.player import Player
 from world.zones import Zone
-from data.ascii import asciis
-from npc import NPC
-from data.dialogue import king
+from gamedata.ascii import asciis
+from entities.npc import NPC
 
 class Game:
     def __init__(self):

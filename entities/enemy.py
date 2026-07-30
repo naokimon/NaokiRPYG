@@ -8,7 +8,7 @@ from items.consumables import load_consum, Consumable
 from utils import root
 
 def load_attacks() -> dict:
-    attack_path: Path = root / "data" / "attacks.json"
+    attack_path: Path = root / "gamedata" / "attacks.json"
     with open(attack_path) as f:
         return json.load(f)
 
@@ -20,7 +20,7 @@ def load_enemy(id: str):
     if is_boss:
         boss_file = id.rsplit("_", 1)[0]
         boss_file = boss_file.split("_", 1)[1] + ".json"
-        boss_path: Path = root / "data" / "boss" / boss_file
+        boss_path: Path = root / "gamedata" / "boss" / boss_file
         with open(boss_path) as f:
             boss_json: dict = json.load(f)
         if boss_json.get(id):
@@ -33,7 +33,7 @@ def load_enemy(id: str):
             raise ValueError(f"Unknown boss ID: {id}")
     else:
         enemy_file = id.rsplit("_", 1)[0] + ".json"
-        enemies_path: Path = root / "data" / "enemies" / enemy_file
+        enemies_path: Path = root / "gamedata" / "enemies" / enemy_file
         with open(enemies_path) as f:
             enemy_json: dict = json.load(f)
         if enemy_json.get(id):
