@@ -5,9 +5,7 @@ import random
 from world.rooms import Room
 from items.consumables import load_consum
 from entities.enemy import Enemy, load_enemy
-from utils import yn, dia_input
-
-root: Path = Path(__file__).parent.parent
+from utils import yn, dia_input, root
 
 class Zone:
 

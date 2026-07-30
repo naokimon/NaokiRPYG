@@ -5,8 +5,7 @@ from battle.attack import Attack
 from entities.player import Player
 from items.weapons import Weapon
 from items.consumables import load_consum, Consumable
-
-root: Path = Path(__file__).parent.parent
+from utils import root
 
 def load_attacks() -> dict:
     attack_path: Path = root / "data" / "attacks.json"

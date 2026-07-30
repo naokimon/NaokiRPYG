@@ -2,13 +2,12 @@ import dataclasses
 from dataclasses import dataclass
 from pathlib import Path
 import json
-from utils import pinput, yn, cls, seperator, dia_input
+from utils import pinput, yn, cls, seperator, dia_input, root
 from items.consumables import load_consum, Consumable
 import os
 from items.weapons import Weapon
 from battle.skills import load_skill, Skill, BuffSkill
 
-root = Path(__file__).parent.parent
 classes_path = root / "data" / "classes" / "classes.json"
 
 with open(classes_path) as f:

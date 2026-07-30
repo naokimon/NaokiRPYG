@@ -3,12 +3,11 @@ import random
 import json
 from pathlib import Path
 from typing import TYPE_CHECKING
+from utils import root
 
 if TYPE_CHECKING:
     from entities.player import Player
     from entities.enemy import Enemy
-
-root: Path = Path(__file__).parent.parent
 
 def load_skill(sid: str) -> Skill:
     skill_path: Path = root / "data" / "skills.json"

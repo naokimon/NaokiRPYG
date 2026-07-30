@@ -2,15 +2,10 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 import json
 from pathlib import Path
-
-from PyInstaller.compat import check_requirements
-
-from utils import cls, seperator
+from utils import cls, seperator, root
 
 if TYPE_CHECKING:
     from entities.player import Player
-
-root: Path = Path(__file__).parent.parent
 
 class Weapon:
     def __init__(self, wep_data: dict):

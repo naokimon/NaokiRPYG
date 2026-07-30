@@ -2,11 +2,10 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 from pathlib import Path
 import json
+from utils import root
 
 if TYPE_CHECKING:
     from entities.player import Player
-
-root: Path = Path(__file__).parent.parent
 
 class Consumable:
     def __init__(self, data: dict, name: str, description: str):
