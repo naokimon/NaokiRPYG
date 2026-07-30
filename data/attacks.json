@@ -233,7 +233,7 @@
   "inferno_roar": {
     "id": "inferno_roar",
     "name": "Inferno Roar",
-    "damage": 65,
+    "damage": 150,
     "cost": 30,
     "accuracy": 0.70
   },
