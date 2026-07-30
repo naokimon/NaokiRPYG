@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-root: Path = Path(__file__).parent.parent
+root: Path = Path(__file__).parent
 
 def cls() -> None:
     os.system("CLS")
