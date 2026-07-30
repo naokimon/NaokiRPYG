@@ -41,7 +41,10 @@ class Skill:
         self.accuracy: float = data["accuracy"]
         self.element: str = data["element"]
         self.type: str = data["type"]
-        self.scaling: dict = data["scaling"]
+        self.have_scaling: bool = False
+        if data.get("scaling"):
+            self.have_scaling = True
+            self.scaling: dict = data["scaling"]
         self.STATUS_MESSAGES = {
             "poison": "now has poison",
             "burned": "is now burning",
@@ -49,8 +52,11 @@ class Skill:
         }
 
     def calc_damage(self, player: Player, target: Enemy) -> int:
-        stat_amount: int = getattr(player.stats, self.scaling["stat"])
-        damage = int(self.amount + (stat_amount * self.scaling["scale"]))
+        if self.have_scaling:
+            stat_amount: int = getattr(player.stats, self.scaling["stat"])
+            damage = int(self.amount + (stat_amount * self.scaling["scale"]))
+        else:
+            damage = int(self.amount)
         return damage
 
     def execute(self, player: Player, target):
