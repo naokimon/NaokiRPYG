@@ -112,6 +112,3 @@ class Game:
                             message = f"~ Room has already been cleared."
                     case _:
                         message = "~ Type options to see all available commands"
-
-    def set_player(self, player: Player):
-        self.player = player
