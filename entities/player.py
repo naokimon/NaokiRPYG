@@ -370,7 +370,7 @@ class Player:
                     message = f"~ {command} is invalid"
 
 
-    def recalc_stat(self):
+    def recalc_player(self):
         pct_hp: float = self.hp / self.max_hp
         self.max_hp = 10 * self.stats.vitality
         self.hp = int(self.max_hp * pct_hp)
@@ -378,6 +378,9 @@ class Player:
         pct_mp: float = self.mp / self.max_mp
         self.max_mp = 5 * self.stats.intelligence
         self.mp = int(self.max_mp * pct_mp)
+
+        base_exp = 100
+        self.exp_needed: int = int(base_exp * (self.level ** 2.5))
 
 
     def show_stats(self):
@@ -435,7 +438,7 @@ class Player:
                                 if yn(f"Are you sure you want to increase intelligence by {amount}? Y/N:"):
                                     self.stats.intelligence += amount
                                     self.points -= amount
-                                    self.recalc_stat()
+                                    self.recalc_player()
                                     message = f"Intelligence was increased by {amount}"
                                     break
                                 else:
@@ -445,7 +448,7 @@ class Player:
                                 if yn(f"Are you sure you want to increase vitality by {amount}? Y/N:"):
                                     self.stats.vitality += amount
                                     self.points -= amount
-                                    self.recalc_stat()
+                                    self.recalc_player()
                                     message = f"Vitality was increased by {amount}"
                                     break
                                 else:
@@ -504,8 +507,7 @@ class Player:
                 remaining_exp: int = self.exp - self.exp_needed
                 self.exp = remaining_exp
                 self.level += 1
-                base_exp = 100
-                self.exp_needed = int(base_exp * (self.level ** 2.5))
+                self.recalc_player()
                 self.points += 5
                 cls()
                 print(f"{self.name} has leveled up to {self.level}!")
