@@ -171,6 +171,9 @@ class Battle:
         seperator()
         dia_input()
 
+        self.player.buffs = {}
+        self.player.guard = False
+
         for enemy in self.enemies:
             self.player.exp += enemy.exp_reward
         self.player.level_up()
