@@ -5,10 +5,58 @@
     "amount": 50,
     "description": "Mass procured pots by the famous witch Aminah. Heal health for 50."
   },
+  "health_potion_2": {
+    "name": "Health Potion Lv.2",
+    "type": "health",
+    "amount": 100,
+    "description": "A refined blend from Aminah's collection. Heal health for 100."
+  },
+  "health_potion_3": {
+    "name": "Health Potion Lv.3",
+    "type": "health",
+    "amount": 150,
+    "description": "A potent concoction crafted by Aminah herself. Heal health for 150."
+  },
+  "health_potion_4": {
+    "name": "Health Potion Lv.4",
+    "type": "health",
+    "amount": 200,
+    "description": "A rare elixir from Aminah's personal reserves. Heal health for 200."
+  },
+  "health_potion_5": {
+    "name": "Health Potion Lv.5",
+    "type": "health",
+    "amount": 300,
+    "description": "The ultimate healing draught from Aminah's legendary collection. Heal health for 300."
+  },
   "mana_potion_1": {
     "name": "Mana Potion Lv.1",
     "type": "mana",
     "amount": 10,
     "description": "Mass procured pots by the famous witch Aminah. Heal mana for 10."
+  },
+  "mana_potion_2": {
+    "name": "Mana Potion Lv.2",
+    "type": "mana",
+    "amount": 20,
+    "description": "A refined blend from Aminah's collection. Heal mana for 20."
+  },
+  "mana_potion_3": {
+    "name": "Mana Potion Lv.3",
+    "type": "mana",
+    "amount": 30,
+    "description": "A potent concoction crafted by Aminah herself. Heal mana for 30."
+  },
+  "mana_potion_4": {
+    "name": "Mana Potion Lv.4",
+    "type": "mana",
+    "amount": 40,
+    "description": "A rare elixir from Aminah's personal reserves. Heal mana for 40."
+  },
+  "mana_potion_5": {
+    "name": "Mana Potion Lv.5",
+    "type": "mana",
+    "amount": 60,
+    "description": "The ultimate mana draught from Aminah's legendary collection. Heal mana for 60."
   }
 }
